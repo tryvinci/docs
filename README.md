@@ -12,6 +12,21 @@ This template comes with the following features:
 - [Jest](https://jestjs.io/) setup with [React Testing Library](https://testing-library.com/docs/react-testing-library/intro)
 - ESLint setup with [eslint-config-mantine](https://github.com/mantinedev/eslint-config-mantine)
 
+## Extra features
+
+- [Nextra](https://nextra.site/) documentation site with Mantine theme
+- Sync Dark mode between documentation and application (Mantine/Nextra)
+- Customizable components in `components` folder
+- Provides new Navigation and Footer components for Nextra documentation site
+
+## Folder structure
+
+- `components` – shared components 
+    - you can use them in both documentation and application
+    - you may customize them to fit your needs
+- `content` – Nextra documentation site (.mdx and _meta.json files)
+
+
 ## npm scripts
 
 ### Build and dev scripts

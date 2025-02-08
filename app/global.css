@@ -1,6 +1,6 @@
-@layer nextra, my-base;
+@layer theme;
 
-@import 'nextra-theme-docs/dist/style.css' layer(nextra);
+@import 'nextra-theme-docs/dist/style.css' layer(theme);
 
 /**
  * Custom styles
@@ -10,7 +10,11 @@
  *
  * In this case we're going to fix a glitch with the text size in the code blocks. 
  */
-@layer my-layer {
+@layer theme {
+  :root {
+    --x-color-nextra-bg: var(--mantine-color-body);
+  }
+
   .x\:text-sm {
     font-size: var(--x-text-sm) !important;
     line-height: var(--tw-leading, var(--x-text-sm--line-height)) !important;

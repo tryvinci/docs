@@ -11,7 +11,7 @@ export const Content = () => {
         Visit the Mantine Extension Hub for more components
       </Anchor>
 
-      <Marquee fadeEdges>
+      <Marquee fadeEdges pauseOnHover>
         <Button
           size="xl"
           variant="gradient"

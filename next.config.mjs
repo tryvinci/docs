@@ -10,12 +10,13 @@ const withNextra = nextra({
   search: {
     codeblocks: false
   },
-  contentDirBasePath: '/docs'
+  contentDirBasePath: '/docs',
 })
 
 export default withNextra(
   withBundleAnalyzer({
     reactStrictMode: false,
+    cleanDistDir: true,
     eslint: {
       ignoreDuringBuilds: true,
     },
