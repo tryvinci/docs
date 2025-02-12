@@ -25,4 +25,9 @@ export default {
     title: 'About',
     href: 'https://github.com/gfazioli',
   },
+  sponsor: {
+    type: 'page',
+    title: 'Sponsors',
+    href: 'https://github.com/sponsors/gfazioli?o=esb',
+  },
 };

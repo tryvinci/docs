@@ -5,7 +5,7 @@ import { Welcome } from '@/components/Welcome/Welcome';
 
 export default function HomePage() {
   return (
-    <Container h="85vh">
+    <Container mih="calc(100vh - 328px)">
       <Welcome />
       <ColorSchemeToggle />
       <Content />

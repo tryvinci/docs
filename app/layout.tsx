@@ -10,8 +10,44 @@ import { MantineFooter, MantineNavBar } from '@/components';
 import { theme } from '../theme';
 
 export const metadata = {
-  title: 'Mantine Next.js and Nextra template',
+  title: {
+    default: 'Mantine Next.js and Nextra template',
+    template: '%s | Mantine Next.js and Nextra template',
+  },
   description: 'I am using Mantine with Next.js and Nextra!',
+  metadataBase: new URL('https://next-app-nextra-template.vercel.app/'),
+  keywords: [
+    'Mantine',
+    'Nextra',
+    'Next.js',
+    'React',
+    'JavaScript',
+    'MDX',
+    'Markdown',
+    'Static Site Generator',
+  ],
+  generator: 'Next.js',
+  applicationName: 'Mantine',
+  appleWebApp: {
+    title: 'Mantine',
+  },
+  openGraph: {
+    // https://github.com/vercel/next.js/discussions/50189#discussioncomment-10826632
+    url: './',
+    siteName: 'Mantine',
+    locale: 'en_US',
+    type: 'website',
+  },
+  other: {
+    'msapplication-TileColor': '#fff',
+  },
+  twitter: {
+    site: 'https://next-app-nextra-template.vercel.app/',
+  },
+  alternates: {
+    // https://github.com/vercel/next.js/discussions/50189#discussioncomment-10826632
+    canonical: './',
+  },
 };
 
 export default async function RootLayout({ children }: { children: any }) {

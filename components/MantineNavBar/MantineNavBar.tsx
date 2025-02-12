@@ -32,8 +32,19 @@ export const MantineNavBar = () => {
         }
         // Mantine discord server
         chatLink="https://discord.com/invite/wbH82zuWMN"
+        projectLink="https://github.com/gfazioli/next-app-nextra-template"
       >
-        <ColorSchemeControl />
+        <>
+          <ColorSchemeControl />
+
+          <iframe
+            src="https://github.com/sponsors/gfazioli/button"
+            title="Sponsor gfazioli"
+            height="32"
+            width="114"
+            style={{ border: 0, borderRadius: '6px' }}
+          ></iframe>
+        </>
       </Navbar>
     </MantineProvider>
   );
