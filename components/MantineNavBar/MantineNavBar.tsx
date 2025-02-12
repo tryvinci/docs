@@ -18,7 +18,7 @@ import { MantineNextraThemeObserver } from '../MantineNextraThemeObserver/Mantin
  */
 export const MantineNavBar = () => {
   return (
-    <MantineProvider>
+    <MantineProvider defaultColorScheme="auto">
       <MantineNextraThemeObserver />
       <Navbar
         logo={

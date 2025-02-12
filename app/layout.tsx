@@ -56,7 +56,7 @@ export default async function RootLayout({ children }: { children: any }) {
   return (
     <html lang="en" dir="ltr" {...mantineHtmlProps}>
       <Head>
-        <ColorSchemeScript />
+        <ColorSchemeScript nonce="8IBTHwOdqNKAWeKl7plt8g==" defaultColorScheme="dark" />
         <link rel="shortcut icon" href="/favicon.svg" />
         <meta
           name="viewport"
@@ -72,7 +72,9 @@ export default async function RootLayout({ children }: { children: any }) {
           footer={<MantineFooter />}
           sidebar={{ defaultMenuCollapseLevel: 1 }}
         >
-          <MantineProvider theme={theme}>{children}</MantineProvider>
+          <MantineProvider theme={theme} defaultColorScheme="auto">
+            {children}
+          </MantineProvider>
         </Layout>
       </body>
     </html>

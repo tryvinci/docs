@@ -17,7 +17,7 @@ export function MantineNextraThemeObserver() {
   const { theme } = useTheme();
 
   useDidUpdate(() => {
-    setColorScheme(theme === 'dark' ? 'dark' : 'light');
+    setColorScheme(theme === 'dark' ? 'dark' : theme === 'system' ? 'auto' : 'light');
   }, [theme]);
 
   return null;

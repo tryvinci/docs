@@ -7,9 +7,9 @@ import classes from './ColorSchemeControl.module.css';
 
 export function ColorSchemeControl() {
   const { setColorScheme } = useMantineColorScheme();
-  const { setTheme } = useTheme();
+  const { setTheme, theme } = useTheme();
 
-  const computedColorScheme = useComputedColorScheme('light', { getInitialValueInEffect: true });
+  const computedColorScheme = useComputedColorScheme('dark', { getInitialValueInEffect: true });
 
   const handleColorSchemeChange = () => {
     const newColorScheme = computedColorScheme === 'light' ? 'dark' : 'light';

@@ -11,7 +11,7 @@ import { Box, MantineProvider } from '@mantine/core';
  *
  */
 export const MantineFooter = () => (
-  <MantineProvider>
+  <MantineProvider defaultColorScheme="auto">
     <Box style={{ position: 'relative' }}>
       <Footer>MIT {new Date().getFullYear()} © Nextra.</Footer>
     </Box>
