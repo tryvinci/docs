@@ -1,7 +1,5 @@
-'use client';
-
 import { Footer } from 'nextra-theme-docs';
-import { Box, MantineProvider } from '@mantine/core';
+import { Anchor, Box } from '@mantine/core';
 
 /**
  * You can customize the Nextra Footer component.
@@ -11,9 +9,9 @@ import { Box, MantineProvider } from '@mantine/core';
  *
  */
 export const MantineFooter = () => (
-  <MantineProvider defaultColorScheme="auto">
-    <Box style={{ position: 'relative' }}>
-      <Footer>MIT {new Date().getFullYear()} © Nextra.</Footer>
-    </Box>
-  </MantineProvider>
+  <Box style={{ position: 'relative' }}>
+    <Footer>
+      MIT {new Date().getFullYear()} © <Anchor href="https://undolog.com">Undolog</Anchor>
+    </Footer>
+  </Box>
 );

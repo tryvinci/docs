@@ -64,18 +64,20 @@ export default async function RootLayout({ children }: { children: any }) {
         />
       </Head>
       <body>
-        <Layout
-          banner={<Banner storageKey="mantine-nextjs-nextra">✨ Mantine + NextJS + Nextra</Banner>}
-          navbar={<MantineNavBar />}
-          pageMap={pageMap}
-          docsRepositoryBase="https://github.com/shuding/nextra/tree/main/docs"
-          footer={<MantineFooter />}
-          sidebar={{ defaultMenuCollapseLevel: 1 }}
-        >
-          <MantineProvider theme={theme} defaultColorScheme="auto">
+        <MantineProvider theme={theme} defaultColorScheme="auto">
+          <Layout
+            banner={
+              <Banner storageKey="mantine-nextjs-nextra">✨ Mantine + NextJS + Nextra</Banner>
+            }
+            navbar={<MantineNavBar />}
+            pageMap={pageMap}
+            docsRepositoryBase="https://github.com/shuding/nextra/tree/main/docs"
+            footer={<MantineFooter />}
+            sidebar={{ defaultMenuCollapseLevel: 1 }}
+          >
             {children}
-          </MantineProvider>
-        </Layout>
+          </Layout>
+        </MantineProvider>
       </body>
     </html>
   );

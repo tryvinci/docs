@@ -1,6 +1,6 @@
 'use client';
 
-import { Group, MantineProvider, Text } from '@mantine/core';
+import { Group, Text } from '@mantine/core';
 
 import '@mantine/core/styles.css';
 
@@ -18,15 +18,14 @@ import { MantineNextraThemeObserver } from '../MantineNextraThemeObserver/Mantin
  */
 export const MantineNavBar = () => {
   return (
-    <MantineProvider defaultColorScheme="auto">
+    <>
       <MantineNextraThemeObserver />
       <Navbar
         logo={
-          <Group align="center">
+          <Group align="center" gap={4}>
             <Logo />
-
-            <Text size="xs" c="dimmed">
-              The Next Docs Builder
+            <Text size="lg" fw={800} c="blue">
+              The Next Mantine Docs Builder
             </Text>
           </Group>
         }
@@ -36,7 +35,6 @@ export const MantineNavBar = () => {
       >
         <>
           <ColorSchemeControl />
-
           <iframe
             src="https://github.com/sponsors/gfazioli/button"
             title="Sponsor gfazioli"
@@ -46,6 +44,6 @@ export const MantineNavBar = () => {
           ></iframe>
         </>
       </Navbar>
-    </MantineProvider>
+    </>
   );
 };
