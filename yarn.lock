@@ -2541,15 +2541,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@gfazioli/mantine-marquee@npm:^2.2.0":
-  version: 2.2.0
-  resolution: "@gfazioli/mantine-marquee@npm:2.2.0"
+"@gfazioli/mantine-marquee@npm:^2.2.1":
+  version: 2.2.1
+  resolution: "@gfazioli/mantine-marquee@npm:2.2.1"
   peerDependencies:
     "@mantine/core": ">=7.0.0"
     "@mantine/hooks": ">=7.0.0"
     react: ^18.x || ^19.x
     react-dom: ^18.x || ^19.x
-  checksum: 10c0/058200100ac68a659beac9e292cd170b0012ddd7a2939d9056250ff9c9af004c9ba4ba18559125281e3879c869d2bbe1dfee19a1e4f3458fa30b14951a5dce25
+  checksum: 10c0/a89ecff57e03c764963816ab38d19bec8f14f3fa25bb3e2f4a86e7a4b1010090099200eaf2762da47f4aa1ca8e899ab2a00ab010d46821442829b90938107d08
   languageName: node
   linkType: hard
 
@@ -12981,7 +12981,7 @@ __metadata:
   dependencies:
     "@babel/core": "npm:^7.26.0"
     "@eslint/js": "npm:^9.18.0"
-    "@gfazioli/mantine-marquee": "npm:^2.2.0"
+    "@gfazioli/mantine-marquee": "npm:^2.2.1"
     "@ianvs/prettier-plugin-sort-imports": "npm:^4.4.1"
     "@mantine/core": "npm:7.16.3"
     "@mantine/hooks": "npm:7.16.3"

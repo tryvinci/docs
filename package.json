@@ -21,7 +21,7 @@
     "storybook:build": "storybook build"
   },
   "dependencies": {
-    "@gfazioli/mantine-marquee": "^2.2.0",
+    "@gfazioli/mantine-marquee": "^2.2.1",
     "@mantine/core": "7.16.3",
     "@mantine/hooks": "7.16.3",
     "@next/bundle-analyzer": "^15.1.5",
