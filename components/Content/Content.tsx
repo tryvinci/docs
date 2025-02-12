@@ -14,7 +14,6 @@ export const Content = () => {
       <Marquee fadeEdges pauseOnHover>
         <Button
           size="xl"
-          variant="gradient"
           component="a"
           href="https://gfazioli.github.io/mantine-marquee/"
           target="_blank"
@@ -23,7 +22,6 @@ export const Content = () => {
         </Button>
         <Button
           size="xl"
-          variant="gradient"
           component="a"
           href="https://gfazioli.github.io/mantine-reflection/"
           target="_blank"
@@ -32,7 +30,6 @@ export const Content = () => {
         </Button>
         <Button
           size="xl"
-          variant="gradient"
           component="a"
           href="https://gfazioli.github.io/mantine-split-pane/"
           target="_blank"
@@ -41,7 +38,6 @@ export const Content = () => {
         </Button>
         <Button
           size="xl"
-          variant="gradient"
           component="a"
           href="https://gfazioli.github.io/mantine-spinner/"
           target="_blank"
@@ -50,7 +46,6 @@ export const Content = () => {
         </Button>
         <Button
           size="xl"
-          variant="gradient"
           component="a"
           href="https://gfazioli.github.io/mantine-parallax/"
           target="_blank"
