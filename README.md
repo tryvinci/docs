@@ -1,5 +1,9 @@
 # Mantine Next.js + Nextra template
 
+
+https://github.com/user-attachments/assets/9ed5f58c-cd3b-427e-ba6c-cdc4b7afd270
+
+
 This is a template for [Next.js](https://nextjs.org/) app router + [Mantine](https://mantine.dev/) + [Nextra](https://nextra.site/) documentation site.
 
 ## Features
