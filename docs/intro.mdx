@@ -1,0 +1,132 @@
+---
+title: Vinci AI Studio
+description: AI-powered video and audio manipulation platform
+sidebar_position: 1
+slug: /intro
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import CodeBlock from '@theme/CodeBlock';
+import Admonition from '@theme/Admonition';
+
+# Welcome to Vinci AI Studio
+
+Transform your video and audio content with our powerful AI APIs. Vinci AI Studio provides a comprehensive suite of tools for speech processing, voice conversion, and video manipulation.
+
+<div className="row">
+  <div className="col col--6">
+    <div className="card">
+      <div className="card__header">
+        <h3>Quick Start</h3>
+      </div>
+      <div className="card__body">
+        Get started with Vinci AI Studio in minutes.
+      </div>
+    </div>
+  </div>
+  <div className="col col--6">
+    <div className="card">
+      <div className="card__header">
+        <h3>API Reference</h3>
+      </div>
+      <div className="card__body">
+        Detailed API documentation for developers.
+      </div>
+    </div>
+  </div>
+</div>
+
+## Core Features
+
+<div className="row">
+  <div className="col col--4">
+    <div className="card">
+      <div className="card__header">
+        <h3>Speech Processing</h3>
+      </div>
+      <div className="card__body">
+        Convert speech to text and text to speech with natural-sounding voices.
+      </div>
+    </div>
+  </div>
+  <div className="col col--4">
+    <div className="card">
+      <div className="card__header">
+        <h3>Voice Conversion</h3>
+      </div>
+      <div className="card__body">
+        Transform voices while maintaining natural intonation and emotion.
+      </div>
+    </div>
+  </div>
+  <div className="col col--4">
+    <div className="card">
+      <div className="card__header">
+        <h3>Video Manipulation</h3>
+      </div>
+      <div className="card__body">
+        Create lip-synced videos and talking head animations.
+      </div>
+    </div>
+  </div>
+</div>
+
+## Available APIs
+
+Our REST APIs enable you to:
+
+- **Speech to Text** - Convert audio/video to accurate text transcriptions
+- **Text Translation** - Translate content across multiple languages
+- **Text to Speech** - Generate natural-sounding speech from text
+- **Voice Conversion** - Transform voices to match target speakers
+- **Lip Sync** - Create perfectly synchronized talking head videos
+- **Live Portrait** - Generate talking animations from still images
+
+## Getting Started
+
+1. Sign up for a Vinci AI Studio account
+2. Get your API credentials
+3. Make your first API call
+
+```python title="Quick example"
+import requests
+
+# Initialize with your credentials
+headers = {"X-User-ID": "your-user-id"}
+
+# Convert speech to text
+files = {"file": open("video.mp4", "rb")}
+response = requests.post(
+    "https://api.tryvinci.com/vincistt",
+    headers=headers,
+    files=files
+)
+
+print(response.json()["text"])
+```
+
+## Resources
+
+<div className="row">
+  <div className="col col--6">
+    <a className="card" href="/api-reference/stt">
+      <div className="card__header">
+        <h3>API Reference</h3>
+      </div>
+      <div className="card__body">
+        Detailed documentation for all Vinci APIs
+      </div>
+    </a>
+  </div>
+  <div className="col col--6">
+    <a className="card" href="/examples">
+      <div className="card__header">
+        <h3>Examples</h3>
+      </div>
+      <div className="card__body">
+        Code examples and use cases
+      </div>
+    </a>
+  </div>
+</div>

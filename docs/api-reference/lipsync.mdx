@@ -1,0 +1,155 @@
+---
+title: Lip Sync
+description: Create perfectly synchronized talking head videos
+sidebar_position: 6
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import CodeBlock from '@theme/CodeBlock';
+import Admonition from '@theme/Admonition';
+
+# Lip Sync
+
+Synchronize video avatar lips with audio input for natural-looking talking head videos.
+
+<div className="card">
+  <div className="card__header">
+    <h3>Try it out</h3>
+  </div>
+  <div className="card__body">
+    Test the Lip Sync API directly in your browser with our interactive playground.
+  </div>
+</div>
+
+## Overview
+
+The Lip Sync API uses advanced AI to precisely match lip movements with speech audio, creating natural and convincing talking head videos.
+
+## API Reference
+
+### Endpoint
+
+```http
+POST https://api.tryvinci.com/vincils
+```
+
+### Headers
+
+| Name | Type | Description |
+|------|------|-------------|
+| X-User-ID | string | Required. Your user ID |
+
+### Request Body
+
+Multipart form data with:
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| audio | File | Audio file containing speech |
+| video | File | Video file to synchronize |
+
+### Response
+
+```typescript
+{
+  url: string,        // URL to the synchronized video
+  media_type: string, // "video/mp4"
+  user_id: string    // The user ID used for the request
+}
+```
+
+## Code Examples
+
+<Tabs>
+  <TabItem value="python" label="Python" default>
+    ```python
+    import requests
+
+    url = "https://api.tryvinci.com/vincils"
+    headers = {"X-User-ID": "your-user-id"}
+    files = {
+        "audio": open("speech.wav", "rb"),
+        "video": open("video.mp4", "rb")
+    }
+
+    response = requests.post(url, headers=headers, files=files)
+    result = response.json()
+    print(f"Synchronized Video URL: {result['url']}")
+    ```
+  </TabItem>
+  <TabItem value="javascript" label="JavaScript">
+    ```javascript
+    const formData = new FormData();
+    formData.append('audio', audioFile);
+    formData.append('video', videoFile);
+
+    const response = await fetch('https://api.tryvinci.com/vincils', {
+      method: 'POST',
+      headers: {
+        'X-User-ID': 'your-user-id',
+      },
+      body: formData,
+    });
+
+    const result = await response.json();
+    console.log(`Synchronized Video URL: ${result.url}`);
+    ```
+  </TabItem>
+</Tabs>
+
+## Input Requirements
+
+<details>
+  <summary>Video Requirements</summary>
+  <div>
+    - Format: MP4, MOV
+    - Resolution: 720p or higher recommended
+    - Clear, front-facing view of the speaker
+  </div>
+</details>
+
+<details>
+  <summary>Audio Requirements</summary>
+  <div>
+    - Format: WAV, MP3, M4A
+    - Clear speech with minimal background noise
+    - Matching duration with video
+  </div>
+</details>
+
+<details>
+  <summary>Duration Limits</summary>
+  <div>
+    - Optimal length: 5-60 seconds per request
+    - Longer videos should be split into segments
+  </div>
+</details>
+
+## Best Practices
+
+<div className="row">
+  <div className="col col--6">
+    <div className="card">
+      <div className="card__header">
+        <h3>Video Quality</h3>
+      </div>
+      <div className="card__body">
+        Use high-quality, well-lit video footage.
+      </div>
+    </div>
+  </div>
+  <div className="col col--6">
+    <div className="card">
+      <div className="card__header">
+        <h3>Audio Clarity</h3>
+      </div>
+      <div className="card__body">
+        Ensure clear speech audio for best sync.
+      </div>
+    </div>
+  </div>
+</div>
+
+:::tip Performance
+For best results, ensure the speaker's face is clearly visible and well-lit throughout the video.
+::: 

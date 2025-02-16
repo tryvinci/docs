@@ -1,0 +1,148 @@
+---
+title: Voice Conversion
+description: Transform voice characteristics while preserving speech content
+sidebar_position: 5
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import CodeBlock from '@theme/CodeBlock';
+import Admonition from '@theme/Admonition';
+
+# Voice Conversion
+
+Transform any voice to match a target speaker while maintaining natural intonation and emotion.
+
+<div className="card">
+  <div className="card__header">
+    <h3>Try it out</h3>
+  </div>
+  <div className="card__body">
+    Test the Voice Conversion API directly in your browser with our interactive playground.
+  </div>
+</div>
+
+## Overview
+
+The Voice Conversion API allows you to modify the voice characteristics of audio content while preserving the original speech content, timing, and emotion.
+
+## API Reference
+
+### Endpoint
+
+```http
+POST https://api.tryvinci.com/vincivoice
+```
+
+### Headers
+
+| Name | Type | Description |
+|------|------|-------------|
+| X-User-ID | string | Required. Your user ID |
+
+### Request Body
+
+Multipart form data with:
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| audio | File | Source audio file to convert |
+| target_voice | string | Target voice identifier |
+
+### Response
+
+```typescript
+{
+  url: string,        // URL to the converted audio file
+  media_type: string, // "audio/wav"
+  user_id: string    // The user ID used for the request
+}
+```
+
+## Code Examples
+
+<Tabs>
+  <TabItem value="python" label="Python" default>
+    ```python
+    import requests
+
+    url = "https://api.tryvinci.com/vincivoice"
+    headers = {"X-User-ID": "your-user-id"}
+    files = {"audio": open("input.wav", "rb")}
+    data = {"target_voice": "voice_1"}
+
+    response = requests.post(url, headers=headers, files=files, data=data)
+    result = response.json()
+    print(f"Converted Audio URL: {result['url']}")
+    ```
+  </TabItem>
+  <TabItem value="javascript" label="JavaScript">
+    ```javascript
+    const formData = new FormData();
+    formData.append('audio', audioFile);
+    formData.append('target_voice', 'voice_1');
+
+    const response = await fetch('https://api.tryvinci.com/vincivoice', {
+      method: 'POST',
+      headers: {
+        'X-User-ID': 'your-user-id',
+      },
+      body: formData,
+    });
+
+    const result = await response.json();
+    console.log(`Converted Audio URL: ${result.url}`);
+    ```
+  </TabItem>
+</Tabs>
+
+## Voice Features
+
+<details>
+  <summary>Target Voices</summary>
+  <div>
+    Choose from our pre-trained voice library or use custom voice cloning.
+  </div>
+</details>
+
+<details>
+  <summary>Audio Requirements</summary>
+  <div>
+    Supports WAV, MP3, and M4A formats. Recommended: 16-bit PCM WAV.
+  </div>
+</details>
+
+<details>
+  <summary>Quality Control</summary>
+  <div>
+    Automatic audio enhancement and noise reduction included.
+  </div>
+</details>
+
+## Best Practices
+
+<div className="row">
+  <div className="col col--6">
+    <div className="card">
+      <div className="card__header">
+        <h3>Audio Quality</h3>
+      </div>
+      <div className="card__body">
+        Use high-quality source audio for best results.
+      </div>
+    </div>
+  </div>
+  <div className="col col--6">
+    <div className="card">
+      <div className="card__header">
+        <h3>Duration Limits</h3>
+      </div>
+      <div className="card__body">
+        Optimal performance for 5-30 second segments.
+      </div>
+    </div>
+  </div>
+</div>
+
+:::tip Optimization
+For longer content, consider splitting into smaller segments and using our batch processing endpoint.
+::: 
