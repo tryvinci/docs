@@ -14,7 +14,6 @@ const config = {
       '@docusaurus/preset-classic',
       {
         docs: {
-          routeBasePath: '/', // This makes docs the home page
           sidebarPath: './sidebars.js',
           editUrl: 'https://github.com/tryvinci/docs/edit/main/',
         },
