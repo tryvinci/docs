@@ -32,7 +32,8 @@ export function ColorSchemeToggle() {
       </Button>
       <Button
         onClick={() => {
-          setColorScheme('auto'), setTheme('system');
+          setColorScheme('auto');
+          setTheme('system');
         }}
       >
         Auto

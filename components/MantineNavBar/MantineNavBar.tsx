@@ -24,7 +24,7 @@ export const MantineNavBar = () => {
         logo={
           <Group align="center" gap={4}>
             <Logo />
-            <Text size="lg" fw={800} c="blue">
+            <Text size="lg" fw={800} c="blue" visibleFrom="xl">
               The Next Mantine Docs Builder
             </Text>
           </Group>
@@ -41,7 +41,7 @@ export const MantineNavBar = () => {
             height="32"
             width="114"
             style={{ border: 0, borderRadius: '6px' }}
-          ></iframe>
+          />
         </>
       </Navbar>
     </>

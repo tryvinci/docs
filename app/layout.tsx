@@ -1,13 +1,18 @@
+import { MantineFooter, MantineNavBar } from '@/components';
+
 import '@gfazioli/mantine-marquee/styles.layer.css';
+import '@gfazioli/mantine-text-animate/styles.layer.css';
+
+import { ColorSchemeScript, mantineHtmlProps, MantineProvider } from '@mantine/core';
+
 import '@mantine/core/styles.layer.css';
-import './global.css';
 
 import { Layout } from 'nextra-theme-docs';
 import { Banner, Head } from 'nextra/components';
 import { getPageMap } from 'nextra/page-map';
-import { ColorSchemeScript, mantineHtmlProps, MantineProvider } from '@mantine/core';
-import { MantineFooter, MantineNavBar } from '@/components';
 import { theme } from '../theme';
+
+import './global.css';
 
 export const metadata = {
   title: {

@@ -1,42 +1,76 @@
+'use client';
+
+import { TextAnimate } from '@gfazioli/mantine-text-animate';
 import { IconBrandGithub, IconExternalLink } from '@tabler/icons-react';
-import { Anchor, Button, Center, Text, Title } from '@mantine/core';
+import { Anchor, Button, Center, Code, Paper, Text, Title } from '@mantine/core';
 import pack from '../../package.json';
 import classes from './Welcome.module.css';
 
 export function Welcome() {
   return (
     <>
-      <Title maw={'80vw'} mx="auto" className={classes.title} ta="center" mt={100}>
-        Welcome to Mantine Next.js and{' '}
-        <Text inherit variant="gradient" component="span" gradient={{ from: 'pink', to: 'yellow' }}>
+      <Title maw="90vw" mx="auto" className={classes.title} ta="center" mt={100}>
+        Welcome to Mantine Next.js +
+        <TextAnimate
+          animate="in"
+          by="character"
+          inherit
+          variant="gradient"
+          component="span"
+          segmentDelay={0.2}
+          duration={2}
+          animation="scale"
+          animateProps={{
+            scaleAmount: 3,
+          }}
+          gradient={{ from: 'pink', to: 'yellow' }}
+        >
           Nextra template
-        </Text>
+        </TextAnimate>
       </Title>
+
+      <Text c="dimmed" ta="center" size="xl" maw={580} mx="auto" mt="sm">
+        This starter Next.js project includes a minimal setup for server side rendering, if you want
+        to learn more on Mantine + Next.js integration follow{' '}
+        <Anchor href="https://mantine.dev/guides/next/">this guide</Anchor>. To get started edit{' '}
+        <Code fz="xl">page.tsx</Code> file.
+      </Text>
+
       <Center>
         <Button
           href="https://github.com/gfazioli/next-app-nextra-template"
           component="a"
           rightSection={<IconExternalLink />}
           leftSection={<IconBrandGithub />}
-          variant="gradient"
+          variant="outline"
           px={32}
-          gradient={{ from: 'rgba(0, 0, 0, 1)', to: 'rgb(35, 45, 94)', deg: 160 }}
           radius={256}
           size="lg"
           mx="auto"
           mt="xl"
         >
-          v{pack.version}
+          Use template v{pack.version}
         </Button>
       </Center>
-      <Text c="dimmed" ta="center" size="lg" maw={580} mx="auto" mt="xl">
-        This starter Next.js project includes a minimal setup for server side rendering, if you want
-        to learn more on Mantine + Next.js integration follow{' '}
-        <Anchor href="https://mantine.dev/guides/next/" size="lg">
-          this guide
-        </Anchor>
-        . To get started edit page.tsx file.
-      </Text>
+
+      <Paper shadow="xl" p={8} mih={300} my={32} bg="dark.9" mx="auto" radius={8}>
+        <TextAnimate.Typewriter
+          inherit
+          fz={11}
+          c="green.5"
+          ff="monospace"
+          multiline
+          delay={100}
+          loop={false}
+          value={[
+            'Dependencies :',
+            ...Object.keys(pack.dependencies).map(
+              (key: string) =>
+                `${key} : ${pack.dependencies[key as keyof typeof pack.dependencies].toString()}`
+            ),
+          ]}
+        />
+      </Paper>
     </>
   );
 }

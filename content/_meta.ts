@@ -19,4 +19,12 @@ export default {
       layout: 'full',
     },
   },
+  'release-notes': {
+    title: 'Release Notes',
+    theme: {
+      toc: false,
+      // sidebar: false,
+      layout: 'full',
+    },
+  },
 };

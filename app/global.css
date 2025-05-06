@@ -1,6 +1,4 @@
-@layer theme;
-
-@import 'nextra-theme-docs/dist/style.css' layer(theme);
+@import 'nextra-theme-docs/dist/style.css' layer(nextra);
 
 /**
  * Custom styles
@@ -10,9 +8,13 @@
  *
  * In this case we're going to fix a glitch with the text size in the code blocks. 
  */
-@layer theme {
+@layer overwrite {
   :root {
     --x-color-nextra-bg: var(--mantine-color-body);
+  }
+
+  :where(.dark) {
+    --x-color-neutral-800: var(--mantine-color-dark-6);
   }
 
   .x\:text-sm {
@@ -20,3 +22,5 @@
     line-height: var(--tw-leading, var(--x-text-sm--line-height)) !important;
   }
 }
+
+@layer components, mantine, nextra, overwrite;
