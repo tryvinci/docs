@@ -15,6 +15,8 @@ import { theme } from '../theme';
 
 import './global.css';
 
+import pack from '../package.json';
+
 export const metadata = config.metadata;
 
 export default async function RootLayout({ children }: { children: any }) {
@@ -38,8 +40,9 @@ export default async function RootLayout({ children }: { children: any }) {
         <MantineProvider theme={theme} defaultColorScheme={head.mantine.defaultColorScheme}>
           <Layout
             banner={
-              <Banner storageKey="v-202">
-                ✨ v.2.1.0 Released - <a href="/docs/release-notes">See the release notes</a>
+              <Banner storageKey={`release-notes-${pack.version}`}>
+                ✨ v{pack.version} Released -{' '}
+                <a href="/docs/release-notes">See the release notes</a>
               </Banner>
             }
             navbar={<MantineNavBar />}
