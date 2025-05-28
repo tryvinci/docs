@@ -24,8 +24,8 @@
     "release:major": "yarn version major"
   },
   "dependencies": {
-    "@gfazioli/mantine-marquee": "^2.3.0",
-    "@gfazioli/mantine-text-animate": "^2.0.0",
+    "@gfazioli/mantine-marquee": "^2.3.1",
+    "@gfazioli/mantine-text-animate": "^2.0.1",
     "@mantine/core": "8.0.2",
     "@mantine/hooks": "8.0.2",
     "@mdx-js/loader": "^3.1.0",

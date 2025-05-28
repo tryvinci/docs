@@ -2704,27 +2704,27 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@gfazioli/mantine-marquee@npm:^2.3.0":
-  version: 2.3.0
-  resolution: "@gfazioli/mantine-marquee@npm:2.3.0"
+"@gfazioli/mantine-marquee@npm:^2.3.1":
+  version: 2.3.1
+  resolution: "@gfazioli/mantine-marquee@npm:2.3.1"
   peerDependencies:
     "@mantine/core": ">=7.0.0"
     "@mantine/hooks": ">=7.0.0"
     react: ^18.x || ^19.x
     react-dom: ^18.x || ^19.x
-  checksum: 10c0/43f943a5b47c188a3d1bd4bfbd3168406bf25045db98928629ff572ca8333380e540d36e4ce5f81bb594e9fbd9c74759682a1036f97c8bc9ad2b9a22564c47a2
+  checksum: 10c0/50f95a89475b9934513b13cf783c63f6152003e6df8fee538cabe6c74a5aaa411f57c509eb4f959b7cacffcea4a771086d38cbdab1c4c85cef5f9f1f3487e518
   languageName: node
   linkType: hard
 
-"@gfazioli/mantine-text-animate@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "@gfazioli/mantine-text-animate@npm:2.0.0"
+"@gfazioli/mantine-text-animate@npm:^2.0.1":
+  version: 2.0.1
+  resolution: "@gfazioli/mantine-text-animate@npm:2.0.1"
   peerDependencies:
     "@mantine/core": ">=7.0.0"
     "@mantine/hooks": ">=7.0.0"
     react: ^18.x || ^19.x
     react-dom: ^18.x || ^19.x
-  checksum: 10c0/539fb531571d52faa9069a031b7a2a580256574f7522c343861ae791490c9c6f9007392c92a9003a572e32aa2a81e6484368c16bf8ad2134b55370c694bc6eb1
+  checksum: 10c0/f5c5ca7e6f0e4d30d084ebdcb8d9ba310647675cbe5a743edffce4af3fb0e91018a1f6ed889fa0e6e3063e01b237ad7af706b3ea66b55e5e636b0829a576d3bb
   languageName: node
   linkType: hard
 
@@ -13281,8 +13281,8 @@ __metadata:
   dependencies:
     "@babel/core": "npm:^7.27.3"
     "@eslint/js": "npm:^9.27.0"
-    "@gfazioli/mantine-marquee": "npm:^2.3.0"
-    "@gfazioli/mantine-text-animate": "npm:^2.0.0"
+    "@gfazioli/mantine-marquee": "npm:^2.3.1"
+    "@gfazioli/mantine-text-animate": "npm:^2.0.1"
     "@ianvs/prettier-plugin-sort-imports": "npm:^4.4.1"
     "@mantine/core": "npm:8.0.2"
     "@mantine/hooks": "npm:8.0.2"
