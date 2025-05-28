@@ -38,7 +38,9 @@ export default async function RootLayout({ children }: { children: any }) {
         <MantineProvider theme={theme} defaultColorScheme={head.mantine.defaultColorScheme}>
           <Layout
             banner={
-              <Banner storageKey="mantine-nextjs-nextra">✨ Mantine + NextJS + Nextra</Banner>
+              <Banner storageKey="v-202">
+                ✨ v.2.1.0 Released - <a href="/docs/release-notes">See the release notes</a>
+              </Banner>
             }
             navbar={<MantineNavBar />}
             pageMap={pageMap}
