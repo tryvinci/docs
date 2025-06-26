@@ -94,3 +94,385 @@ summary {
   cursor: pointer;
   font-weight: bold;
 }
+
+/**
+ * Vinci Documentation Theme
+ * Matching the design of tryvinci.com
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* Vinci Brand Colors - Primary */
+  --vinci-primary: #00c0cc;
+  --vinci-primary-dark: #00a5b0;
+  --vinci-primary-light: #33d1dc;
+  
+  /* Docusaurus Overrides */
+  --ifm-color-primary: #00c0cc;
+  --ifm-color-primary-dark: #00a5b0;
+  --ifm-color-primary-darker: #009ba6;
+  --ifm-color-primary-darkest: #008089;
+  --ifm-color-primary-light: #33d1dc;
+  --ifm-color-primary-lighter: #4dd6e1;
+  --ifm-color-primary-lightest: #80e5ed;
+  
+  /* Typography */
+  --ifm-font-family-base: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  --ifm-font-size-base: 16px;
+  --ifm-line-height-base: 1.6;
+  
+  /* Spacing */
+  --ifm-spacing-horizontal: 1rem;
+  --ifm-spacing-vertical: 1rem;
+  
+  /* Borders */
+  --ifm-border-radius: 8px;
+  --ifm-border-color: #e5e7eb;
+  
+  /* Code blocks */
+  --ifm-code-background: #f8fafc;
+  --ifm-code-border-radius: 6px;
+  --ifm-code-font-size: 14px;
+  
+  /* Navbar */
+  --ifm-navbar-height: 70px;
+  --ifm-navbar-background-color: rgba(255, 255, 255, 0.95);
+  --ifm-navbar-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.1);
+  
+  /* Sidebar */
+  --ifm-sidebar-width: 280px;
+  --doc-sidebar-width: 280px;
+  
+  /* Cards */
+  --ifm-card-background-color: #ffffff;
+  --ifm-card-border-radius: 12px;
+  --ifm-card-border-color: #e5e7eb;
+}
+
+[data-theme='dark'] {
+  /* Dark mode colors */
+  --ifm-color-primary: #00c0cc;
+  --ifm-color-primary-dark: #00a5b0;
+  --ifm-color-primary-darker: #009ba6;
+  --ifm-color-primary-darkest: #008089;
+  --ifm-color-primary-light: #33d1dc;
+  --ifm-color-primary-lighter: #4dd6e1;
+  --ifm-color-primary-lightest: #80e5ed;
+  
+  /* Background colors */
+  --ifm-background-color: #0f172a;
+  --ifm-background-surface-color: #1e293b;
+  
+  /* Text colors */
+  --ifm-font-color-base: #f1f5f9;
+  --ifm-font-color-secondary: #94a3b8;
+  
+  /* Borders */
+  --ifm-border-color: #334155;
+  
+  /* Code blocks */
+  --ifm-code-background: #1e293b;
+  
+  /* Navbar */
+  --ifm-navbar-background-color: rgba(15, 23, 42, 0.95);
+  
+  /* Cards */
+  --ifm-card-background-color: #1e293b;
+  --ifm-card-border-color: #334155;
+}
+
+/* Global Styles */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+body {
+  font-family: var(--ifm-font-family-base);
+  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+}
+
+/* Navigation */
+.navbar {
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--ifm-border-color);
+}
+
+.navbar__brand {
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: var(--ifm-color-primary);
+}
+
+.navbar__item {
+  font-weight: 500;
+}
+
+.navbar__link {
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.navbar__link:hover {
+  color: var(--ifm-color-primary);
+}
+
+/* Sidebar */
+.theme-doc-sidebar-container {
+  border-right: 1px solid var(--ifm-border-color);
+}
+
+.theme-doc-sidebar-item-link {
+  font-weight: 500;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.theme-doc-sidebar-item-link:hover {
+  background-color: var(--ifm-hover-overlay);
+}
+
+.theme-doc-sidebar-item-link-level-1.theme-doc-sidebar-item-link--active {
+  background-color: rgba(0, 192, 204, 0.1);
+  color: var(--ifm-color-primary);
+  font-weight: 600;
+}
+
+/* Content */
+.theme-doc-markdown {
+  max-width: none;
+}
+
+.theme-doc-markdown h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.theme-doc-markdown h2 {
+  font-size: 1.875rem;
+  font-weight: 600;
+  line-height: 1.3;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid var(--ifm-border-color);
+  padding-bottom: 0.5rem;
+}
+
+.theme-doc-markdown h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.4;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+/* Cards */
+.card {
+  border: 1px solid var(--ifm-card-border-color);
+  border-radius: var(--ifm-card-border-radius);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  transition: all 0.2s ease;
+}
+
+.card:hover {
+  box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  transform: translateY(-2px);
+}
+
+/* Code Blocks */
+.prism-code {
+  border-radius: var(--ifm-code-border-radius);
+  font-size: var(--ifm-code-font-size);
+}
+
+.token.title {
+  color: var(--ifm-color-primary);
+}
+
+/* Buttons */
+.button {
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.button--primary {
+  background-color: var(--ifm-color-primary);
+  border-color: var(--ifm-color-primary);
+}
+
+.button--primary:hover {
+  background-color: var(--ifm-color-primary-dark);
+  border-color: var(--ifm-color-primary-dark);
+  transform: translateY(-1px);
+}
+
+/* Custom Components */
+.vinci-hero {
+  background: linear-gradient(135deg, var(--ifm-color-primary) 0%, var(--ifm-color-primary-dark) 100%);
+  color: white;
+  padding: 3rem 0;
+  text-align: center;
+}
+
+.vinci-feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.vinci-feature-card {
+  padding: 2rem;
+  border: 1px solid var(--ifm-border-color);
+  border-radius: 12px;
+  background: var(--ifm-card-background-color);
+  transition: all 0.2s ease;
+}
+
+.vinci-feature-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.1);
+}
+
+.vinci-feature-icon {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 1rem;
+  color: var(--ifm-color-primary);
+}
+
+/* Admonitions */
+.admonition {
+  border-radius: 8px;
+  border-left: 4px solid;
+}
+
+.admonition-icon {
+  margin-right: 0.5rem;
+}
+
+.admonition-content > :last-child {
+  margin-bottom: 0;
+}
+
+/* Tip admonition with Vinci colors */
+.admonition-tip {
+  border-left-color: var(--ifm-color-primary);
+}
+
+.admonition-tip .admonition-icon {
+  color: var(--ifm-color-primary);
+}
+
+/* Tables */
+.table-of-contents {
+  border-left: 2px solid var(--ifm-border-color);
+  padding-left: 1rem;
+}
+
+.table-of-contents__link {
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.table-of-contents__link:hover,
+.table-of-contents__link--active {
+  color: var(--ifm-color-primary);
+}
+
+/* Footer */
+.footer {
+  background-color: var(--ifm-background-surface-color);
+  border-top: 1px solid var(--ifm-border-color);
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .vinci-feature-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .theme-doc-markdown h1 {
+    font-size: 2rem;
+  }
+  
+  .theme-doc-markdown h2 {
+    font-size: 1.5rem;
+  }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--ifm-background-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--ifm-color-primary);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ifm-color-primary-dark);
+}
+
+/* Search */
+.DocSearch-Button {
+  border-radius: 8px;
+  border: 1px solid var(--ifm-border-color);
+  background: var(--ifm-background-surface-color);
+}
+
+/* Breadcrumbs */
+.breadcrumbs__item--active .breadcrumbs__link {
+  color: var(--ifm-color-primary);
+}
+
+/* Pagination */
+.pagination-nav__link {
+  border: 1px solid var(--ifm-border-color);
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.pagination-nav__link:hover {
+  border-color: var(--ifm-color-primary);
+  box-shadow: 0 0 0 1px var(--ifm-color-primary);
+}
+
+/* Custom animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+/* Print styles */
+@media print {
+  .navbar,
+  .theme-doc-sidebar-container,
+  .theme-doc-toc-desktop,
+  .pagination-nav {
+    display: none !important;
+  }
+  
+  .main-wrapper {
+    margin-left: 0 !important;
+  }
+}
