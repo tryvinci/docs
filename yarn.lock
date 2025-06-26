@@ -3585,9 +3585,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mantine/core@npm:8.1.1":
-  version: 8.1.1
-  resolution: "@mantine/core@npm:8.1.1"
+"@mantine/core@npm:8.1.2":
+  version: 8.1.2
+  resolution: "@mantine/core@npm:8.1.2"
   dependencies:
     "@floating-ui/react": "npm:^0.26.28"
     clsx: "npm:^2.1.1"
@@ -3596,19 +3596,19 @@ __metadata:
     react-textarea-autosize: "npm:8.5.9"
     type-fest: "npm:^4.27.0"
   peerDependencies:
-    "@mantine/hooks": 8.1.1
+    "@mantine/hooks": 8.1.2
     react: ^18.x || ^19.x
     react-dom: ^18.x || ^19.x
-  checksum: 10c0/3f1161dd238939dc625bb3066658c48ecb817826f1612dccbb7bdf6d4fd0c5020201088b1809c1c88367c54442f08229cfdedbdd38e95bd7583d979cd0b2abc8
+  checksum: 10c0/c6498676dc5a50a036778588002301717cd9e290f6e9c460702592a2d5f0da0dc19be56f781f890656ca04ea353328c9c605fdc105924544978aa39b995433d5
   languageName: node
   linkType: hard
 
-"@mantine/hooks@npm:8.1.1":
-  version: 8.1.1
-  resolution: "@mantine/hooks@npm:8.1.1"
+"@mantine/hooks@npm:8.1.2":
+  version: 8.1.2
+  resolution: "@mantine/hooks@npm:8.1.2"
   peerDependencies:
     react: ^18.x || ^19.x
-  checksum: 10c0/86630e196c29d4773c729e8c3ab9c07e4e76db733b6ea92d435da9f4036bf68fa39b3fd342531f649219eb52c78195039b4bb610d65a35f2bf957fd8317ee410
+  checksum: 10c0/64bbc2b4cf39b315958939ce0c1febf2e35c79618f99cc2a262788e7d180922f7d551445606a2b4d66fcbf5371d1d40f9c50e5ff8e87b16ac1c28e5a4f2f4373
   languageName: node
   linkType: hard
 
@@ -13354,8 +13354,8 @@ __metadata:
     "@gfazioli/mantine-marquee": "npm:^2.4.1"
     "@gfazioli/mantine-text-animate": "npm:^2.1.1"
     "@ianvs/prettier-plugin-sort-imports": "npm:^4.4.2"
-    "@mantine/core": "npm:8.1.1"
-    "@mantine/hooks": "npm:8.1.1"
+    "@mantine/core": "npm:8.1.2"
+    "@mantine/hooks": "npm:8.1.2"
     "@mdx-js/loader": "npm:^3.1.0"
     "@mdx-js/react": "npm:^3.1.0"
     "@next/bundle-analyzer": "npm:^15.3.4"
@@ -13378,8 +13378,8 @@ __metadata:
     jest: "npm:^29.7.0"
     jest-environment-jsdom: "npm:^29.7.0"
     next: "npm:15.3.4"
-    nextra: "npm:4.3.0-alpha.28"
-    nextra-theme-docs: "npm:4.3.0-alpha.28"
+    nextra: "npm:4.3.0-alpha.29"
+    nextra-theme-docs: "npm:4.3.0-alpha.29"
     pagefind: "npm:^1.3.0"
     postcss: "npm:^8.5.6"
     postcss-import: "npm:^16.1.1"
@@ -14673,9 +14673,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nextra-theme-docs@npm:4.3.0-alpha.28":
-  version: 4.3.0-alpha.28
-  resolution: "nextra-theme-docs@npm:4.3.0-alpha.28"
+"nextra-theme-docs@npm:4.3.0-alpha.29":
+  version: 4.3.0-alpha.29
+  resolution: "nextra-theme-docs@npm:4.3.0-alpha.29"
   dependencies:
     "@headlessui/react": "npm:^2.1.2"
     clsx: "npm:^2.1.0"
@@ -14686,16 +14686,16 @@ __metadata:
     zustand: "npm:^5.0.1"
   peerDependencies:
     next: ">=14"
-    nextra: 4.3.0-alpha.28
+    nextra: 4.3.0-alpha.29
     react: ">=18"
     react-dom: ">=18"
-  checksum: 10c0/8063e64611bef432903933d314cf89f6eb60c50031794f80728ebc7dcb3442bba7ed2d04e2fd9d713b1fb095beb3b544186772acad43489194548ab34bd421ad
+  checksum: 10c0/dbff620f2d0336b36e91d2b775d9c503f0b1a20294552a6db0be7533070eba0a54eefc5f5ba8a98303fa8e83dc6b7e2ea587b627f957bf03acfbbc7fe5b279cf
   languageName: node
   linkType: hard
 
-"nextra@npm:4.3.0-alpha.28":
-  version: 4.3.0-alpha.28
-  resolution: "nextra@npm:4.3.0-alpha.28"
+"nextra@npm:4.3.0-alpha.29":
+  version: 4.3.0-alpha.29
+  resolution: "nextra@npm:4.3.0-alpha.29"
   dependencies:
     "@formatjs/intl-localematcher": "npm:^0.6.0"
     "@headlessui/react": "npm:^2.1.2"
@@ -14740,7 +14740,7 @@ __metadata:
     next: ">=14"
     react: ">=18"
     react-dom: ">=18"
-  checksum: 10c0/bd771a312c15db92f8e1e1f6829265395a82b4a867f140b7dcec9dcca468cacd9a7f8b09b3ec69545716480aff7c0fd5d9e4188b34c2f5da4e8796b4a8e44ff9
+  checksum: 10c0/f5ce113e5b3236034a6f366d86e773db673321f5b89daf741cba0ddf160c27e11b1eeecca9f757a3ad5e5dd8a36e084c18259155b196c548af454fc3ef0b0d37
   languageName: node
   linkType: hard
 
