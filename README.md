@@ -4,7 +4,6 @@
 <img width="1536" alt="image" src="https://github.com/user-attachments/assets/eac2e76d-0c63-4429-bb93-b75476e55216" />
 
 
-
 This is a template for [Next.js](https://nextjs.org/) app router + [Mantine](https://mantine.dev/) + [Nextra](https://nextra.site/) documentation site.
 
 ## Features
@@ -32,7 +31,6 @@ This template comes with the following features:
     - you may customize them to fit your needs
 - `content` – Nextra documentation site (.mdx and _meta.json files)
 
-
 ## npm scripts
 
 ### Build and dev scripts
@@ -55,3 +53,9 @@ This template comes with the following features:
 - `storybook` – starts storybook dev server
 - `storybook:build` – build production storybook bundle to `storybook-static`
 - `prettier:write` – formats all files with Prettier
+
+<div align="center">
+  
+[![Star History Chart](https://api.star-history.com/svg?repos=gfazioli/next-app-nextra-template&type=Timeline)](https://www.star-history.com/#gfazioli/next-app-nextra-template&Timeline)
+
+</div>
