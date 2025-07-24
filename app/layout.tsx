@@ -1,25 +1,21 @@
-import { MantineFooter, MantineNavBar } from '@/components';
-
 import '@gfazioli/mantine-marquee/styles.layer.css';
 import '@gfazioli/mantine-text-animate/styles.layer.css';
-
-import { ColorSchemeScript, mantineHtmlProps, MantineProvider } from '@mantine/core';
-
 import '@mantine/core/styles.layer.css';
 
 import { Layout } from 'nextra-theme-docs';
 import { Banner, Head } from 'nextra/components';
 import { getPageMap } from 'nextra/page-map';
+import { ColorSchemeScript, mantineHtmlProps, MantineProvider } from '@mantine/core';
+import { MantineFooter, MantineNavBar } from '@/components';
 import config from '@/config';
+import pack from '../package.json';
 import { theme } from '../theme';
 
 import './global.css';
 
-import pack from '../package.json';
-
 export const metadata = config.metadata;
 
-export default async function RootLayout({ children }: { children: any }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const pageMap = await getPageMap();
   const { nextraLayout, head } = config;
 

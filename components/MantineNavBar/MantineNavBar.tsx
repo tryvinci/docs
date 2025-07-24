@@ -1,10 +1,7 @@
 'use client';
 
-import { Group, Text } from '@mantine/core';
-
-import '@mantine/core/styles.css';
-
 import { Navbar } from 'nextra-theme-docs';
+import { Group, Text } from '@mantine/core';
 import { ColorSchemeControl } from '../ColorSchemeControl/ColorSchemeControl';
 import { Logo } from '../Logo/Logo';
 import { MantineNextraThemeObserver } from '../MantineNextraThemeObserver/MantineNextraThemeObserver';

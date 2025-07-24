@@ -4,12 +4,16 @@ import { TextAnimate } from '@gfazioli/mantine-text-animate';
 import { IconBrandGithub, IconExternalLink } from '@tabler/icons-react';
 import { Anchor, Button, Center, Code, Paper, Text, Title } from '@mantine/core';
 import pack from '../../package.json';
+import { ProductHunt } from '../ProductHunt/ProductHunt';
 import classes from './Welcome.module.css';
 
 export function Welcome() {
   return (
     <>
-      <Title maw="90vw" mx="auto" className={classes.title} ta="center" mt={100}>
+      <Center my={64}>
+        <ProductHunt />
+      </Center>
+      <Title maw="90vw" mx="auto" className={classes.title} ta="center">
         Welcome to Mantine Next.js +
         <TextAnimate
           animate="in"

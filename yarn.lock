@@ -3917,74 +3917,74 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@next/bundle-analyzer@npm:^15.4.2":
-  version: 15.4.2
-  resolution: "@next/bundle-analyzer@npm:15.4.2"
+"@next/bundle-analyzer@npm:^15.4.3":
+  version: 15.4.3
+  resolution: "@next/bundle-analyzer@npm:15.4.3"
   dependencies:
     webpack-bundle-analyzer: "npm:4.10.1"
-  checksum: 10c0/0f3aa929fa773260b765ea7fcd894dbbfe22e09b8f09a903f595f4f338e04c05b624f5cc37d1a203956ab6ad57e47ac3fa652ffd21e7f3a8911e4d41f613d33b
+  checksum: 10c0/dcaa1bf5f22cd4ab00a7838efada0111e6753da9557dac76885e9daacecbc7db679de6fd4ed7f213be12546becf7ac5544724ac4d1057b13975125261a5efd2a
   languageName: node
   linkType: hard
 
-"@next/env@npm:15.4.2":
-  version: 15.4.2
-  resolution: "@next/env@npm:15.4.2"
-  checksum: 10c0/8ee793035f0a7fb55335ea2bc2794ccd68747e6ab8c591001662dbf1ba328f43b04d02bb3a6c9d6a60ed18b55d44cc157b724121ce8dbea8584ca41272eb90a4
+"@next/env@npm:15.4.3":
+  version: 15.4.3
+  resolution: "@next/env@npm:15.4.3"
+  checksum: 10c0/3f189da5eb1d70bad1dab21740f912b5931509111de4ac9782de3fa5641e4025ed515634370df2f9e1aec44780443fb07ec5b0c893d2879a589d7dfbecdc58e2
   languageName: node
   linkType: hard
 
-"@next/swc-darwin-arm64@npm:15.4.2":
-  version: 15.4.2
-  resolution: "@next/swc-darwin-arm64@npm:15.4.2"
+"@next/swc-darwin-arm64@npm:15.4.3":
+  version: 15.4.3
+  resolution: "@next/swc-darwin-arm64@npm:15.4.3"
   conditions: os=darwin & cpu=arm64
   languageName: node
   linkType: hard
 
-"@next/swc-darwin-x64@npm:15.4.2":
-  version: 15.4.2
-  resolution: "@next/swc-darwin-x64@npm:15.4.2"
+"@next/swc-darwin-x64@npm:15.4.3":
+  version: 15.4.3
+  resolution: "@next/swc-darwin-x64@npm:15.4.3"
   conditions: os=darwin & cpu=x64
   languageName: node
   linkType: hard
 
-"@next/swc-linux-arm64-gnu@npm:15.4.2":
-  version: 15.4.2
-  resolution: "@next/swc-linux-arm64-gnu@npm:15.4.2"
+"@next/swc-linux-arm64-gnu@npm:15.4.3":
+  version: 15.4.3
+  resolution: "@next/swc-linux-arm64-gnu@npm:15.4.3"
   conditions: os=linux & cpu=arm64 & libc=glibc
   languageName: node
   linkType: hard
 
-"@next/swc-linux-arm64-musl@npm:15.4.2":
-  version: 15.4.2
-  resolution: "@next/swc-linux-arm64-musl@npm:15.4.2"
+"@next/swc-linux-arm64-musl@npm:15.4.3":
+  version: 15.4.3
+  resolution: "@next/swc-linux-arm64-musl@npm:15.4.3"
   conditions: os=linux & cpu=arm64 & libc=musl
   languageName: node
   linkType: hard
 
-"@next/swc-linux-x64-gnu@npm:15.4.2":
-  version: 15.4.2
-  resolution: "@next/swc-linux-x64-gnu@npm:15.4.2"
+"@next/swc-linux-x64-gnu@npm:15.4.3":
+  version: 15.4.3
+  resolution: "@next/swc-linux-x64-gnu@npm:15.4.3"
   conditions: os=linux & cpu=x64 & libc=glibc
   languageName: node
   linkType: hard
 
-"@next/swc-linux-x64-musl@npm:15.4.2":
-  version: 15.4.2
-  resolution: "@next/swc-linux-x64-musl@npm:15.4.2"
+"@next/swc-linux-x64-musl@npm:15.4.3":
+  version: 15.4.3
+  resolution: "@next/swc-linux-x64-musl@npm:15.4.3"
   conditions: os=linux & cpu=x64 & libc=musl
   languageName: node
   linkType: hard
 
-"@next/swc-win32-arm64-msvc@npm:15.4.2":
-  version: 15.4.2
-  resolution: "@next/swc-win32-arm64-msvc@npm:15.4.2"
+"@next/swc-win32-arm64-msvc@npm:15.4.3":
+  version: 15.4.3
+  resolution: "@next/swc-win32-arm64-msvc@npm:15.4.3"
   conditions: os=win32 & cpu=arm64
   languageName: node
   linkType: hard
 
-"@next/swc-win32-x64-msvc@npm:15.4.2":
-  version: 15.4.2
-  resolution: "@next/swc-win32-x64-msvc@npm:15.4.2"
+"@next/swc-win32-x64-msvc@npm:15.4.3":
+  version: 15.4.3
+  resolution: "@next/swc-win32-x64-msvc@npm:15.4.3"
   conditions: os=win32 & cpu=x64
   languageName: node
   linkType: hard
@@ -13450,7 +13450,7 @@ __metadata:
     "@mantine/hooks": "npm:8.2.1"
     "@mdx-js/loader": "npm:^3.1.0"
     "@mdx-js/react": "npm:^3.1.0"
-    "@next/bundle-analyzer": "npm:^15.4.2"
+    "@next/bundle-analyzer": "npm:^15.4.3"
     "@storybook/nextjs": "npm:^8.6.14"
     "@storybook/react": "npm:^8.6.14"
     "@tabler/icons-react": "npm:^3.34.1"
@@ -13469,7 +13469,7 @@ __metadata:
     eslint-plugin-react: "npm:^7.37.5"
     jest: "npm:^29.7.0"
     jest-environment-jsdom: "npm:^29.7.0"
-    next: "npm:15.4.2"
+    next: "npm:15.4.3"
     nextra: "npm:4.3.0-alpha.31"
     nextra-theme-docs: "npm:4.3.0-alpha.31"
     pagefind: "npm:^1.3.0"
@@ -14704,19 +14704,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"next@npm:15.4.2":
-  version: 15.4.2
-  resolution: "next@npm:15.4.2"
+"next@npm:15.4.3":
+  version: 15.4.3
+  resolution: "next@npm:15.4.3"
   dependencies:
-    "@next/env": "npm:15.4.2"
-    "@next/swc-darwin-arm64": "npm:15.4.2"
-    "@next/swc-darwin-x64": "npm:15.4.2"
-    "@next/swc-linux-arm64-gnu": "npm:15.4.2"
-    "@next/swc-linux-arm64-musl": "npm:15.4.2"
-    "@next/swc-linux-x64-gnu": "npm:15.4.2"
-    "@next/swc-linux-x64-musl": "npm:15.4.2"
-    "@next/swc-win32-arm64-msvc": "npm:15.4.2"
-    "@next/swc-win32-x64-msvc": "npm:15.4.2"
+    "@next/env": "npm:15.4.3"
+    "@next/swc-darwin-arm64": "npm:15.4.3"
+    "@next/swc-darwin-x64": "npm:15.4.3"
+    "@next/swc-linux-arm64-gnu": "npm:15.4.3"
+    "@next/swc-linux-arm64-musl": "npm:15.4.3"
+    "@next/swc-linux-x64-gnu": "npm:15.4.3"
+    "@next/swc-linux-x64-musl": "npm:15.4.3"
+    "@next/swc-win32-arm64-msvc": "npm:15.4.3"
+    "@next/swc-win32-x64-msvc": "npm:15.4.3"
     "@swc/helpers": "npm:0.5.15"
     caniuse-lite: "npm:^1.0.30001579"
     postcss: "npm:8.4.31"
@@ -14759,7 +14759,7 @@ __metadata:
       optional: true
   bin:
     next: dist/bin/next
-  checksum: 10c0/eac6b27e480b45c0441b18d3c1cadf0373847e407e8b032e1d72f87bd22642fbc31b7a9ba99a7d3cbb3e37d1cadc4e5999b0c14844aa6d3e0be6f7291dfe96b0
+  checksum: 10c0/72b587d09ece0bf590f208550527fbacac9cc590684cdd203f2dc10a9b89ea2986e17ec5d21be7605dfba1e8443224c785c6619817d5d7797abb01421d7997a4
   languageName: node
   linkType: hard
 
