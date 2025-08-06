@@ -1,0 +1,127 @@
+---
+title: "Getting Started"
+description: "A guided walkthrough to build your first Vinci workflow end-to-end."
+---
+
+This tutorial expands on the Quickstart by adding helpful context, checks, and best practices.
+
+Related
+- Quickstart: /quickstart
+
+Related:
+- Quickstart: /quickstart
+
+## 1) Create an API key and add credits
+
+- Sign up at https://tryvinci.com
+- Quickstart: /quickstart
+- Create an API key from your dashboard
+- Add credits (video generation costs $0.05 per second)
+
+```http title="Authorization header"
+Authorization: Bearer sk-your-api-key-here
+```
+
+Warning
+Never store API keys in client-side code. Use environment variables or a secret manager.
+
+## 2) Make your first generation request (Text-to-Video)
+
+```python title="generate.py"
+import requests
+
+API_KEY = "sk-your-api-key-here"
+url = "https://tryvinci.com/api/v1/generate/text-to-video"
+headers = {"Authorization": f"Bearer {API_KEY}", "Content-Type": "application/json"}
+data = {
+  "prompt": "A serene sunset over a calm lake",
+  "duration_seconds": 5,
+  "aspect_ratio": "16:9"
+}
+
+r = requests.post(url, headers=headers, json=data)
+r.raise_for_status()
+job = r.json()
+print(job)
+```
+
+```javascript title="generate.js"
+const API_KEY = "sk-your-api-key-here";
+const r = await fetch("https://tryvinci.com/api/v1/generate/text-to-video", {
+  method: "POST",
+  headers: {
+    "Authorization": `Bearer ${API_KEY}`,
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify({
+    prompt: "A serene sunset over a calm lake",
+    duration_seconds: 5,
+    aspect_ratio: "16:9",
+  }),
+});
+if (!r.ok) throw new Error(`HTTP ${r.status}`);
+const job = await r.json();
+console.log(job);
+```
+
+## 3) Poll the status endpoint
+
+```python title="poll.py"
+import time, requests
+
+API_KEY = "sk-your-api-key-here"
+request_id = "your-request-id"
+status_url = f"https://tryvinci.com/api/v1/status/{request_id}"
+headers = {"Authorization": f"Bearer {API_KEY}"}
+
+while True:
+  r = requests.get(status_url, headers=headers)
+  r.raise_for_status()
+  s = r.json()
+
+  if s["status"] == "completed":
+    print("Video:", s["video_url"])
+    break
+  if s["status"] == "failed":
+    print("Generation failed")
+    break
+
+  print("Status:", s["status"])
+  time.sleep(5)
+```
+
+```javascript title="poll.js"
+const API_KEY = "sk-your-api-key-here";
+const requestId = "your-request-id";
+
+async function poll() {
+  const r = await fetch(`https://tryvinci.com/api/v1/status/${requestId}`, {
+    headers: { "Authorization": `Bearer ${API_KEY}` },
+  });
+  if (!r.ok) throw new Error(`HTTP ${r.status}`);
+  const s = await r.json();
+
+  if (s.status === "completed") {
+    console.log("Video:", s.video_url);
+    return;
+  }
+  if (s.status === "failed") {
+    console.log("Generation failed");
+    return;
+  }
+  console.log("Status:", s.status);
+  setTimeout(poll, 5000);
+}
+poll();
+```
+
+## 4) Common issues and tips
+
+- 401 Unauthorized → Check Authorization header
+- 402 Insufficient balance → Add credits
+- 429 Rate limit → Backoff and retry
+- Keep prompts clear and concise
+- Use shorter durations for tests
+
+Next
+Continue with Essentials → Authentication and API Keys, then see API Reference → Video Generation.

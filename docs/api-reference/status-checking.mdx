@@ -1,0 +1,107 @@
+---
+title: "Status Checking"
+description: "Poll the status endpoint to track generation progress and retrieve results."
+---
+
+Generation is asynchronous. Use the status endpoint to check when your video is ready.
+
+Related
+- Video generation: /docs/api-reference/video-generation
+
+Related:
+- Video generation: /docs/api-reference/video-generation
+
+```http title="Endpoint"
+GET /api/v1/status/{request_id}
+```
+
+```http title="Authentication"
+Authorization: Bearer sk-your-api-key-here
+```
+
+## Status responses
+
+```json title="Pending"
+{
+  "request_id": "req_abc123...",
+  "status": "pending",
+  "estimated_cost_usd": 0.25
+}
+```
+
+```json title="Processing"
+{
+  "request_id": "req_abc123...",
+  "status": "processing",
+  "estimated_cost_usd": 0.25,
+  "progress": 45
+}
+```
+
+```json title="Completed"
+{
+  "request_id": "req_abc123...",
+  "status": "completed",
+  "video_url": "https://storage.googleapis.com/vinci-dev/videos/generated_video.mp4",
+  "duration_seconds": 5.2,
+  "cost_usd": 0.26
+}
+```
+
+```json title="Failed"
+{
+  "request_id": "req_abc123...",
+  "status": "failed",
+  "error": "Invalid prompt format"
+}
+```
+
+## Code examples
+
+```python title="poll_status.py"
+import requests, time
+
+API_KEY = "sk-your-api-key-here"
+request_id = "your-request-id"
+url = f"https://tryvinci.com/api/v1/status/{request_id}"
+headers = {"Authorization": f"Bearer {API_KEY}"}
+
+while True:
+    r = requests.get(url, headers=headers)
+    r.raise_for_status()
+    s = r.json()
+
+    if s["status"] == "completed":
+        print(f"Video ready: {s['video_url']}")
+        break
+    if s["status"] == "failed":
+        print("Generation failed")
+        break
+
+    print(f"Status: {s['status']}")
+    time.sleep(5)
+```
+
+```javascript title="poll_status.js"
+const API_KEY = "sk-your-api-key-here";
+const requestId = "your-request-id";
+
+async function checkStatus() {
+  const r = await fetch(`https://tryvinci.com/api/v1/status/${requestId}`, {
+    headers: { "Authorization": `Bearer ${API_KEY}` },
+  });
+  if (!r.ok) throw new Error(`HTTP ${r.status}`);
+  const s = await r.json();
+
+  if (s.status === "completed") {
+    console.log(`Video ready: ${s.video_url}`);
+    return;
+  }
+  if (s.status === "failed") {
+    console.log("Generation failed");
+    return;
+  }
+  console.log(`Status: ${s.status}`);
+  setTimeout(checkStatus, 5000);
+}
+checkStatus();

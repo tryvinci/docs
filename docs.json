@@ -1,127 +1,113 @@
 {
-  "$schema": "https://mintlify.com/docs.json",
+  "$schema": "https://mintlify.com/docs.schema.json",
+  "name": "Vinci Docs",
   "theme": "mint",
-  "name": "Mint Starter Kit",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
-  },
-  "favicon": "/favicon.svg",
-  "navigation": {
-    "tabs": [
-      {
-        "tab": "Guides",
-        "groups": [
-          {
-            "group": "Getting started",
-            "pages": [
-              "index",
-              "quickstart",
-              "development"
-            ]
-          },
-          {
-            "group": "Customization",
-            "pages": [
-              "essentials/settings",
-              "essentials/navigation"
-            ]
-          },
-          {
-            "group": "Writing content",
-            "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/reusable-snippets"
-            ]
-          },
-          {
-            "group": "AI tools",
-            "pages": [
-              "ai-tools/cursor",
-              "ai-tools/claude-code",
-              "ai-tools/windsurf"
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "API reference",
-        "groups": [
-          {
-            "group": "API documentation",
-            "pages": [
-              "api-reference/introduction"
-            ]
-          },
-          {
-            "group": "Endpoint examples",
-            "pages": [
-              "api-reference/endpoint/get",
-              "api-reference/endpoint/create",
-              "api-reference/endpoint/delete",
-              "api-reference/endpoint/webhook"
-            ]
-          }
-        ]
-      }
-    ],
-    "global": {
-      "anchors": [
-        {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
-        },
-        {
-          "anchor": "Community",
-          "href": "https://mintlify.com/community",
-          "icon": "slack"
-        },
-        {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
-        }
-      ]
-    }
+    "primary": "#111827",
+    "light": "#ffffff",
+    "dark": "#0b0b0c"
   },
   "logo": {
-    "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
+    "light": "https://app.tryvinci.com/images/logo-name-light.png",
+    "dark": "https://app.tryvinci.com/images/logo-name-dark.png",
+    "alt": "Vinci",
+    "href": "https://docs.tryvinci.com"
   },
   "navbar": {
+    "logo": {
+      "title": "Vinci",
+      "light": "https://app.tryvinci.com/images/logo-name-light.png",
+      "dark": "https://app.tryvinci.com/images/logo-name-dark.png",
+      "href": "https://docs.tryvinci.com",
+      "alt": "Vinci"
+    },
     "links": [
-      {
-        "label": "Support",
-        "href": "mailto:hi@mintlify.com"
-      }
+      { "label": "Get Support", "href": "https://tryvinci.com/blog/category/newsletter", "icon": "life-buoy" }
     ],
-    "primary": {
-      "type": "button",
-      "label": "Dashboard",
-      "href": "https://dashboard.mintlify.com"
+    "cta": {
+      "label": "Go to App",
+      "href": "https://app.tryvinci.com",
+      "icon": "rocket"
     }
   },
-  "contextual": {
-    "options": [
-     "copy",
-     "view",
-     "chatgpt",
-     "claude",
-     "perplexity",
-     "mcp",
-     "cursor",
-     "vscode"
-   ]
+  "search": { "enabled": true },
+  "navigation": {
+    "anchors": [
+      {
+        "anchor": "Documentation",
+        "icon": "book-open",
+        "groups": [
+          {
+            "group": "Introduction",
+            "icon": "house",
+            "pages": [
+              "index",
+              "quickstart"
+            ]
+          },
+          {
+            "group": "Essentials",
+            "icon": "key",
+            "pages": [
+              "essentials/authentication",
+              "essentials/api-keys",
+              "essentials/pricing"
+            ]
+          },
+          {
+            "group": "Guides",
+            "icon": "graduation-cap",
+            "pages": [
+              "docs/guides/getting-started",
+              "docs/guides/billing-usage",
+              "docs/guides/prompting-tips",
+              "docs/guides/error-handling",
+              "docs/guides/webhooks",
+              "docs/guides/sdks"
+            ]
+          },
+          {
+            "group": "API Reference",
+            "icon": "square-terminal",
+            "pages": [
+              "docs/api-reference/video-generation",
+              "docs/api-reference/image-to-video",
+              "docs/api-reference/status-checking",
+              "docs/api-reference/ai-actors",
+              "docs/api-reference/translation",
+              "docs/api-reference/emote",
+              "docs/api-reference/qr-code"
+            ]
+          },
+          {
+            "group": "Platform",
+            "icon": "layers",
+            "pages": [
+              "docs/platform/overview",
+              "docs/platform/explore",
+              "docs/platform/assets",
+              "docs/platform/services"
+            ]
+          },
+          {
+            "group": "Meta",
+            "icon": "list",
+            "pages": [
+              "changelog"
+            ]
+          }
+        ]
+      }
+    ]
   },
-  "footer": {
-    "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
+  "contextual": {
+    "options": ["copy", "view", "chatgpt", "claude", "perplexity"]
+  },
+  "seo": {
+    "indexing": "all",
+    "metatags": {
+      "og:site_name": "Vinci Docs",
+      "og:type": "website"
     }
   }
 }

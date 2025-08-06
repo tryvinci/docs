@@ -1,0 +1,184 @@
+---
+title: "Billing & Usage"
+description: "Check your balance, view usage stats, add safeguards, and handle insufficient balance errors."
+---
+
+Vinci uses a simple usage-based model. This guide shows how to query your balance and usage, add a quick balance guard before costly requests, and handle 402 errors.
+
+Related:
+- Status Checking: /docs/api-reference/status-checking
+
+## Check balance
+
+```http title="Endpoint"
+GET /api/v1/billing/balance
+```
+
+```http title="Authentication"
+Authorization: Bearer sk-your-api-key-here
+```
+
+```json title="Response"
+{
+  "balance_usd": 25.50,
+  "total_spent_usd": 134.75
+}
+```
+
+```python title="check_balance.py"
+import requests
+
+url = "https://tryvinci.com/api/v1/billing/balance"
+headers = {"Authorization": "Bearer sk-your-api-key-here"}
+
+r = requests.get(url, headers=headers)
+r.raise_for_status()
+balance = r.json()
+print(f"Current balance: ${balance['balance_usd']:.2f}")
+print(f"Total spent: ${balance['total_spent_usd']:.2f}")
+
+if balance["balance_usd"] < 5.0:
+    print("⚠️  Low balance! Consider adding credits.")
+```
+
+```javascript title="check_balance.js"
+const r = await fetch("https://tryvinci.com/api/v1/billing/balance", {
+  headers: { "Authorization": "Bearer sk-your-api-key-here" },
+});
+if (!r.ok) throw new Error(`HTTP ${r.status}`);
+const balance = await r.json();
+console.log(`Current balance: $${balance.balance_usd.toFixed(2)}`);
+console.log(`Total spent: $${balance.total_spent_usd.toFixed(2)}`);
+if (balance.balance_usd < 5.0) {
+  console.log("⚠️  Low balance! Consider adding credits.");
+}
+```
+
+## Usage statistics
+
+```http title="Endpoint"
+GET /api/v1/billing/usage?days={days}
+```
+
+```http title="Authentication"
+Authorization: Bearer sk-your-api-key-here
+```
+
+```json title="Response"
+{
+  "period_days": 30,
+  "total_requests": 156,
+  "total_seconds": 420.5,
+  "total_cost_usd": 21.025,
+  "current_balance_usd": 25.50,
+  "total_spent_usd": 134.75
+}
+```
+
+```python title="usage_stats.py"
+import requests
+
+url = "https://tryvinci.com/api/v1/billing/usage?days=7"
+headers = {"Authorization": "Bearer sk-your-api-key-here"}
+
+r = requests.get(url, headers=headers)
+r.raise_for_status()
+usage = r.json()
+
+print(f"Usage for last {usage['period_days']} days:")
+print(f"- Total requests: {usage['total_requests']}")
+print(f"- Total video seconds: {usage['total_seconds']}")
+print(f"- Total cost: ${usage['total_cost_usd']:.2f}")
+print(f"- Current balance: ${usage['current_balance_usd']:.2f}")
+```
+
+```javascript title="usage_stats.js"
+const r = await fetch("https://tryvinci.com/api/v1/billing/usage?days=7", {
+  headers: { "Authorization": "Bearer sk-your-api-key-here" },
+});
+if (!r.ok) throw new Error(`HTTP ${r.status}`);
+const usage = await r.json();
+
+console.log(`Usage for last ${usage.period_days} days:`);
+console.log(`- Total requests: ${usage.total_requests}`);
+console.log(`- Total video seconds: ${usage.total_seconds}`);
+console.log(`- Total cost: $${usage.total_cost_usd.toFixed(2)}`);
+console.log(`- Current balance: $${usage.current_balance_usd.toFixed(2)}`);
+```
+
+## Balance check helper
+
+```python title="balance_check.py"
+import requests
+
+def has_sufficient_balance(duration_seconds, api_key):
+    balance_url = "https://tryvinci.com/api/v1/billing/balance"
+    headers = {"Authorization": f"Bearer {api_key}"}
+    r = requests.get(balance_url, headers=headers)
+    r.raise_for_status()
+    balance = r.json()
+    estimated = duration_seconds * 0.05
+    return balance["balance_usd"] >= estimated
+```
+
+```javascript title="balance_check.js"
+async function hasSufficientBalance(durationSeconds, apiKey) {
+  const r = await fetch("https://tryvinci.com/api/v1/billing/balance", {
+    headers: { "Authorization": `Bearer ${apiKey}` },
+  });
+  if (!r.ok) throw new Error(`HTTP ${r.status}`);
+  const balance = await r.json();
+  const estimated = durationSeconds * 0.05;
+  return balance.balance_usd >= estimated;
+}
+```
+
+Related
+- Status Checking: /docs/api-reference/status-checking
+
+## Handle insufficient balance (402)
+
+```json title="Example 402 response"
+{
+  "detail": "Insufficient balance. Current balance: $1.25, required: $2.50"
+}
+```
+
+```python title="handle_402.py"
+import requests
+
+def request_video(prompt, duration, api_key):
+    url = "https://tryvinci.com/api/v1/generate/text-to-video"
+    headers = {"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"}
+    data = {"prompt": prompt, "duration_seconds": duration}
+    r = requests.post(url, headers=headers, json=data)
+    if r.status_code == 402:
+        print(f"Insufficient balance: {r.json().get('detail')}")
+        return None
+    r.raise_for_status()
+    return r.json()
+```
+
+```javascript title="handle_402.js"
+async function requestVideo(prompt, duration, apiKey) {
+  const url = "https://tryvinci.com/api/v1/generate/text-to-video";
+  const r = await fetch(url, {
+    method: "POST",
+    headers: {
+      "Authorization": `Bearer ${apiKey}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ prompt, duration_seconds: duration }),
+  });
+  if (r.status === 402) {
+    const err = await r.json();
+    console.log(`Insufficient balance: ${err.detail}`);
+    return null;
+  }
+  if (!r.ok) throw new Error(`HTTP ${r.status}`);
+  return await r.json();
+}
+```
+
+Info
+For production, add retry with exponential backoff and alerts when balance falls below a threshold.

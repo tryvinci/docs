@@ -1,0 +1,142 @@
+---
+title: "Error Handling"
+description: "Common Vinci API errors and robust handling patterns for Python and JavaScript."
+---
+
+Build resilient clients with explicit handling for auth, balance, rate limits, and server errors.
+
+## Common errors
+
+| Status | Meaning | Suggested action |
+| --- | --- | --- |
+| 400 | Bad request | Validate payload and types |
+| 401 | Invalid API key | Fix Authorization header |
+| 402 | Insufficient balance | Add credits, pre-check balance |
+| 413 | Payload too large | Reduce file size or duration |
+| 429 | Rate limit exceeded | Backoff and retry |
+| 500 | Server error | Retry with exponential backoff |
+
+## Python patterns
+
+```python title="request_with_retries.py"
+import time
+import requests
+
+def request_with_retries(method, url, headers=None, **kwargs):
+    """Basic retry policy with 429 and transient 5xx handling."""
+    backoff = 1.0
+    for attempt in range(5):
+        try:
+            r = requests.request(method, url, headers=headers, timeout=60, **kwargs)
+            if r.status_code == 429:
+                # Rate limit
+                time.sleep(backoff)
+                backoff = min(backoff * 2, 30)
+                continue
+            if 500 <= r.status_code < 600:
+                # Transient server error
+                time.sleep(backoff)
+                backoff = min(backoff * 2, 30)
+                continue
+            # Non-retry path
+            r.raise_for_status()
+            return r
+        except requests.exceptions.RequestException as e:
+            if attempt == 4:
+                raise
+            time.sleep(backoff)
+            backoff = min(backoff * 2, 30)
+
+    raise RuntimeError("Unreachable")
+
+# Example usage
+API_KEY = "sk-your-api-key-here"
+headers = {"Authorization": f"Bearer {API_KEY}", "Content-Type": "application/json"}
+url = "https://tryvinci.com/api/v1/generate/text-to-video"
+data = {"prompt": "Calm ocean at sunrise", "duration_seconds": 5}
+
+resp = request_with_retries("POST", url, headers=headers, json=data)
+print(resp.json())
+```
+
+```python title="handle_known_statuses.py"
+import requests
+
+def handle_known_statuses(r: requests.Response):
+    if r.status_code == 401:
+        raise PermissionError("Invalid API key. Check Authorization header.")
+    if r.status_code == 402:
+        detail = r.json().get("detail")
+        raise RuntimeError(f"Insufficient balance: {detail}")
+    if r.status_code == 413:
+        raise ValueError("File too large. Reduce the payload size.")
+    if r.status_code == 429:
+        raise RuntimeError("Rate limit exceeded. Retry with backoff.")
+
+# Example
+API_KEY = "sk-your-api-key-here"
+headers = {"Authorization": f"Bearer {API_KEY}", "Content-Type": "application/json"}
+url = "https://tryvinci.com/api/v1/generate/text-to-video"
+data = {"prompt": "Forest in fog", "duration_seconds": 5}
+
+r = requests.post(url, headers=headers, json=data)
+if not r.ok:
+    handle_known_statuses(r)
+r.raise_for_status()
+print(r.json())
+```
+
+## JavaScript patterns
+
+```javascript title="requestWithRetries.js"
+async function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
+
+export async function requestWithRetries(fetchArgs, { retries = 4, baseDelay = 1000 } = {}) {
+  let delay = baseDelay;
+  for (let attempt = 0; attempt <= retries; attempt++) {
+    const res = await fetch(...fetchArgs);
+    if (res.status === 429 || (res.status >= 500 && res.status < 600)) {
+      if (attempt === retries) throw new Error(`HTTP ${res.status}`);
+      await sleep(delay);
+      delay = Math.min(delay * 2, 30000);
+      continue;
+    }
+    if (!res.ok) {
+      // Let caller examine details
+      const text = await res.text().catch(() => "");
+      throw new Error(`HTTP ${res.status} ${text}`);
+    }
+    return res;
+  }
+  throw new Error("Unreachable");
+}
+
+// Example usage
+const API_KEY = "sk-your-api-key-here";
+const url = "https://tryvinci.com/api/v1/generate/text-to-video";
+const body = JSON.stringify({ prompt: "Snowy mountains", duration_seconds: 5 });
+
+const res = await requestWithRetries([
+  url,
+  { method: "POST", headers: { "Authorization": `Bearer ${API_KEY}`, "Content-Type": "application/json" }, body }
+]);
+console.log(await res.json());
+```
+
+```javascript title="handleKnownStatuses.js"
+export async function handleKnownStatuses(res) {
+  if (res.status === 401) throw new Error("Invalid API key. Check Authorization header.");
+  if (res.status === 402) {
+    const j = await res.json().catch(() => ({}));
+    throw new Error(`Insufficient balance: ${j.detail ?? "Add credits"}`);
+  }
+  if (res.status === 413) throw new Error("File too large. Reduce payload size.");
+  if (res.status === 429) throw new Error("Rate limit exceeded. Retry with backoff.");
+}
+```
+
+## Recommendations
+- Always include Authorization header on every request.
+- Pre-check balance before costly jobs (see Billing & Usage).
+- Use exponential backoff and cap max retries.
+- Log request_id from creation responses to trace jobs.

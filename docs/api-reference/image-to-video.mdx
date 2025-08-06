@@ -1,0 +1,75 @@
+---
+title: "Image to Video"
+description: "Animate a static image into a short video using motion described by a prompt."
+---
+
+Transform static images into dynamic videos with motion and effects.
+
+```http title="Endpoint"
+POST /api/v1/generate/image-to-video
+```
+
+```http title="Authentication"
+Authorization: Bearer sk-your-api-key-here
+```
+
+## Request (multipart/form-data)
+
+| Parameter         | Type | Description                         | Default |
+| ----------------- | ---- | ----------------------------------- | ------- |
+| image             | file | Input image (JPEG/PNG)              | Required |
+| prompt            | text | Motion or behavioral description    | Required |
+| duration_seconds  | text | Length in seconds (1–10)            | 5 |
+
+```json title="200 OK"
+{
+  "request_id": "req_abc123...",
+  "status": "pending",
+  "estimated_cost_usd": 0.25,
+  "estimated_duration_seconds": 5
+}
+```
+
+## Code examples
+
+```python title="image_to_video.py"
+import requests
+
+url = "https://tryvinci.com/api/v1/generate/image-to-video"
+headers = {"Authorization": "Bearer sk-your-api-key-here"}
+files = {"image": open("portrait.jpg", "rb")}
+data = {
+  "prompt": "The person starts smiling and waves at the camera",
+  "duration_seconds": "6"
+}
+
+r = requests.post(url, headers=headers, files=files, data=data)
+r.raise_for_status()
+result = r.json()
+print(f"Request ID: {result['request_id']}")
+print(f"Estimated: ${result['estimated_cost_usd']}")
+```
+
+```javascript title="image_to_video.js"
+const input = document.getElementById("imageInput");
+const file = input.files?.[0];
+if (!file) throw new Error("Choose an image file first");
+
+const form = new FormData();
+form.append("image", file);
+form.append("prompt", "The person starts smiling and waves at the camera");
+form.append("duration_seconds", "6");
+
+const r = await fetch("https://tryvinci.com/api/v1/generate/image-to-video", {
+  method: "POST",
+  headers: { "Authorization": "Bearer sk-your-api-key-here" },
+  body: form,
+});
+if (!r.ok) throw new Error(`HTTP ${r.status}`);
+const result = await r.json();
+console.log(`Request ID: ${result.request_id}`);
+console.log(`Estimated: $${result.estimated_cost_usd}`);
+```
+
+## Next
+After submitting the job, use Status Checking to poll progress and retrieve the final video: /api-reference/status-checking

@@ -1,0 +1,25 @@
+---
+title: "Prompting Tips"
+description: "Write effective prompts for best video generation results."
+---
+
+Effective prompts improve quality and consistency.
+
+## General guidance
+- Be specific and descriptive
+- Include movement, lighting, and style cues
+- Avoid contradictory instructions
+- Keep prompts under ~200 characters for best results
+
+## Examples
+- "A cinematic close-up of a hummingbird drinking nectar, golden hour lighting, shallow depth of field, smooth slow-motion"
+- "Futuristic city skyline at night with neon lights, gentle camera pan, light rain, cyberpunk style"
+
+Info
+When using Image-to-Video, describe the intended motion relative to the source image, e.g., "subtle head turn and a friendly smile."
+
+## Performance tips
+- Poll status every 5–10 seconds
+- Use exponential backoff for failures
+- Cache final video URLs for reuse
+- Prefer webhooks for production (see Webhooks guide)

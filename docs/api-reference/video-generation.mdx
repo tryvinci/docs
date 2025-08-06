@@ -1,0 +1,248 @@
+---
+title: "Video Generation"
+description: "Generate videos from text or images. Text-to-Video and Image-to-Video endpoints with examples."
+---
+
+Create high-quality videos from text descriptions or transform static images into dynamic video content.
+
+Related
+- Check status: /docs/api-reference/status-checking
+
+## Pricing
+Video generation costs $0.05 per second of generated video.
+
+Tip
+Check your balance before generating videos to ensure you have sufficient credits.
+
+Related:
+- Check status: /docs/api-reference/status-checking
+
+## Text-to-Video
+
+```http title="Endpoint"
+POST /api/v1/generate/text-to-video
+```
+
+```http title="Authentication"
+Authorization: Bearer sk-your-api-key-here
+```
+
+### Request body
+
+| Parameter | Type    | Description                                      | Default |
+| --------- | ------- | ------------------------------------------------ | ------- |
+| prompt    | string  | Text description of the video to generate        | Required |
+| duration_seconds | integer | Video duration in seconds (1–10)                | 5 |
+| aspect_ratio | string  | One of "16:9", "9:16", "1:1"                     | "16:9" |
+| seed      | integer | Random seed for reproducible results             | -1 (random) |
+
+### Response
+
+```json title="200 OK"
+{
+  "request_id": "req_abc123...",
+  "status": "pending",
+  "estimated_cost_usd": 0.25,
+  "estimated_duration_seconds": 5
+}
+```
+
+### Code examples
+
+```python title="text_to_video.py"
+import requests, time
+
+url = "https://tryvinci.com/api/v1/generate/text-to-video"
+headers = {
+  "Authorization": "Bearer sk-your-api-key-here",
+  "Content-Type": "application/json"
+}
+data = {
+  "prompt": "A majestic eagle soaring through mountain peaks at sunset",
+  "duration_seconds": 8,
+  "aspect_ratio": "16:9"
+}
+
+r = requests.post(url, headers=headers, json=data)
+r.raise_for_status()
+result = r.json()
+request_id = result["request_id"]
+print(f"Generation started. Request ID: {request_id}  Estimated cost: ${result['estimated_cost_usd']}")
+
+# Poll
+status_url = f"https://tryvinci.com/api/v1/status/{request_id}"
+while True:
+  s = requests.get(status_url, headers={"Authorization": "Bearer sk-your-api-key-here"})
+  s.raise_for_status()
+  status = s.json()
+  print(f"Status: {status['status']}")
+  if status["status"] == "completed":
+    print(f"Video: {status['video_url']}")
+    print(f"Duration: {status['duration_seconds']}s  Cost: ${status['cost_usd']}")
+    break
+  if status["status"] == "failed":
+    print("Generation failed")
+    break
+  time.sleep(5)
+```
+
+```javascript title="text_to_video.js"
+async function generate() {
+  const create = await fetch("https://tryvinci.com/api/v1/generate/text-to-video", {
+    method: "POST",
+    headers: {
+      "Authorization": "Bearer sk-your-api-key-here",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      prompt: "A majestic eagle soaring through mountain peaks at sunset",
+      duration_seconds: 8,
+      aspect_ratio: "16:9",
+    }),
+  });
+  if (!create.ok) throw new Error(`HTTP ${create.status}`);
+  const result = await create.json();
+  const requestId = result.request_id;
+  console.log(`Request: ${requestId}  Estimated $${result.estimated_cost_usd}`);
+
+  // Poll
+  async function poll() {
+    const r = await fetch(`https://tryvinci.com/api/v1/status/${requestId}`, {
+      headers: { "Authorization": "Bearer sk-your-api-key-here" },
+    });
+    if (!r.ok) throw new Error(`HTTP ${r.status}`);
+    const s = await r.json();
+    console.log(`Status: ${s.status}`);
+    if (s.status === "completed") {
+      console.log(`Video: ${s.video_url}`);
+      console.log(`Duration: ${s.duration_seconds}s  Cost: $${s.cost_usd}`);
+      return;
+    }
+    if (s.status === "failed") return console.log("Generation failed");
+    setTimeout(poll, 5000);
+  }
+  poll();
+}
+generate();
+```
+
+## Image-to-Video
+
+```http title="Endpoint"
+POST /api/v1/generate/image-to-video
+```
+
+```http title="Authentication"
+Authorization: Bearer sk-your-api-key-here
+```
+
+### Request body (multipart form)
+| Parameter | Type | Description | Default |
+| --- | --- | --- | --- |
+| image | file | Input image (JPEG/PNG) | Required |
+| prompt | string | Text describing motion | Required |
+| duration_seconds | integer | Video duration in seconds (1–10) | 5 |
+
+### Response
+
+```json title="200 OK"
+{
+  "request_id": "req_abc123...",
+  "status": "pending",
+  "estimated_cost_usd": 0.25,
+  "estimated_duration_seconds": 5
+}
+```
+
+### Code examples
+
+```python title="image_to_video.py"
+import requests
+
+url = "https://tryvinci.com/api/v1/generate/image-to-video"
+headers = {"Authorization": "Bearer sk-your-api-key-here"}
+files = {"image": open("portrait.jpg", "rb")}
+data = {
+  "prompt": "The person starts smiling and waves at the camera",
+  "duration_seconds": 6
+}
+r = requests.post(url, headers=headers, files=files, data=data)
+r.raise_for_status()
+print(r.json())
+```
+
+```javascript title="image_to_video.js"
+const fileInput = document.getElementById("imageInput");
+const formData = new FormData();
+formData.append("image", fileInput.files[0]);
+formData.append("prompt", "The person starts smiling and waves at the camera");
+formData.append("duration_seconds", "6");
+
+const r = await fetch("https://tryvinci.com/api/v1/generate/image-to-video", {
+  method: "POST",
+  headers: { "Authorization": "Bearer sk-your-api-key-here" },
+  body: formData,
+});
+if (!r.ok) throw new Error(`HTTP ${r.status}`);
+console.log(await r.json());
+```
+
+## Status Checking
+
+```http title="Endpoint"
+GET /api/v1/status/{request_id}
+```
+
+```http title="Authentication"
+Authorization: Bearer sk-your-api-key-here
+```
+
+### Status responses
+
+```json title="Pending"
+{
+  "request_id": "req_abc123...",
+  "status": "pending",
+  "estimated_cost_usd": 0.25
+}
+```
+
+```json title="Processing"
+{
+  "request_id": "req_abc123...",
+  "status": "processing",
+  "estimated_cost_usd": 0.25,
+  "progress": 45
+}
+```
+
+```json title="Completed"
+{
+  "request_id": "req_abc123...",
+  "status": "completed",
+  "video_url": "https://storage.googleapis.com/vinci-dev/videos/generated_video.mp4",
+  "duration_seconds": 5.2,
+  "cost_usd": 0.26
+}
+```
+
+```json title="Failed"
+{
+  "request_id": "req_abc123...",
+  "status": "failed",
+  "error": "Invalid prompt format"
+}
+```
+
+## Errors
+
+| Status | Meaning | Action |
+| --- | --- | --- |
+| 401 | Invalid API key | Verify Authorization header |
+| 402 | Insufficient balance | Add credits |
+| 413 | File too large | Reduce image file size |
+| 429 | Rate limit exceeded | Backoff and retry |
+| 500 | Server error | Retry with backoff |
+
+Warning
+Always implement error handling and retry logic for production workloads.
