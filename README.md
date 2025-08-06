@@ -1,61 +1,44 @@
-# Mantine Next.js + Nextra template
+# Mintlify Starter Kit
 
-<img width="1536" height="1790" alt="image" src="https://github.com/user-attachments/assets/a28f578f-ff38-439a-b3b5-145f9e2daf5f" />
+Use the starter kit to get your docs deployed and ready to customize.
 
+Click the green **Use this template** button at the top of this repo to copy the Mintlify starter kit. The starter kit contains examples with
 
+- Guide pages
+- Navigation
+- Customizations
+- API reference pages
+- Use of popular components
 
-This is a template for [Next.js](https://nextjs.org/) app router + [Mantine](https://mantine.dev/) + [Nextra](https://nextra.site/) documentation site.
+**[Follow the full quickstart guide](https://starter.mintlify.com/quickstart)**
 
-## Features
+## Development
 
-This template comes with the following features:
+Install the [Mintlify CLI](https://www.npmjs.com/package/mint) to preview your documentation changes locally. To install, use the following command:
 
-- [PostCSS](https://postcss.org/) with [mantine-postcss-preset](https://mantine.dev/styles/postcss-preset)
-- [TypeScript](https://www.typescriptlang.org/)
-- [Storybook](https://storybook.js.org/)
-- [Jest](https://jestjs.io/) setup with [React Testing Library](https://testing-library.com/docs/react-testing-library/intro)
-- ESLint setup with [eslint-config-mantine](https://github.com/mantinedev/eslint-config-mantine)
-- Provides API example in `/api/version`
+```
+npm i -g mint
+```
 
-## Nextra Features
+Run the following command at the root of your documentation, where your `docs.json` is located:
 
-- [Nextra](https://nextra.site/) documentation site with Mantine theme
-- Sync Dark mode between documentation and application (Mantine/Nextra)
-- Customizable components in `components` folder
-- Provides new Navigation and Footer components for Nextra documentation site
+```
+mint dev
+```
 
-## Folder structure
+View your local preview at `http://localhost:3000`.
 
-- `components` – shared components 
-    - you can use them in both documentation and application
-    - you may customize them to fit your needs
-- `content` – Nextra documentation site (.mdx and _meta.json files)
+## Publishing changes
 
-## npm scripts
+Install our GitHub app from your [dashboard](https://dashboard.mintlify.com/settings/organization/github-app) to propagate changes from your repo to your deployment. Changes are deployed to production automatically after pushing to the default branch.
 
-### Build and dev scripts
+## Need help?
 
-- `dev` – start dev server
-- `build` – bundle application for production
-- `analyze` – analyzes application bundle with [@next/bundle-analyzer](https://www.npmjs.com/package/@next/bundle-analyzer)
+### Troubleshooting
 
-### Testing scripts
+- If your dev environment isn't running: Run `mint update` to ensure you have the most recent version of the CLI.
+- If a page loads as a 404: Make sure you are running in a folder with a valid `docs.json`.
 
-- `typecheck` – checks TypeScript types
-- `lint` – runs ESLint
-- `prettier:check` – checks files with Prettier
-- `jest` – runs jest tests
-- `jest:watch` – starts jest watch
-- `test` – runs `jest`, `prettier:check`, `lint` and `typecheck` scripts
-
-### Other scripts
-
-- `storybook` – starts storybook dev server
-- `storybook:build` – build production storybook bundle to `storybook-static`
-- `prettier:write` – formats all files with Prettier
-
-<div align="center">
-  
-[![Star History Chart](https://api.star-history.com/svg?repos=gfazioli/next-app-nextra-template&type=Timeline)](https://www.star-history.com/#gfazioli/next-app-nextra-template&Timeline)
-
-</div>
+### Resources
+- [Mintlify documentation](https://mintlify.com/docs)
+- [Mintlify community](https://mintlify.com/community)
