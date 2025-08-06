@@ -1,0 +1,73 @@
+---
+title: Video Generation
+description: Generate videos from text or animate images. Choose aspect ratios, duration, and review status.
+---
+
+import { Steps, Tabs, Tab, Note, Tip, Warning, Info, Columns } from 'nextra/components'
+
+# Video Generation
+
+Create videos from text prompts or animate static images into motion.
+
+## Front-end controls
+
+<Columns>
+<div>
+
+### Mode
+- Text to Video
+- Image to Video
+
+### Common parameters
+- Aspect Ratio: 16:9, 9:16, 1:1, 4:3, 3:4, 21:9
+- Duration: 5–10 seconds (5s default)
+- Seed: Random
+- Quality: HD standard
+</div>
+<div>
+
+### Text to Video
+- Prompt: “Describe the video you want to generate…”
+- Guidance: Style/creative guidance (optional)
+
+### Image to Video
+- Image: Upload JPEG/PNG
+- Motion prompt: “Describe the motion you want to see in the image…”
+</div>
+</Columns>
+
+## Workflow
+
+<Steps>
+### Select mode
+Choose Text to Video or Image to Video.
+
+### Set parameters
+Pick aspect ratio and duration. Keep defaults for quick results.
+
+### Provide input
+- Text to Video: write your prompt
+- Image to Video: upload an image and add a motion prompt
+
+### Generate and monitor
+Start generation. Watch progress and review the output.
+
+### Save or share
+Download, save to Assets, or share via link or social channels.
+</Steps>
+
+## Best practices
+
+- Match aspect ratio to destination (e.g., 9:16 for Shorts/Reels; 16:9 for YouTube)
+- Keep prompts concise and specific: motion, subject, camera, lighting
+- Use shorter durations for experiments; scale up after you’re happy
+
+## Cost and usage
+
+- Charged per generated second (see /docs/essentials/pricing)
+- See /docs/guides/billing-usage to monitor spend and balance
+
+## Coming Soon
+
+- Negative prompt and style strength controls
+- Keyframe motion presets and camera paths

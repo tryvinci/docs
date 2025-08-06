@@ -1,0 +1,71 @@
+---
+title: Image Generation
+description: Create professional images from text prompts. Control dimensions, steps, guidance, and format.
+---
+
+import { Steps, Tabs, Tab, Note, Tip, Warning, Info, Columns } from 'nextra/components'
+
+# Image Generation
+
+Generate images from descriptive text prompts. Adjust resolution, steps, guidance, and output format.
+
+## Front-end controls
+
+<Columns>
+<div>
+
+### Prompt
+- Placeholder: “Describe the image you want to generate…”
+
+### Parameters (defaults)
+- Resolution: 1080x1920 (portrait)
+- Steps: 25 (1–50)
+- CFG scale: 7.5
+- Seed: Random (42 default, customizable)
+- Format: JPEG (PNG optional)
+</div>
+<div>
+
+### Output
+- Preview and download (JPEG/PNG)
+- Save to Assets (Images)
+- Share: Copy link, or post to social channels
+
+### Templates
+- Workflow templates by use case
+- Aspect ratio presets for social networks
+</div>
+</Columns>
+
+## Workflow
+
+<Steps>
+### Write a prompt
+Be specific about subject, style, lighting, and composition.
+
+### Tune parameters
+Use defaults first. Increase steps for quality; adjust CFG for prompt adherence.
+
+### Generate
+Start generation, then review. Re‑roll with a new seed if needed.
+
+### Export or iterate
+Download the result or refine your prompt and generate variations.
+</Steps>
+
+## Best practices
+
+- Keep prompts under ~200 characters for predictable results
+- Use high-level style tags plus concrete details (camera, lighting)
+- Prefer PNG when preserving transparency; JPEG for smaller filesize
+- Pick aspect ratio templates that match your publishing channel
+
+## Cost and usage
+
+- Billed per image per model invocation
+- Track spend and balance at /docs/guides/billing-usage and /docs/essentials/pricing
+
+## Coming Soon
+
+- Negative prompts and style strength sliders
+- Batch grid and variation generator

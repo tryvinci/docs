@@ -1,0 +1,63 @@
+---
+title: QR Code Generation
+description: Create custom, branded QR codes for campaigns and connectivity. Configure content, style, and export options.
+---
+
+import { Steps, Tabs, Tab, Note, Tip, Warning, Info, Columns } from 'nextra/components'
+
+# QR Code Generation
+
+Generate branded QR codes for links, coupons, app downloads, or contact cards. Customize colors and logo, then export for print or digital use.
+
+## Front-end controls
+
+<Columns>
+<div>
+
+### Content
+- Type: URL, Text, vCard (Coming Soon)
+- Input: Paste link or text content
+- Error correction: L / M / Q / H (default: M)
+
+### Style
+- Foreground color: Brand color
+- Background color: Light/transparent
+- Logo overlay: Upload PNG/SVG (Coming Soon)
+</div>
+<div>
+
+### Output
+- Size: 512, 1024, 2048 px
+- Format: PNG (SVG Coming Soon)
+- Quiet zone: Auto
+- Preview with contrast warning
+</div>
+</Columns>
+
+## Workflow
+
+<Steps>
+### Enter content
+Paste the target URL or text content. Keep URLs short and trustworthy.
+
+### Customize the style
+Pick brand foreground/background colors. Add a center logo when available.
+
+### Generate and validate
+Generate the QR and test with multiple devices. Ensure contrast warnings are resolved.
+
+### Export
+Download a high-resolution PNG for print or digital use. Save to Assets for reuse.
+</Steps>
+
+## Best practices
+
+- Maintain high contrast between foreground and background
+- Use error correction levels M–H when placing a center logo
+- Test at the intended print size and typical scan distance
+- Keep URLs short; consider branded short links
+
+## Coming Soon
+
+- SVG export and vector-safe logo placement
+- vCard, Wi‑Fi, and deep link templates

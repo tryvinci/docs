@@ -1,0 +1,95 @@
+---
+title: AI Actors
+description: Turn any image into a talking character with text or uploaded audio. Configure voices, lip-sync, and output options.
+---
+
+import { Steps, Tabs, Tab, Note, Tip, Warning, Info, Cards, Card, Columns } from 'nextra/components'
+
+# AI Actors
+
+Transform a static image into a talking character. Provide text or upload an audio file, select a voice, and Vinci will generate a lip‑synced speaking video.
+
+<Info>
+Based on the current app implementation. Some advanced options are Coming Soon.
+</Info>
+
+## Front-end controls
+
+<Columns>
+<div>
+
+### Inputs
+- Image: Upload character image (JPEG/PNG), minimum 512x512
+- Dialogue:
+  - Text: Type your script
+  - Audio: Upload your own recorded audio
+
+### Voice options
+- Vinci Voices: Curated professional voices
+- User Voices: Your voice clones created from audio samples
+- Voice Selection Mode:
+  - “Vinci” (prebuilt)
+  - “User” (custom)
+- Default fallback voice ID: `21m00Tcm4TlvDq8ikWAM`
+
+### Output
+- Duration: Auto from text/audio
+- Format: MP4 (H.264/AAC)
+- Resolution: 1080p default
+</div>
+<div>
+
+### Advanced (defaults)
+- Frame rate: 30 fps
+- Batch size: 8
+- CRF: 19 (quality)
+- Audio processing: Automatic format detection/conversion
+- Seed: Randomized
+
+### Placeholders
+- “Type your dialogue here…”
+- “Click to type dialogue”
+- “Search by voice, character, or workflow…”
+
+</div>
+</Columns>
+
+## Typical workflow
+
+<Steps>
+### Choose a character
+Upload a clear, well-lit portrait image (or select from your Character Library).
+
+### Add dialogue
+Type your script or upload an audio file. If you upload audio, text is optional.
+
+### Pick a voice
+Choose a Vinci voice or one of your User voice clones. Leave empty to use the default fallback.
+
+### Generate and review
+Start generation and monitor progress. Preview the output, then download or share.
+</Steps>
+
+## Best practices
+
+- Use high-resolution faces with clear features
+- Keep scripts concise and natural
+- For uploads, provide clean audio (no background noise)
+- Align language of the text/voice with target audience
+- Test multiple voices to match character tone
+
+## Asset libraries
+
+- Characters: Pre‑made or uploaded (Images)
+- Voices: Vinci library and your cloned voices
+
+## Cost and usage
+
+- Standard video pricing applies (see /docs/essentials/pricing)
+- Track usage via Billing (see /docs/guides/billing-usage)
+
+## Coming Soon
+
+- Emotion/style controls
+- Phoneme‑level timing controls
+- Multi‑segment dialogue with pauses

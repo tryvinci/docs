@@ -63,7 +63,21 @@
               "docs/guides/prompting-tips",
               "docs/guides/error-handling",
               "docs/guides/webhooks",
-              "docs/guides/sdks"
+              "docs/guides/sdks",
+              {
+                "group": "Platform Services",
+                "icon": "layers-3",
+                "pages": [
+                  "docs/guides/platform/index",
+                  "docs/guides/platform/platform-overview",
+                  "docs/guides/platform/ai-actors",
+                  "docs/guides/platform/image-generation",
+                  "docs/guides/platform/video-generation",
+                  "docs/guides/platform/video-translation",
+                  "docs/guides/platform/emote",
+                  "docs/guides/platform/qr-code-generation"
+                ]
+              }
             ]
           },
           {
