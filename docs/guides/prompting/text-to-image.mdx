@@ -1,0 +1,166 @@
+---
+title: "Prompting Guide - Text-to-Image"
+description: "Best practices for generating images from text prompts."
+---
+
+import { Tip, Warning, Info, Columns } from 'nextra/components'
+
+# Text-to-Image Prompting Guide
+
+<Tip>
+Maximum prompt length: 512 tokens. Shorter prompts are easier to iterate.
+</Tip>
+
+## Overview
+This guide consolidates best practices for text-to-image generation, drawing on FLUX Kontext, Vertex AI, and Runway recommendations. It focuses on prompt structure, photographic cues, style control, negative prompts, and iterative workflows.
+
+<Info>
+For fundamental prompting principles that apply to all Vinci services, see the [Prompting Tips](/docs/guides/prompting/prompting-tips) guide.
+</Info>
+
+## Prompt structure
+A reliable prompt usually includes these components in order:
+- Subject: the main focus or character ("a golden retriever")
+- Attributes: colors, materials, clothing, emotions ("wet fur, joyful expression")
+- Environment: location, time, weather ("on a rocky beach at sunset")
+- Perspective: camera angle or viewpoint ("eye-level, 85mm portrait lens")
+- Style: art movement, artist references, or descriptive style ("hyperrealistic, cinematic")
+- Lighting: direction, intensity, color ("soft rim light, golden hour")
+- Quality modifiers: "ultra-detailed", "photorealistic", "8k"
+- Negative prompts: explicit exclusions ("no text, no watermark, no extra limbs")
+
+Example:
+"A close-up portrait of an elderly woman with freckled skin, soft rim lighting, 85mm lens, shallow depth of field, photorealistic, Fujifilm Pro 400H color palette. No watermark, no text."
+
+## Camera, lens, and photography cues
+Including photographic details helps achieve realism:
+- Lens: "50mm", "85mm", "wide-angle 24mm"
+- Aperture: "f/1.8 shallow depth of field", "f/8 for landscape sharpness"
+- Film or sensor: "Kodak Portra 400", "Fujifilm Pro 400H"
+- Camera: "shot on a Hasselblad", "DSLR"
+- Post-processing: "subtle film grain", "soft film emulation"
+
+[Placeholder image: Example prompt -> photo-realistic portrait output]
+
+## Composition and framing
+Be explicit about subject placement and aspect ratio:
+- "Rule of thirds", "centered subject", "full body", "head and shoulders"
+- Specify aspect ratio: "16:9", "1:1", "9:16" for vertical
+- Indicate distance and scale: "close-up", "wide shot"
+
+Prompt example:
+"Wide-angle cinematic landscape, subject centered, 16:9, dramatic sky, leading lines to the horizon."
+
+## Style and references
+- Name movements ("Impressionist", "Bauhaus"), genres ("cyberpunk", "film noir"), or use descriptive adjectives ("glossy, hyperreal, painterly")
+- Reference artists for inspiration, but when necessary prefer descriptive attributes to avoid policy issues
+- Combine style + medium: "watercolor with visible paper texture", "digital 3D render, octane, cinematic lighting"
+
+Example:
+"In the style of Hayao Miyazaki, warm pastel palette, hand-painted textures, whimsical composition."
+
+## Colors, materials, and lighting
+- Use precise color names: "deep cherry red", "muted teal", "sunset orange"
+- Describe materials and finishes: "matte ceramic", "polished metal"
+- Lighting: "golden hour backlight", "softbox frontal lighting", "dramatic rim light"
+
+## Controlling complexity & iterations
+- Start with a concise core prompt to validate composition and subject
+- Iterate by adding attributes, then styles, then high-quality modifiers
+- Use seeds or "variations" options to get reproducible results
+- For large changes, break into multiple prompts and combine outputs
+
+## Negative prompts and safety
+- Negative prompts prevent unwanted artifacts: "no text, no watermark, no extra limbs, no logos"
+- Use them to reduce style bleed or accidental inclusion of objects
+- Respect platform policies; avoid generating disallowed or private personal content
+
+## Advanced modifiers and tokens
+- Quality tokens: "ultra-detailed", "highly detailed", "8k"
+- Lighting tokens: "cinematic lighting", "dramatic rim lighting"
+- Avoid contradictory modifiers (e.g., "low-detail" and "ultra-detailed" together)
+- Keep token budget in mind; longer complex prompts may be truncated
+
+## Prompt examples
+
+Prompt:
+"A futuristic neon alley, wet pavement, cyberpunk city, dramatic rim lighting, long exposure, 35mm lens, ultra-detailed, photorealistic. No watermark, no text."
+[Placeholder image: Prompt -> neon alley output]
+
+Prompt:
+"A whimsical watercolor painting of woodland animals having tea, soft pastel colors, visible paper texture, delicate brushstrokes, warm ambient light."
+[Placeholder image: Prompt -> watercolor animals output]
+
+Prompt:
+"Product shot of a matte black wireless headphone on a minimal white pedestal, softbox lighting, 45-degree angle, high detail, studio photography style."
+[Placeholder image: Prompt -> product mockup output]
+
+## Iterative refinement workflow
+1. Generate a base image with a simple prompt.
+2. Note issues or desired changes.
+3. Add one or two modifiers (lighting, camera, color).
+4. Use negatives to remove artifacts.
+5. Re-run high-resolution render when satisfied.
+
+## Troubleshooting common issues
+- Blurry faces: add "sharp focus, high detail on face, high resolution"
+- Extra fingers/limbs: add "natural anatomy, correct number of fingers, single person"
+- Watermarks or logos: add "no watermark, no logo"
+- Incorrect colors: specify "exact color name" and "color palette reference"
+
+## Attribution and artist references
+- Prefer descriptive style language when direct artist copying is restricted.
+- Use "inspired by" or descriptive attributes: "vibrant brushwork, high-contrast chiaroscuro" instead of naming living artists when policy disallows.
+
+## Performance and cost tips
+- Use smaller images for rapid iteration (e.g., 512px)
+- Reserve high-resolution runs (2k/4k) for final outputs
+- Limit number of high-quality tokens during early experiments
+
+## Example prompt bank
+- Photo-realistic portraits
+- Environmental concept art
+- Product mockups and advertising shots
+- Stylized character concepts
+[Placeholder section for prompt bank with inputs and outputs]
+
+## Best Practices Summary
+- Be explicit about the subject and priorities
+- Iterate: start simple, refine incrementally
+- Use negative prompts to exclude undesired elements
+- Control composition and perspective explicitly
+- Use photographic cues for realism when needed
+
+<Tip>
+Short iterative cycles with focused changes yield the most reliable results.
+</Tip>
+
+## Related Resources
+
+<Columns cols={2}>
+  <div>
+    ### Related Prompting Guides
+    - [Prompting Tips](/docs/guides/prompting/prompting-tips) - Fundamental principles for all services
+    - [Image-to-Image Guide](/docs/guides/prompting/image-to-image) - Advanced editing and style transfer
+    - [Prompting Guides Index](/docs/guides/prompting/index) - Complete prompting resources
+    
+    ### Platform Integration
+    - [Image Generation Platform Guide](/docs/guides/platform/image-generation) - Front-end workflows
+    - [Platform Services Overview](/docs/guides/platform/index) - All Vinci platform features
+  </div>
+  <div>
+    ### API Documentation
+    - [Video Generation API](/docs/api-reference/video-generation) - Implementation details
+    - [Status Checking](/docs/api-reference/status-checking) - Monitor generation progress
+    - [Error Handling](/docs/guides/error-handling) - Troubleshoot common issues
+    
+    ### Getting Started
+    - [Quickstart Guide](/quickstart) - First API call in 5 minutes
+    - [Getting Started Tutorial](/docs/guides/getting-started) - Comprehensive walkthrough
+    - [Authentication & API Keys](/essentials/authentication) - Setup and security
+  </div>
+</Columns>
+
+<Warning>
+Remember that text-to-image prompting techniques may vary slightly between different Vinci services. Always refer to the specific service documentation for the most accurate and up-to-date information.
+</Warning>

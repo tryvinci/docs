@@ -1,0 +1,109 @@
+---
+title: "Prompting Guides"
+description: "Master the art of effective prompting for AI video and image generation with Vinci."
+---
+
+import { Cards, Card, Steps, Tabs, Tab, Note, Tip, Warning, Info, Columns } from 'nextra/components'
+
+# Prompting Guides
+
+Master the art of effective prompting to get the best results from Vinci's AI generation capabilities. These guides cover everything from basic principles to advanced techniques for text-to-image and image-to-image workflows.
+
+<Cards>
+  <Card title="Prompting Tips" href="/docs/guides/prompting/prompting-tips" icon="💡">
+    Essential principles and best practices for writing effective prompts across all Vinci services.
+  </Card>
+  <Card title="Text-to-Image" href="/docs/guides/prompting/text-to-image" icon="🖼️">
+    Comprehensive guide for generating high-quality images from text descriptions with detailed control.
+  </Card>
+  <Card title="Image-to-Image" href="/docs/guides/prompting/image-to-image" icon="🔄">
+    Advanced techniques for editing images, style transfer, and maintaining character consistency.
+  </Card>
+</Cards>
+
+## What is Prompting?
+
+Prompting is the art of communicating with AI models through carefully crafted text instructions. The quality of your prompts directly impacts the quality, consistency, and relevance of generated content.
+
+<Tabs>
+  <Tab title="Why Prompting Matters">
+    <Info>
+      Effective prompting is the difference between generic results and content that precisely matches your vision. Well-crafted prompts help AI models understand your intent, style preferences, and technical requirements.
+    </Info>
+    
+    **Key Benefits:**
+    - **Higher Quality Outputs**: Clear, specific prompts produce more accurate and visually appealing results
+    - **Consistent Style**: Maintain visual consistency across multiple generations
+    - **Faster Iteration**: Reduce trial-and-error by getting closer to your desired result on the first try
+    - **Cost Efficiency**: Better prompts mean fewer regeneration attempts, optimizing your API usage
+  </Tab>
+  <Tab title="Core Principles">
+    <Tip>
+      All effective prompts share these fundamental principles, regardless of the specific Vinci service you're using.
+    </Tip>
+    
+    **Essential Prompting Principles:**
+    - **Be Specific**: Use detailed descriptions rather than vague concepts
+    - **Include Technical Details**: Specify lighting, camera angles, materials, and styles
+    - **Structure Your Prompt**: Organize information logically (subject → attributes → environment → style)
+    - **Use Negative Prompts**: Explicitly state what you don't want to see
+    - **Iterate Incrementally**: Start simple and add complexity gradually
+  </Tab>
+  <Tab title="Getting Started">
+    <Steps>
+      ### Step 1: Understand Your Goal
+      Define what you want to create before writing your prompt. Consider the subject, style, mood, and technical requirements.
+      
+      ### Step 2: Start with Basic Prompts
+      Begin with simple, clear descriptions to establish a foundation. Focus on the main subject and key attributes.
+      
+      ### Step 3: Refine and Enhance
+      Gradually add details about lighting, composition, style, and technical specifications based on your results.
+      
+      ### Step 4: Use Advanced Techniques
+      Apply negative prompts, style references, and iterative editing to achieve professional-quality results.
+    </Steps>
+  </Tab>
+</Tabs>
+
+## Related Resources
+
+<Columns cols={2}>
+  <div>
+    ### API Documentation
+    - [Video Generation API](/docs/api-reference/video-generation)
+    - [Image-to-Video API](/docs/api-reference/image-to-video)
+    - [Status Checking](/docs/api-reference/status-checking)
+    
+    ### Platform Guides
+    - [Platform Services Overview](/docs/guides/platform/index)
+    - [Image Generation](/docs/guides/platform/image-generation)
+    - [Video Generation](/docs/guides/platform/video-generation)
+  </div>
+  <div>
+    ### Getting Started
+    - [Quickstart Guide](/quickstart)
+    - [Getting Started Tutorial](/docs/guides/getting-started)
+    - [Authentication & API Keys](/essentials/authentication)
+    
+    ### Advanced Topics
+    - [Error Handling](/docs/guides/error-handling)
+    - [Billing & Usage](/docs/guides/billing-usage)
+    - [Webhooks Integration](/docs/guides/webhooks)
+  </div>
+</Columns>
+
+<Warning>
+  Prompting techniques may vary slightly between different Vinci services. Always refer to the specific guide for the service you're using, and test your prompts with small generations before scaling up.
+</Warning>
+
+## Next Steps
+
+1. **New to Prompting?** Start with the [Prompting Tips](/docs/guides/prompting/prompting-tips) guide to learn fundamental principles
+2. **Generating Images?** Dive into the [Text-to-Image](/docs/guides/prompting/text-to-image) guide for comprehensive techniques
+3. **Editing Images?** Explore the [Image-to-Image](/docs/guides/prompting/image-to-image) guide for advanced editing workflows
+4. **Ready to Build?** Check out the [API Reference](/docs/api-reference/video-generation) to implement these techniques in your applications
+
+<Tip>
+  Bookmark this page as your central hub for all prompting-related documentation. As we add more guides and update existing ones, this index will always point you to the latest resources.
+</Tip>

@@ -1,0 +1,204 @@
+---
+title: "Prompting Guide - Image-to-Image"
+description: "Detailed prompting best practices for image editing and style transfer."
+---
+
+import { Tip, Warning, Info, Columns } from 'nextra/components'
+
+# Image-to-Image Prompting Guide
+
+<Tip>
+Maximum prompt token is 512 tokens.
+</Tip>
+
+## Overview
+This guide consolidates best practices for editing images using Kontext-style image-to-image workflows.
+
+<Info>
+For fundamental prompting principles that apply to all Vinci services, see the [Prompting Tips](/docs/guides/prompting/prompting-tips) guide.
+</Info>
+
+## Basic Object Modifications
+Kontext is effective for straightforward object modifications such as recolors, replacing objects, or minor retouching.
+
+Example prompt:
+"Change the color of the yellow car to deep cherry red while preserving reflections and highlights."
+
+[Placeholder image: Input image — add image here]
+
+[Placeholder image: Output image — add image here]
+
+## Prompt Precision: From Basic to Comprehensive
+
+<Tip>
+Be explicit when you need precise control; concise prompts can sometimes change unintended aspects.
+</Tip>
+
+### Quick Edits
+Simple prompts can work but may alter style or composition.
+
+Prompt example:
+"Change to daytime"
+
+[Placeholder image: Input image for quick edit]
+[Placeholder image: Output 1]
+[Placeholder image: Output 2]
+
+### Controlled Edits
+Add preservation instructions to keep style and composition similar to the input.
+
+Prompt example:
+"Change to daytime while maintaining the same style of the painting"
+
+[Placeholder image: Input image for controlled edit]
+[Placeholder image: Controlled edit output]
+
+### Complex Transformations
+For multiple simultaneous changes include clear, ordered instructions and prioritize the most important changes.
+
+Prompt example:
+"Change the setting to daytime, add several people walking on the sidewalk, keep the original painting style and composition"
+
+[Placeholder image: Input image for complex transform]
+[Placeholder image: Complex transform output]
+
+## Style Transfer
+Use direct style names, artist references, and descriptive characteristics.
+
+### Using textual style prompts
+1. Name the specific style (e.g., "Bauhaus", "watercolor", "film noir")
+2. Reference artists or movements when appropriate
+3. Describe key characteristics: brushstrokes, color palette, texture
+4. Preserve composition if needed: "keep original composition and object placement"
+
+[Placeholder image: Architectural photo input]
+
+<Columns cols={2}>
+<Frame caption="Converted to pencil sketch">
+[Placeholder image: Output — pencil sketch]
+</Frame>
+
+<Frame caption="Transformed to oil painting">
+[Placeholder image: Output — oil painting]
+</Frame>
+</Columns>
+
+### Using an input image as a style reference
+Provide the style image as a reference and then describe the content you want in that style.
+
+Prompt example:
+"Using this style reference image, create a scene where a bunny, a dog, and a cat are having a tea party around a small white table."
+
+[Placeholder image: Style reference]
+[Placeholder image: Generated output using style reference]
+
+## Iterative editing & character consistency
+Kontext preserves character identity well when prompts explicitly request preservation.
+
+Framework to maintain character consistency:
+- Establish the reference: "The woman with short black hair and a mole on her left cheek..."
+- Specify the transformation: environment, activity, or style
+- Preserve identity markers: "maintain the same facial features, hairstyle and expression"
+
+Example prompts in editing sequences:
+1) "Remove the sunglasses from the woman's face while keeping expression unchanged"
+2) "Place the same woman in a snowy street while preserving facial features and pose"
+
+[Placeholder image: Reference character]
+[Placeholder image: Iteration step 1 output]
+[Placeholder image: Iteration step 2 output]
+
+## Text Editing in images
+Use quotation marks around exact text you want to change.
+
+Prompt structure:
+Replace '[original text]' with '[new text]'
+
+Example:
+"Replace 'Choose joy' with 'Choose BFL' while maintaining original font, color and size"
+
+[Placeholder image: Sign with text 'Choose joy']
+[Placeholder image: Sign changed to 'Choose BFL']
+
+Best practices for text edits:
+- Use exact punctuation and casing
+- Ask to preserve font, color, size, and layout when necessary
+- Keep replacement text similar in length to avoid layout issues
+
+## Visual cues & masks
+Use visual markers, masks, or bounding descriptions to indicate where edits should occur.
+
+Example:
+"Add hats inside the three boxes drawn on the upper right quadrant"
+
+[Placeholder image: Input with boxes]
+[Placeholder image: Output with hats added]
+
+## Troubleshooting: When results don't match expectations
+
+- If the model changes parts you wanted preserved, explicitly state what should remain unchanged: "Keep everything else in the image identical"
+- For character identity drift, enforce identity markers: "preserve exact facial features, hairstyle, eye color"
+- If composition shifts unintentionally, state: "Keep the subject in the exact same position, scale, and pose"
+
+### Composition control
+Vague prompts like "put him on a beach" can change framing and camera angle.
+Prefer:
+"Change the background to a sunny beach while keeping the person in the exact same position, scale, pose, camera angle, framing and perspective. Only replace the environment around them."
+
+[Placeholder image: Composition input]
+[Placeholder image: Composition-preserved output]
+
+### Style not applying correctly
+Use richer style descriptions:
+"Convert to pencil sketch with natural graphite lines, cross-hatching, and subtle paper texture"
+
+[Placeholder image: Input photo]
+[Placeholder image: Precise sketch output]
+
+## Safety & Content Guidelines
+- Avoid requesting generation of disallowed content (follow your platform's content policy)
+- Obfuscate or avoid personal identifying edits if you do not have consent
+
+## Best Practices Summary
+- Be specific: use exact descriptors for color, lighting, and materials
+- Start simple: make incremental changes and iterate
+- Preserve intentionally: call out what must not change
+- Use quotes for text edits: "Replace 'X' with 'Y'"
+- Control composition explicitly: specify camera angle, framing, and subject placement
+- Choose verbs carefully: "transform" often implies full replacement; "change the clothes" is more focused
+
+<Tip>
+Making instructions explicit helps accuracy; keep edits limited to a few clear directives per prompt.
+</Tip>
+
+## Related Resources
+
+<Columns cols={2}>
+  <div>
+    ### Related Prompting Guides
+    - [Prompting Tips](/docs/guides/prompting/prompting-tips) - Fundamental principles for all services
+    - [Text-to-Image Guide](/docs/guides/prompting/text-to-image) - Comprehensive image generation techniques
+    - [Prompting Guides Index](/docs/guides/prompting/index) - Complete prompting resources
+    
+    ### Platform Integration
+    - [Image Generation Platform Guide](/docs/guides/platform/image-generation) - Front-end workflows
+    - [Platform Services Overview](/docs/guides/platform/index) - All Vinci platform features
+  </div>
+  <div>
+    ### API Documentation
+    - [Image-to-Video API](/docs/api-reference/image-to-video) - Implementation details
+    - [Status Checking](/docs/api-reference/status-checking) - Monitor generation progress
+    - [Error Handling](/docs/guides/error-handling) - Troubleshoot common issues
+    
+    ### Getting Started
+    - [Quickstart Guide](/quickstart) - First API call in 5 minutes
+    - [Getting Started Tutorial](/docs/guides/getting-started) - Comprehensive walkthrough
+    - [Authentication & API Keys](/essentials/authentication) - Setup and security
+  </div>
+</Columns>
+
+<Warning>
+Remember that image-to-image prompting techniques may vary slightly between different Vinci services. Always refer to the specific service documentation for the most accurate and up-to-date information.
+</Warning>
+
+[Placeholder section for example prompts and executions — add example images and model responses here]

@@ -60,7 +60,16 @@
             "pages": [
               "docs/guides/getting-started",
               "docs/guides/billing-usage",
-              "docs/guides/prompting-tips",
+              {
+                "group": "Prompting Guides",
+                "icon": "sparkles",
+                "pages": [
+                  "docs/guides/prompting/index",
+                  "docs/guides/prompting/prompting-tips",
+                  "docs/guides/prompting/text-to-image",
+                  "docs/guides/prompting/image-to-image"
+                ]
+              },
               "docs/guides/error-handling",
               "docs/guides/webhooks",
               "docs/guides/sdks",
