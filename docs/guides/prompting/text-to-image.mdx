@@ -1,138 +1,359 @@
 ---
 title: "Prompting Guide - Text-to-Image"
-description: "Best practices for generating images from text prompts."
+description: "Master the art of generating stunning images from text prompts with Vinci's comprehensive guide."
 ---
 
-import { Tip, Warning, Info, Columns } from 'nextra/components'
+import { Tip, Warning, Info, Columns, Tabs, Tab, Card, Steps } from 'nextra/components'
 
 # Text-to-Image Prompting Guide
 
 <Tip>
-Maximum prompt length: 512 tokens. Shorter prompts are easier to iterate.
+  Maximum prompt length: 512 tokens. While you can use the full budget, shorter, more focused prompts are often easier to iterate and refine effectively. Start with the core concept and build up.
 </Tip>
 
 ## Overview
-This guide consolidates best practices for text-to-image generation, drawing on FLUX Kontext, Vertex AI, and Runway recommendations. It focuses on prompt structure, photographic cues, style control, negative prompts, and iterative workflows.
+
+Welcome to the definitive guide for text-to-image generation with Vinci. This comprehensive resource consolidates best practices from leading AI image generation models, including FLUX Kontext, Vertex AI, and Runway, and adapts them specifically for the Vinci ecosystem. Whether you're creating photorealistic portraits, fantastical concept art, or product mockups, this guide will equip you with the knowledge to craft prompts that consistently yield high-quality, accurate, and creative results.
+
+We'll cover everything from fundamental prompt structure and advanced photographic techniques to style control, negative prompting, and efficient iterative workflows. By the end of this guide, you'll be able to translate even the most complex creative visions into detailed AI-generated images.
 
 <Info>
-For fundamental prompting principles that apply to all Vinci services, see the [Prompting Tips](/docs/guides/prompting/prompting-tips) guide.
+  For fundamental prompting principles that apply to all Vinci services, see the [Prompting Tips](/docs/guides/prompting/prompting-tips) guide. This guide assumes you're familiar with those core concepts and dives deeper into the specifics of text-to-image generation.
 </Info>
 
-## Prompt structure
-A reliable prompt usually includes these components in order:
-- Subject: the main focus or character ("a golden retriever")
-- Attributes: colors, materials, clothing, emotions ("wet fur, joyful expression")
-- Environment: location, time, weather ("on a rocky beach at sunset")
-- Perspective: camera angle or viewpoint ("eye-level, 85mm portrait lens")
-- Style: art movement, artist references, or descriptive style ("hyperrealistic, cinematic")
-- Lighting: direction, intensity, color ("soft rim light, golden hour")
-- Quality modifiers: "ultra-detailed", "photorealistic", "8k"
-- Negative prompts: explicit exclusions ("no text, no watermark, no extra limbs")
+## The Anatomy of a Perfect Text-to-Image Prompt
 
-Example:
-"A close-up portrait of an elderly woman with freckled skin, soft rim lighting, 85mm lens, shallow depth of field, photorealistic, Fujifilm Pro 400H color palette. No watermark, no text."
+A well-structured prompt acts as a comprehensive blueprint for the AI, guiding it through every aspect of the image you want to create. While there's no single "correct" way to write a prompt, a reliable and effective structure typically includes these components in a logical order.
 
-## Camera, lens, and photography cues
-Including photographic details helps achieve realism:
-- Lens: "50mm", "85mm", "wide-angle 24mm"
-- Aperture: "f/1.8 shallow depth of field", "f/8 for landscape sharpness"
-- Film or sensor: "Kodak Portra 400", "Fujifilm Pro 400H"
-- Camera: "shot on a Hasselblad", "DSLR"
-- Post-processing: "subtle film grain", "soft film emulation"
+<Columns cols={2}>
+  <div>
+    <Steps>
+      ### 1. The Core Subject
+      This is the foundation of your image. Clearly and specifically define the main focus, character, or object.
+      
+      *Example: "A majestic lion with a flowing golden mane"*
+      
+      ### 2. Subject Attributes & Details
+      Elaborate on your subject's appearance, characteristics, and actions. Use vivid adjectives.
+      
+      *Example: "...intelligent green eyes, powerful stance, muscles rippling under its fur"*
+      
+      ### 3. Environment & Setting
+      Place your subject in a specific context. Describe the location, time of day, weather, and background.
+      
+      *Example: "...on a rocky outcrop overlooking the vast African savannah at sunset"*
+      
+      ### 4. Composition & Perspective
+      Direct the AI on how to frame and view the subject. This is crucial for controlling the image's focus and impact.
+      
+      *Example: "...low-angle shot, rule of thirds, wide-angle lens to emphasize the grandeur"*
+    </Steps>
+  </div>
+  <div>
+    <Steps>
+      ### 5. Lighting & Atmosphere
+      Define the mood and visual tone through lighting. This can dramatically change the feeling of your image.
+      
+      *Example: "...dramatic golden hour lighting, long shadows, warm and epic atmosphere"*
+      
+      ### 6. Artistic Style & Medium
+      Specify the desired aesthetic. This is where you control whether the image looks like a photo, painting, or something entirely different.
+      
+      *Example: "...hyperrealistic, National Geographic wildlife photography style"*
+      
+      ### 7. Quality & Detail Enhancers
+      Add final polish with keywords that boost the overall quality and level of detail.
+      
+      *Example: "...ultra-detailed, 8k resolution, sharp focus, highly detailed fur texture"*
+      
+      ### 8. Negative Prompts
+      Explicitly state what you want to exclude from the image. This is your most powerful tool for refining outputs.
+      
+      *Example: "Negative prompt: blurry, distorted, low quality, text, watermark, ugly"*
+    </Steps>
+  </div>
+</Columns>
 
-[Placeholder image: Example prompt -> photo-realistic portrait output]
+**Putting It All Together:**
+"A majestic lion with a flowing golden mane and intelligent green eyes, in a powerful stance with muscles rippling under its fur, on a rocky outcrop overlooking the vast African savannah at sunset, low-angle shot using the rule of thirds with a wide-angle lens to emphasize grandeur, dramatic golden hour lighting creating long shadows, warm and epic atmosphere, hyperrealistic, National Geographic wildlife photography style, ultra-detailed, 8k resolution, sharp focus, highly detailed fur texture. Negative prompt: blurry, distorted, low quality, text, watermark, ugly, extra limbs, deformed eyes."
 
-## Composition and framing
-Be explicit about subject placement and aspect ratio:
-- "Rule of thirds", "centered subject", "full body", "head and shoulders"
-- Specify aspect ratio: "16:9", "1:1", "9:16" for vertical
-- Indicate distance and scale: "close-up", "wide shot"
+## Mastering Photorealism: Camera, Lens, and Photography Cues
 
-Prompt example:
-"Wide-angle cinematic landscape, subject centered, 16:9, dramatic sky, leading lines to the horizon."
+When aiming for a photorealistic look, incorporating photographic terminology can significantly improve the AI's ability to mimic real-world camera behavior and lens effects. These cues provide technical specifications that guide the AI toward a more authentic result.
 
-## Style and references
-- Name movements ("Impressionist", "Bauhaus"), genres ("cyberpunk", "film noir"), or use descriptive adjectives ("glossy, hyperreal, painterly")
-- Reference artists for inspiration, but when necessary prefer descriptive attributes to avoid policy issues
-- Combine style + medium: "watercolor with visible paper texture", "digital 3D render, octane, cinematic lighting"
+### Essential Photography Terminology
 
-Example:
-"In the style of Hayao Miyazaki, warm pastel palette, hand-painted textures, whimsical composition."
+-   **Lens Types:**
+    -   *Portrait:* "85mm lens" (natural compression, pleasing bokeh), "50mm lens" (versatile, slightly wide)
+    -   *Landscape:* "wide-angle 24mm" (expansive view), "16-35mm zoom"
+    -   *Telephoto:* "200mm lens" (compresses distance, good for wildlife)
+-   **Aperture & Depth of Field:**
+    -   *Shallow DOF:* "f/1.8 shallow depth of field" (blurs background, isolates subject), "f/2.8"
+    -   *Deep DOF:* "f/8 for landscape sharpness" (everything in focus), "f/11"
+-   **Camera & Film/Sensor:**
+    -   *Camera Brands:* "shot on a Hasselblad" (high-end, medium format), "DSLR", "mirrorless camera"
+    -   *Film Stocks:* "Kodak Portra 400" (natural skin tones, vibrant colors), "Fujifilm Pro 400H" (cinematic, muted tones), "Ilford HP5" (black and white, grainy)
+    -   *Digital Sensors:* "full-frame sensor", "45-megapixel resolution"
+-   **Post-Processing Effects:**
+    -   *Film Grain:* "subtle film grain", "35mm film grain"
+    -   *Emulation:* "soft film emulation", "Kodak Portra color grading"
+    -   *Sharpening/Noise:* "subtle sharpening", "low noise", "clean image"
 
-## Colors, materials, and lighting
-- Use precise color names: "deep cherry red", "muted teal", "sunset orange"
-- Describe materials and finishes: "matte ceramic", "polished metal"
-- Lighting: "golden hour backlight", "softbox frontal lighting", "dramatic rim light"
+**Example Prompt:**
+"A close-up portrait of an elderly woman with freckled skin and kind wrinkles, soft rim lighting from a window, shot on an 85mm lens at f/1.8, creating a beautiful shallow depth of field that blurs the background. Fujifilm Pro 400H color palette, natural skin tones, subtle film grain. Photorealistic, ultra-detailed, sharp focus on the eyes."
 
-## Controlling complexity & iterations
-- Start with a concise core prompt to validate composition and subject
-- Iterate by adding attributes, then styles, then high-quality modifiers
-- Use seeds or "variations" options to get reproducible results
-- For large changes, break into multiple prompts and combine outputs
+[Placeholder image: Example of a portrait prompt with photographic cues -> a photorealistic portrait output]
 
-## Negative prompts and safety
-- Negative prompts prevent unwanted artifacts: "no text, no watermark, no extra limbs, no logos"
-- Use them to reduce style bleed or accidental inclusion of objects
-- Respect platform policies; avoid generating disallowed or private personal content
+## Composition and Framing: Directing the Viewer's Eye
 
-## Advanced modifiers and tokens
-- Quality tokens: "ultra-detailed", "highly detailed", "8k"
-- Lighting tokens: "cinematic lighting", "dramatic rim lighting"
-- Avoid contradictory modifiers (e.g., "low-detail" and "ultra-detailed" together)
-- Keep token budget in mind; longer complex prompts may be truncated
+How you compose your image determines its visual impact and storytelling power. Be explicit about subject placement, framing, and the overall layout to guide the AI in creating a well-balanced and engaging image.
 
-## Prompt examples
+### Key Composition Concepts
 
-Prompt:
-"A futuristic neon alley, wet pavement, cyberpunk city, dramatic rim lighting, long exposure, 35mm lens, ultra-detailed, photorealistic. No watermark, no text."
-[Placeholder image: Prompt -> neon alley output]
+-   **Composition Rules:**
+    -   "Rule of thirds": Place key elements along imaginary lines dividing the image into thirds.
+    -   "Centered subject": Creates a sense of symmetry and importance.
+    -   "Leading lines": Use natural lines (roads, rivers, fences) to draw the eye to the subject.
+    -   "Negative space": Use empty areas to create a sense of scale or minimalism.
+-   **Shot Types & Framing:**
+    -   "Extreme close-up": Focuses on a small detail (e.g., an eye, a texture).
+    -   "Close-up": Typically frames a person's head and shoulders.
+    -   "Medium shot": Frames a person from the waist up.
+    -   "Full body": Shows the entire subject.
+    -   "Wide shot" or "Establishing shot": Shows the subject and their environment.
+    -   "Overhead shot" or "Bird's-eye view": Shot from directly above.
+-   **Aspect Ratios:**
+    -   Specify the desired output format: "1:1" (square), "16:9" (widescreen), "9:16" (vertical, for mobile/Instagram), "4:5" (standard social media).
+-   **Scale and Distance:**
+    -   "Epic scale", "monumental", "tiny figure in a vast landscape" to convey size relationships.
+    -   "Intimate framing", "close-up details" to focus on small elements.
 
-Prompt:
-"A whimsical watercolor painting of woodland animals having tea, soft pastel colors, visible paper texture, delicate brushstrokes, warm ambient light."
-[Placeholder image: Prompt -> watercolor animals output]
+**Example Prompt:**
+"A wide-angle cinematic landscape of a lone tree on a hill at sunset, subject placed using the rule of thirds, vast sky with dramatic clouds, leading lines from a winding road drawing the eye to the tree, 16:9 aspect ratio, epic and serene atmosphere."
 
-Prompt:
-"Product shot of a matte black wireless headphone on a minimal white pedestal, softbox lighting, 45-degree angle, high detail, studio photography style."
-[Placeholder image: Prompt -> product mockup output]
+## Exploring Artistic Styles: From Realism to Abstraction
 
-## Iterative refinement workflow
-1. Generate a base image with a simple prompt.
-2. Note issues or desired changes.
-3. Add one or two modifiers (lighting, camera, color).
-4. Use negatives to remove artifacts.
-5. Re-run high-resolution render when satisfied.
+One of the most exciting aspects of AI image generation is its ability to emulate a vast array of artistic styles. Moving beyond simple "realistic" or "cartoon" opens up endless creative possibilities.
 
-## Troubleshooting common issues
-- Blurry faces: add "sharp focus, high detail on face, high resolution"
-- Extra fingers/limbs: add "natural anatomy, correct number of fingers, single person"
-- Watermarks or logos: add "no watermark, no logo"
-- Incorrect colors: specify "exact color name" and "color palette reference"
+### Style Categories and Examples
 
-## Attribution and artist references
-- Prefer descriptive style language when direct artist copying is restricted.
-- Use "inspired by" or descriptive attributes: "vibrant brushwork, high-contrast chiaroscuro" instead of naming living artists when policy disallows.
+<Tabs>
+  <Tab title="Art Movements">
+    - **Impressionism:** "Soft brushstrokes, visible texture, play of light, inspired by Monet"
+    - **Cubism:** "Geometric shapes, multiple perspectives, fragmented forms, inspired by Picasso"
+    - **Surrealism:** "Dreamlike, illogical scenes, melting clocks, inspired by Dalí"
+    - **Art Nouveau:** "Organic flowing lines, floral motifs, whiplash curves"
+    - **Bauhaus:** "Geometric abstraction, primary colors, functional design"
+  </Tab>
+  <Tab title="Visual Genres">
+    - **Cyberpunk:** "Neon-noir, dystopian future, high-tech low-life, rain-slicked streets"
+    - **Steampunk:** "Victorian-era technology, brass and gears, steam-powered machinery"
+    - **Fantasy:** "Epic, magical creatures, castles, otherworldly landscapes"
+    - **Horror:** "Gothic, eerie, suspenseful, dark and moody"
+    - **Romanticism:** "Dramatic, emotional, sublime landscapes, inspired by Turner"
+  </Tab>
+  <Tab title="Mediums & Techniques">
+    - **Painting:** "Oil painting with visible knife strokes", "watercolor with soft bleeds", "acrylic on canvas"
+    - **Drawing:** "Charcoal sketch", "ink wash", "pencil drawing on textured paper"
+    - **Digital Art:** "Digital painting", "3D render, octane, cinematic lighting", "concept art"
+    - **Photography:** "Long exposure", "black and white film", "infrared photography"
+  </Tab>
+</Tabs>
 
-## Performance and cost tips
-- Use smaller images for rapid iteration (e.g., 512px)
-- Reserve high-resolution runs (2k/4k) for final outputs
-- Limit number of high-quality tokens during early experiments
+### Referencing Artists and Styles
 
-## Example prompt bank
-- Photo-realistic portraits
-- Environmental concept art
-- Product mockups and advertising shots
-- Stylized character concepts
-[Placeholder section for prompt bank with inputs and outputs]
+-   **Direct References (Use with caution):** "In the style of Van Gogh," "Picasso's cubist period." Be aware that some platforms may have restrictions on direct artist emulation.
+-   **Descriptive Attributes (Safer & often more effective):** Instead of naming an artist, describe their key characteristics.
+    -   *Instead of:* "In the style of Van Gogh"
+    -   *Try:* "Thick impasto brushstrokes, vibrant swirling colors, dramatic emotional intensity, post-impressionist style"
+-   **Combining Styles:** Feel free to mix and match for unique results.
+    -   "A cyberpunk city rendered in the style of a watercolor painting"
+    -   "A fantasy landscape with Art Nouveau floral elements"
+
+**Example Prompt:**
+"A whimsical watercolor painting of woodland animals having a tea party, soft pastel colors, visible paper texture, delicate brushstrokes with a hint of ink outlines, warm ambient light, storybook illustration style, charming and magical atmosphere."
+
+## The Power of Color, Material, and Lighting
+
+These elements define the mood, texture, and realism of your image. Precise language here is key to achieving the exact visual you envision.
+
+### Color Palette Guidance
+
+-   **Specific Color Names:** "Deep cherry red," "muted teal," "sunset orange," "forest green," "charcoal gray."
+-   **Color Moods:**
+    -   *Vibrant/Jewel Tones:* "Saturated colors," "jewel-toned palette," "high contrast"
+    -   *Pastel/Muted:* "Soft pastel palette," "muted earth tones," "desaturated colors"
+    -   *Monochromatic:* "Shades of blue," "black and white with a single accent color"
+-   **Color Grading:** "Cinematic color grading," "teal and orange look," "moody blue tones," "warm golden hues."
+
+### Material and Texture Description
+
+-   **Materials:** "Matte ceramic," "polished chrome," "rough-hewn stone," "velvet fabric," "weathered wood."
+-   **Textures:** "Glossy surface," "rough texture," "smooth and reflective," "woven fabric," "icy surface."
+-   **Finishes:** "Satin finish," "matte black," "high-gloss," "brushed metal."
+
+### Lighting Techniques
+
+-   **Direction of Light:**
+    -   "Frontal lighting": Even illumination, good for portraits.
+    -   "Backlighting" or "Rim lighting": Creates a halo effect around the subject.
+    -   "Side lighting": Creates dramatic shadows and highlights texture.
+-   **Quality of Light:**
+    -   "Hard light": Creates sharp, defined shadows (e.g., direct sunlight).
+    -   "Soft light": Creates gentle, diffused shadows (e.g., overcast day, studio softbox).
+-   **Time of Day & Atmospheric Effects:**
+    -   "Golden hour": Warm, soft light shortly after sunrise or before sunset.
+    -   "Blue hour": Cool, tranquil light just before sunrise or after sunset.
+    -   "Dramatic chiaroscuro": Strong contrast between light and dark.
+    -   "Neon glow," "volumetric lighting," "god rays" (beams of light).
+
+**Example Prompt:**
+"Product shot of a matte black wireless headphone on a minimal white marble pedestal, polished chrome accents, softbox frontal lighting for even illumination, 45-degree angle to show form, high detail on materials, studio photography style, clean and minimalist aesthetic."
+
+## The Iterative Refinement Workflow: From Concept to Perfection
+
+Mastering the iterative process is the single most important skill for a proficient prompt engineer. Very few people get the perfect result on the first try. The goal is to use each generation as a stepping stone to refine your vision.
+
+### A Step-by-Step Iterative Process
+
+<Steps>
+  ### Step 1: Establish the Core Concept
+  Start with a simple, clear prompt that defines the main subject and basic composition. This is your "proof of concept."
+  
+  *Example: "A cat sitting on a windowsill"*
+  
+  ### Step 2: Analyze the Output
+  Critically evaluate the generated image. What did the AI get right? What's wrong? What's missing? Be specific.
+  
+  *Self-Correction Thoughts: "The cat looks generic. The background is plain. The lighting is flat."*
+  
+  ### Step 3: Add Layers of Detail
+  Based on your analysis, add one or two new elements to your prompt. Don't change everything at once. This helps you understand the impact of each new keyword.
+  
+  *Example Addition: "A fluffy ginger Maine Coon cat..."*
+  
+  ### Step 4: Refine Style and Mood
+  Now that the subject is better, focus on the aesthetic. Add style, lighting, and atmosphere keywords.
+  
+  *Example Addition: "...sitting on a vintage wooden windowsill, looking out at a rainy city street at night, reflections of neon lights on the wet glass, soft natural light from the window illuminating the cat's fur..."*
+  
+  ### Step 5: Use Negative Prompts to Clean Up
+  If there are persistent unwanted elements (e.g., blurry text, extra limbs), add them to a negative prompt.
+  
+  *Negative Prompt: "blurry, distorted, low quality, ugly, bad anatomy, people, buildings, text, watermark"*
+  
+  ### Step 6: Final Polish and High-Resolution Render
+  Once you're happy with the composition and style, run a final high-resolution generation with your best prompt.
+  
+  *Final Prompt: "A fluffy ginger Maine Coon cat with bright green eyes, sitting on a vintage wooden windowsill, looking out at a rainy city street at night, reflections of neon lights on the wet glass, soft natural light from the window illuminating the cat's fur, shallow depth of field, photorealistic, highly detailed, cinematic mood"*
+</Steps>
+
+## Advanced Techniques and Tools
+
+Once you're comfortable with the basics, these advanced techniques can help you achieve even more sophisticated results.
+
+### Controlling Complexity and Managing the Token Budget
+
+-   **Start Simple, Add Complexity:** As described in the iterative workflow, build your prompt gradually.
+-   **Use Seeds for Reproducibility:** If you find a base result you like, use the same "seed" value (if offered by the platform) to generate variations while keeping the core composition similar.
+-   **"Variations" Feature:** Use built-in variation tools to explore different takes on a successful prompt without starting from scratch.
+-   **Break Down Complex Scenes:** For extremely complex scenes, consider generating separate elements (e.g., a character, a background) and then combining them in an image editor.
+
+### The Art of Negative Prompting
+
+Negative prompts are not just for fixing errors; they are a proactive tool for steering the AI away from styles or elements you explicitly don't want.
+
+-   **Common Negative Prompt Categories:**
+    -   *Quality/Artifacts:* `blurry, distorted, deformed, ugly, low quality, bad anatomy, extra limbs, fused fingers, poorly drawn hands, mutated, disfigured, jpeg artifacts, noise`
+    -   *Style/Format:* `cartoon, painting, sketch, 3D, illustration, watermark, text, signature, username, artist name`
+    -   *Content:* `people, person, animals, building, car` (use when you want to exclude these)
+    -   *Composition:* `cropped, out of frame, worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry`
+-   **Tailoring Negatives:** Your negative prompt should be specific to the issues you're seeing. If you're getting cartoonish results for a photo, add `no cartoon style, no illustration`.
+
+### Advanced Modifiers and Tokens
+
+-   **Quality Tokens:** "masterpiece," "best quality," "ultra-detailed," "highly detailed," "8k," "sharp focus," "intricate details."
+-   **Lighting Tokens:** "cinematic lighting," "dramatic rim lighting," "studio lighting," "volumetric lighting," "god rays."
+-   **Style Tokens:** "trending on artstation," "unreal engine," "octane render," "cinematic."
+-   **Avoiding Contradictions:** Be careful not to use conflicting terms (e.g., "low-detail" and "ultra-detailed" in the same prompt). The AI may get confused or ignore one of them.
+-   **Token Budget Awareness:** Remember the 512-token limit. Very long, complex prompts may get truncated, which can lead to unexpected results. Prioritize the most important elements.
+
+## Troubleshooting Common Issues
+
+Even the best prompters run into problems. Here's a quick reference guide to diagnosing and fixing common issues.
+
+| Symptom | Probable Cause | Solution |
+| :--- | :--- | :--- |
+| **Blurry or Low-Quality Image** | Insufficient detail keywords, prompt too complex, model limitations. | Add quality boosters: "ultra-detailed," "sharp focus," "8k." Simplify the prompt if it's overly complex. Try upscaling if available. |
+| **Faces or Hands are Deformed** | A common AI weakness, especially with complex prompts. | Use negative prompts: "no deformed hands, no extra fingers, natural anatomy." Try generating a close-up of just the face/hands first. |
+| **Wrong Art Style** | Failure to specify style, or conflicting style keywords. | Be explicit about the desired style. Use negative prompts to exclude unwanted styles (e.g., "no cartoon"). Avoid mixing contradictory styles. |
+| **Unwanted Elements Appear** | AI "hallucination," not using negative prompts effectively. | Use negative prompts with specific terms. Refine your positive prompt to be more specific about what should and shouldn't be in the scene. |
+| **Colors are Not as Expected** | Vague color descriptions, lighting overriding color intent. | Specify exact colors or color palettes. Describe lighting separately from color. Use negative prompts like "no muted colors" if needed. |
+| **Composition is Off** | Poor composition description, subject not prioritized. | Start with the subject. Use explicit composition keywords: "rule of thirds," "close-up," "centered subject." Use negative prompts to remove distracting elements. |
+
+## Comprehensive Example Gallery
+
+Let's put all these principles into practice with a series of detailed examples.
+
+### Example 1: Cinematic Environmental Portrait
+
+**Goal:** A dramatic, moody portrait of a character in a specific environment.
+
+**Prompt:**
+"A close-up portrait of a weathered fisherman in his 60s, deep wrinkles and a salt-and-pepper beard, wearing a yellow oilskin jacket, intense blue eyes looking directly at the camera, dramatic side lighting from a single lantern, creating deep shadows and highlighting his rugged features, on the deck of a fishing boat at night during a storm, waves crashing in the background, salt spray on his face, hyperrealistic, cinematic, shot on a 85mm lens, shallow depth of field, high detail, National Geographic style. Negative prompt: blurry, distorted, low quality, text, watermark, cartoon, ugly."
+
+### Example 2: Fantasy Concept Art
+
+**Goal:** A heroic character in a fantastical setting.
+
+**Prompt:**
+"A majestic elven ranger with long silver hair and intricate leaf-shaped armor, holding a glowing bow made of living wood, standing in an ancient, bioluminescent forest at twilight, giant mushrooms and glowing vines surrounding her, ethereal blue and purple light emanating from the plants, misty atmosphere, digital painting, highly detailed, fantasy art, style of Alan Lee and Greg Rutkowski, epic scale. Negative prompt: blurry, deformed, low quality, text, watermark, photorealistic, modern clothing."
+
+### Example 3: Minimalist Product Photography
+
+**Goal:** A clean, professional product shot for an e-commerce site.
+
+**Prompt:**
+"Minimalist product shot of a pair of sleek, wireless earbuds in matte black, placed on a simple white marble surface, soft, even studio lighting from above, no shadows, extreme close-up to highlight the texture and design, clean and modern aesthetic, studio photography, 8k resolution, sharp focus, ultra-detailed. Negative prompt: blurry, distorted, low quality, text, watermark, reflections, dust, fingerprints."
+
+### Example 4: Stylized Illustration for Children's Book
+
+**Goal:** A charming, colorful illustration.
+
+**Prompt:**
+"A whimsical illustration of a friendly fox reading a book under a large toadstool in a magical forest, soft pastel colors, gentle watercolor style with visible pencil lines, warm and inviting atmosphere, storybook art, charming and cute, detailed background with tiny flowers and fireflies. Negative prompt: scary, dark, realistic, photorealistic, text, watermark, sharp edges."
+
+## Prompt Bank: Ready-to-Use Templates
+
+Use these as starting points and adapt them to your specific needs.
+
+### Photo-Realistic Portraits
+-   **Template:** "A [age] [gender] [ethnicity] with [hair color] and [eye color], [distinctive feature], [expression], [lighting setup], shot on a [lens] lens, [depth of field], [film stock/color palette], photorealistic, ultra-detailed, sharp focus on the eyes."
+-   **Example:** "A 30-year-old woman of East Asian descent with long black hair and warm brown eyes, a small beauty mark on her cheek, a gentle smile, soft natural light from a large window, shot on an 85mm lens, f/1.8 shallow depth of field, Kodak Portra 400 color palette, photorealistic, ultra-detailed, sharp focus on the eyes."
+
+### Environmental Concept Art
+-   **Template:** "A [setting] at [time of day/weather], [key environmental elements], [subject/character] doing [action], [art style], [lighting/atmosphere], [quality modifiers]."
+-   **Example:** "A futuristic cyberpunk city street at night during a heavy rain, neon signs reflecting on wet asphalt, steam rising from grates, a lone figure in a long coat walking with their back to the camera, digital painting, cinematic neon lighting, volumetric fog, highly detailed, concept art style."
+
+### Product Mockups and Advertising Shots
+-   **Template:** "Product shot of a [product] in [color/material], on a [surface/background], [lighting setup], [camera angle], [style], [quality modifiers]. No text, no watermark."
+-   **Example:** "Product shot of a minimalist ceramic mug in matte white, on a concrete pedestal in a bright studio, softbox lighting from three directions, 45-degree angle to show the handle, studio photography, clean and modern aesthetic, 8k resolution, ultra-detailed. No text, no watermark."
+
+### Stylized Character Concepts
+-   **Template:** "A [character archetype] with [key physical features], wearing [outlier/armor], [expression/pose], in a [stylic environment], [art style/artist reference], [color palette], [mood/atmosphere], highly detailed."
+-   **Example:** "A wise old wizard with a long white beard and glowing blue eyes, wearing ornate robes covered in celestial patterns, holding a crystal-topped staff, standing on a cliff overlooking a starry valley, fantasy digital painting, style of Frank Frazetta, rich deep blues and golds, mystical and powerful atmosphere, highly detailed."
 
 ## Best Practices Summary
-- Be explicit about the subject and priorities
-- Iterate: start simple, refine incrementally
-- Use negative prompts to exclude undesired elements
-- Control composition and perspective explicitly
-- Use photographic cues for realism when needed
+
+-   **Be Explicit:** The more specific you are, the better the AI can understand and execute your vision.
+-   **Iterate Relentlessly:** Start simple and add complexity gradually. Use each generation as a learning opportunity.
+-   **Structure Your Prompts:** Use a logical order (Subject -> Attributes -> Environment -> Composition -> Style -> Lighting -> Quality).
+-   **Master Negative Prompts:** Use them proactively to exclude unwanted elements and refine your results.
+-   **Learn the Language of Photography and Art:** Incorporate technical terms to achieve specific aesthetic effects.
+-   **Experiment and Have Fun:** The best way to learn is by trying new things and seeing what works.
 
 <Tip>
-Short iterative cycles with focused changes yield the most reliable results.
+  The most successful prompters treat AI image generation as a collaborative partner. You provide the vision and direction; the AI provides the execution. The better your communication (your prompt), the better the partnership.
 </Tip>
 
 ## Related Resources
@@ -162,5 +383,5 @@ Short iterative cycles with focused changes yield the most reliable results.
 </Columns>
 
 <Warning>
-Remember that text-to-image prompting techniques may vary slightly between different Vinci services. Always refer to the specific service documentation for the most accurate and up-to-date information.
+  Remember that text-to-image prompting techniques and model capabilities may evolve over time. Always refer to the latest Vinci service documentation for the most accurate and up-to-date information, and stay engaged with the community to discover new tips and tricks.
 </Warning>

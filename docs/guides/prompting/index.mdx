@@ -23,48 +23,110 @@ Master the art of effective prompting to get the best results from Vinci's AI ge
 
 ## What is Prompting?
 
-Prompting is the art of communicating with AI models through carefully crafted text instructions. The quality of your prompts directly impacts the quality, consistency, and relevance of generated content.
+Prompting is the art and science of communicating with AI models through carefully crafted text instructions, known as "prompts." These instructions guide the AI in generating desired outputs, whether they are images, videos, or other forms of content. The quality, specificity, and structure of your prompts directly impact the quality, consistency, and relevance of the generated content.
 
 <Tabs>
   <Tab title="Why Prompting Matters">
     <Info>
-      Effective prompting is the difference between generic results and content that precisely matches your vision. Well-crafted prompts help AI models understand your intent, style preferences, and technical requirements.
+      Effective prompting is the critical differentiator between generic, uninspired AI outputs and content that precisely matches your creative vision. Well-crafted prompts act as a precise blueprint, helping AI models understand your intricate intent, desired aesthetic, stylistic preferences, and technical requirements.
     </Info>
     
-    **Key Benefits:**
-    - **Higher Quality Outputs**: Clear, specific prompts produce more accurate and visually appealing results
-    - **Consistent Style**: Maintain visual consistency across multiple generations
-    - **Faster Iteration**: Reduce trial-and-error by getting closer to your desired result on the first try
-    - **Cost Efficiency**: Better prompts mean fewer regeneration attempts, optimizing your API usage
+    **Key Benefits of Mastering Prompting:**
+    - **Higher Quality Outputs**: Clear, unambiguous, and specific prompts lead to more accurate, detailed, and visually appealing results that align closely with your expectations.
+    - **Consistent Style & Theme**: By defining stylistic elements within your prompts, you can maintain visual and thematic consistency across multiple generations, crucial for projects requiring a cohesive look.
+    - **Faster Iteration & Development**: Precise prompting reduces the need for extensive trial-and-error. Getting closer to your desired result on the first few attempts significantly accelerates your creative workflow.
+    - **Optimized Resource Usage**: Better prompts mean fewer regeneration attempts and less computational overhead, leading to more efficient use of API credits and faster processing times.
+    - **Unlocking Creative Potential**: Advanced prompting techniques allow you to push the boundaries of AI capabilities, exploring novel artistic styles and complex conceptual ideas.
   </Tab>
   <Tab title="Core Principles">
     <Tip>
-      All effective prompts share these fundamental principles, regardless of the specific Vinci service you're using.
+      Regardless of the specific Vinci service (Text-to-Image, Image-to-Image, Video Generation) you're utilizing, all effective prompts adhere to these fundamental principles. Mastering them will significantly enhance your results.
     </Tip>
     
     **Essential Prompting Principles:**
-    - **Be Specific**: Use detailed descriptions rather than vague concepts
-    - **Include Technical Details**: Specify lighting, camera angles, materials, and styles
-    - **Structure Your Prompt**: Organize information logically (subject → attributes → environment → style)
-    - **Use Negative Prompts**: Explicitly state what you don't want to see
-    - **Iterate Incrementally**: Start simple and add complexity gradually
+    - **Be Specific & Detailed**: Avoid vague terms. Instead of "a car," describe "a vintage 1960s red sports car, highly detailed, parked on a cobblestone street." The more specific you are, the better the AI can interpret your vision.
+    - **Include Technical & Artistic Details**: Specify elements like lighting (e.g., "golden hour," "studio lighting"), camera angles (e.g., "wide shot," "close-up," "dutch angle"), materials (e.g., "polished chrome," "rough concrete"), textures, and artistic styles (e.g., "impressionistic," "cyberpunk," "photorealistic"). These details significantly influence the output's aesthetic.
+    - **Structure Your Prompt Logically**: Organize your prompt for clarity. A common structure is: `[Subject] + [Attributes] + [Environment/Setting] + [Lighting/Composition] + [Art Style/Medium]`. This helps the AI prioritize and interpret elements effectively.
+    - **Leverage Negative Prompts**: Explicitly tell the AI what you *don't* want to see. For example, `negative prompt: blurry, distorted, low resolution, extra limbs`. This is crucial for refining outputs and removing undesirable artifacts.
+    - **Iterate Incrementally**: Start with a simple, core concept and gradually add complexity. Test small changes, observe their impact, and refine your prompt step-by-step. This iterative approach helps you understand how each element influences the final output.
+    - **Experiment & Learn**: AI models are constantly evolving. Don't be afraid to experiment with different phrasing, keywords, and structures. Keep a log of successful prompts and learn from less successful ones.
   </Tab>
   <Tab title="Getting Started">
     <Steps>
-      ### Step 1: Understand Your Goal
-      Define what you want to create before writing your prompt. Consider the subject, style, mood, and technical requirements.
+      ### Step 1: Define Your Creative Goal
+      Before writing a single word, clearly define what you want to achieve. What is the main subject? What mood or atmosphere are you aiming for? What specific style or aesthetic do you envision? Consider the purpose of the generated content.
       
-      ### Step 2: Start with Basic Prompts
-      Begin with simple, clear descriptions to establish a foundation. Focus on the main subject and key attributes.
+      ### Step 2: Craft a Basic Prompt
+      Begin with a concise, clear description of your primary subject and its most important attributes. Focus on establishing the core idea without excessive detail.
       
-      ### Step 3: Refine and Enhance
-      Gradually add details about lighting, composition, style, and technical specifications based on your results.
+      ```
+      // Example: Basic Text-to-Image Prompt
+      A majestic lion
+      ```
       
-      ### Step 4: Use Advanced Techniques
-      Apply negative prompts, style references, and iterative editing to achieve professional-quality results.
+      ### Step 3: Refine and Enhance with Details
+      Gradually add layers of detail. Think about the environment, lighting, composition, colors, and specific artistic styles. Use descriptive adjectives and technical terms.
+      
+      ```
+      // Example: Enhanced Text-to-Image Prompt
+      A majestic lion with a flowing mane, standing on a rocky outcrop at sunset, golden hour lighting, hyperrealistic, cinematic, wide shot
+      ```
+      
+      ### Step 4: Apply Advanced Techniques
+      Introduce negative prompts to eliminate unwanted elements. Experiment with parameters like aspect ratio, guidance scale, and seed values (if available) for fine-tuning. Consider using image references for style or composition.
+      
+      ```
+      // Example: Advanced Text-to-Image Prompt with Negative Prompt
+      Prompt: A majestic lion with a flowing mane, standing on a rocky outcrop at sunset, golden hour lighting, hyperrealistic, cinematic, wide shot
+      Negative Prompt: blurry, distorted, low quality, cartoon, painting, ugly, watermark
+      ```
+      
+      ### Step 5: Iterate and Optimize
+      Review your generated results. What worked well? What needs improvement? Adjust your prompt based on the output, making small, incremental changes. This iterative process is key to achieving professional-quality results.
     </Steps>
   </Tab>
 </Tabs>
+
+## Key Elements of a Powerful Prompt
+
+While each Vinci service has its nuances, a powerful prompt generally consists of several key components that guide the AI towards your desired output. Understanding these elements will help you construct more effective and precise instructions.
+
+<Columns cols={2}>
+  <div>
+    ### Subject & Description
+    Clearly define the main subject(s) of your generation. Use vivid adjectives and descriptive phrases to elaborate on their appearance, actions, and characteristics.
+    
+    *Example: "A lone astronaut, floating gracefully in deep space, holding a glowing nebula in their hands."*
+
+    ### Environment & Setting
+    Describe the background, location, and overall scene. This sets the context and atmosphere for your subject.
+    
+    *Example: "...against a backdrop of swirling galaxies and distant stars, within a futuristic spaceship interior."*
+
+    ### Artistic Style & Medium
+    Specify the desired artistic style (e.g., "photorealistic," "oil painting," "anime," "cyberpunk," "watercolor") or medium (e.g., "digital art," "pencil sketch," "3D render"). This is crucial for controlling the aesthetic.
+    
+    *Example: "...rendered in the style of a classic sci-fi movie poster, highly detailed, volumetric lighting."*
+  </div>
+  <div>
+    ### Lighting & Composition
+    Detail the lighting conditions (e.g., "dramatic chiaroscuro," "soft natural light," "neon glow") and camera angles/composition (e.g., "wide shot," "close-up," "dutch angle," "rule of thirds"). These elements significantly impact the visual mood and focus.
+    
+    *Example: "...illuminated by a single, strong spotlight from above, low angle shot, cinematic."*
+
+    ### Quality & Detail Modifiers
+    Use keywords to enhance the overall quality and level of detail (e.g., "ultra detailed," "8k," "masterpiece," "photorealistic," "intricate").
+    
+    *Example: "...unreal engine, octane render, trending on artstation, sharp focus."*
+
+    ### Negative Prompts
+    Crucially, define what you *don't* want to see in the output. This helps the AI avoid common pitfalls and undesirable elements.
+    
+    *Example: "Negative prompt: blurry, deformed, ugly, low quality, bad anatomy, watermark, text."*
+  </div>
+</Columns>
+
+<!-- Placeholder for a visual example comparing a basic prompt output vs. an advanced prompt output -->
 
 ## Related Resources
 
@@ -94,16 +156,16 @@ Prompting is the art of communicating with AI models through carefully crafted t
 </Columns>
 
 <Warning>
-  Prompting techniques may vary slightly between different Vinci services. Always refer to the specific guide for the service you're using, and test your prompts with small generations before scaling up.
+  Prompting techniques and available parameters may vary slightly between different Vinci services and models. Always refer to the specific guide for the service you're using (e.g., [Text-to-Image](/docs/guides/prompting/text-to-image) or [Image-to-Image](/docs/guides/prompting/image-to-image)), and test your prompts with small, low-cost generations before scaling up to larger or more complex tasks.
 </Warning>
 
 ## Next Steps
 
-1. **New to Prompting?** Start with the [Prompting Tips](/docs/guides/prompting/prompting-tips) guide to learn fundamental principles
-2. **Generating Images?** Dive into the [Text-to-Image](/docs/guides/prompting/text-to-image) guide for comprehensive techniques
-3. **Editing Images?** Explore the [Image-to-Image](/docs/guides/prompting/image-to-image) guide for advanced editing workflows
-4. **Ready to Build?** Check out the [API Reference](/docs/api-reference/video-generation) to implement these techniques in your applications
+1. **New to Prompting?** Start with the [Prompting Tips](/docs/guides/prompting/prompting-tips) guide to learn fundamental principles and best practices for crafting effective prompts.
+2. **Generating Images from Text?** Dive into the [Text-to-Image](/docs/guides/prompting/text-to-image) guide for comprehensive techniques, examples, and advanced control over your image generations.
+3. **Editing or Transforming Images?** Explore the [Image-to-Image](/docs/guides/prompting/image-to-image) guide for advanced editing workflows, style transfer, and maintaining consistency.
+4. **Ready to Build?** Check out the [API Reference](/docs/api-reference/video-generation) to implement these powerful prompting techniques directly within your applications and workflows.
 
 <Tip>
-  Bookmark this page as your central hub for all prompting-related documentation. As we add more guides and update existing ones, this index will always point you to the latest resources.
+  Bookmark this page as your central hub for all prompting-related documentation. As we add more guides, update existing ones, and introduce new models, this index will always point you to the latest and most comprehensive resources for mastering AI prompting with Vinci.
 </Tip>
