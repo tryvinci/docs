@@ -22,8 +22,10 @@
       "alt": "Vinci"
     },
     "links": [
-      { "label": "Get Support", "href": "mailto:team@tryvinci.com", "icon": "headset" },
-      { "label": "Go to App", "href": "https://app.tryvinci.com", "icon": "rocket" }
+      { "label": "Support", "href": "mailto:team@tryvinci.com", "icon": "headset" },
+      { "label": "Go to App", "href": "https://app.tryvinci.com", "icon": "rocket" },
+      { "label": "Discord", "href": "https://tryvinci.com/discord", "icon": "discord" }
+
     ]
   },
   "search": { "enabled": true },
