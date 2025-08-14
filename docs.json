@@ -1,6 +1,6 @@
 {
   "$schema": "https://mintlify.com/docs.schema.json",
-  "name": "Vinci Docs",
+  "name": "Docs",
   "description": "Complete API documentation and guides for Vinci's AI-powered video generation, image creation, translation services, and digital content APIs",
   "theme": "mint",
   "favicon":"/favicon.svg",
