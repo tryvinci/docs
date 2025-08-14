@@ -8,30 +8,23 @@
     "dark": "#0b0b0c"
   },
   "logo": {
-    "light": "https://app.tryvinci.com/images/logo-name-light.png",
-    "dark": "https://app.tryvinci.com/images/logo-name-dark.png",
+    "light": "/logo/logo-light.svg",
+    "dark": "/logo/logo-dark.svg",
     "alt": "Vinci",
-    "href": "https://docs.tryvinci.com",
-    "width": "8em",
-    "height": "auto"
+    "href": "https://docs.tryvinci.com"
   },
   "navbar": {
     "logo": {
       "title": "Vinci",
-      "light": "https://app.tryvinci.com/images/logo-name-light.png",
-      "dark": "https://app.tryvinci.com/images/logo-name-dark.png",
+      "light": "/logo/logo-light.svg",
+      "dark": "/logo/logo-dark.svg",
       "href": "https://docs.tryvinci.com",
-      "alt": "Vinci",
-      "width": "8em",
-      "height": "auto"
+      "alt": "Vinci"
     },
     "links": [
-      { "label": "Get Support", "href": "https://tryvinci.com/blog/category/newsletter", "icon": "life-buoy" }
-    ],
-    "cta": {
-      "text": "Go to App",
-      "url": "https://app.tryvinci.com"
-    }
+      { "label": "Get Support", "href": "https://tryvinci.com/blog/category/newsletter", "icon": "life-buoy" },
+      { "label": "Go to App", "href": "https://app.tryvinci.com", "icon": "rocket" }
+    ]
   },
   "search": { "enabled": true },
   "navigation": {
