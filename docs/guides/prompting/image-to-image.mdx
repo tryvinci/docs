@@ -1,337 +1,166 @@
 ---
 title: "Prompting Guide - Image-to-Image"
-description: "Master the art of image editing, style transfer, and maintaining character consistency with Vinci's comprehensive Image-to-Image prompting guide."
+description: "Detailed prompting best practices for image editing and style transfer."
 ---
 
-import { Tip, Warning, Info, Columns, Tabs, Tab, Card, Steps, Frame } from 'nextra/components'
-
-# Image-to-Image Prompting Guide
-
 <Tip>
-  Maximum prompt token is 512 tokens. While you can use the full budget, concise and highly specific prompts often yield better results for Image-to-Image tasks, as they leave less room for unintended interpretation.
+Maximum prompt length is 512 tokens or about 2000 characters.
 </Tip>
 
-## Overview
+**Overview**
+This guide consolidates best practices for editing images using Kontext-style image-to-image workflows.
 
-Welcome to the definitive guide for Image-to-Image generation and editing with Vinci. This powerful capability allows you to transform existing images, apply new styles, modify objects, and maintain character consistency across different scenes. This guide consolidates best practices for advanced image manipulation workflows, drawing from leading models like FLUX Kontext and adapting them specifically for the Vinci ecosystem.
+## Basic Object Modifications
+Kontext is effective for straightforward object modifications such as recolors, replacing objects, or minor retouching.
 
-Whether you're a photographer looking to retouch images, a digital artist exploring style transfer, or a creator needing to maintain character consistency across different scenes, this guide will provide you with the knowledge to craft precise and effective prompts.
+Example prompt:
+"Change the color of the yellow car to deep cherry red while preserving reflections and highlights."
 
-<Info>
-  For fundamental prompting principles that apply to all Vinci services, see the [Prompting Tips](/docs/guides/prompting/prompting-tips) guide. This guide assumes you're familiar with those core concepts and dives deeper into the nuances of Image-to-Image generation.
-</Info>
+[Placeholder image: Input image — add image here]
 
-## Understanding the Image-to-Image Paradigm
+[Placeholder image: Output image — add image here]
 
-Image-to-Image (I2I) is fundamentally different from Text-to-Image (T2I). Instead of creating an image from scratch, you are providing a "seed" image and instructing the AI to modify, enhance, or transform it based on your text prompt. This process requires a different mindset and set of techniques.
+## Prompt Precision: From Basic to Comprehensive
 
-### Key Concepts in I2I
+<Tip>
+Be explicit when you need precise control; concise prompts can sometimes change unintended aspects.
+</Tip>
 
--   **Input Image (The Seed):** The starting point for your generation. The AI uses this image as a reference for composition, subject matter, and basic layout.
--   **Prompt (The Instruction):** Your text command that tells the AI *how* to modify the input image. This is where you specify changes, styles, and what to preserve.
--   **Strength/Control Parameter (If Available):** Many I2I models have a parameter that controls how much the input image influences the output. A lower value means more creative freedom, while a higher value stays closer to the original.
--   **Preservation vs. Transformation:** The core balancing act in I2I. You need to clearly communicate which elements of the original image should remain unchanged and which should be significantly altered.
+### Quick Edits
+Simple prompts can work but may alter style or composition.
 
-## Basic Object and Attribute Modifications
+Prompt example:
+"Change to daytime"
 
-One of the most common and powerful uses of I2I is for straightforward object modifications. This includes recoloring, replacing objects, minor retouching, or altering attributes while maintaining the integrity of the original image.
+[Placeholder image: Input image for quick edit]
+[Placeholder image: Output 1]
+[Placeholder image: Output 2]
 
-### Types of Basic Modifications
+### Controlled Edits
+Add preservation instructions to keep style and composition similar to the input.
 
--   **Recoloring:** Changing the color of an object or element while preserving its texture, highlights, and shadows.
--   **Object Replacement:** Swapping one object for another (e.g., changing a car model, replacing a piece of fruit).
--   **Attribute Alteration:** Changing specific properties of a subject (e.g., changing hair length, adding glasses, altering facial expression).
--   **Retouching:** Removing small blemishes, dust, or unwanted elements from an image.
-
-**Example Prompt:**
-"Change the color of the yellow sports car to deep cherry red, preserving all reflections, highlights, and shadows on the car's surface to maintain its realistic appearance."
-
-[Placeholder image: Input image of a yellow sports car]
-[Placeholder image: Output image of the same car in cherry red]
-
-### Crafting Effective Modification Prompts
-
-The key to successful object modification is to be explicit about what you want to change and, just as importantly, what you want to preserve.
-
-**Good Prompt Structure:**
-1.  **Action:** What do you want to do? (e.g., "Change," "Replace," "Remove," "Add")
-2.  **Target:** What specific object or element? (e.g., "the yellow car," "the woman's glasses")
-3.  **Details:** What are the specifics of the change? (e.g., "to deep cherry red," "with a modern, thin-rimmed style")
-4.  **Preservation Instructions:** What must stay the same? (e.g., "preserving reflections and highlights," "keeping the same facial expression")
-
-**Example:**
-"Replace the man's blue t-shirt with a white henley shirt, maintaining the same fit, wrinkles, and how it's tucked into his jeans. Keep his expression and the lighting exactly as they are in the original image."
-
-## The Spectrum of Prompt Precision: From Quick Edits to Complex Transformations
-
-Not all I2I prompts require the same level of detail. Understanding where on the precision spectrum your task lies can help you craft the most efficient prompt.
-
-### Quick and Simple Edits
-
-For very minor changes or when you're willing to accept some stylistic drift, simple prompts can work.
-
-**Prompt Example:**
-"Make the sky blue."
-
-*Analysis:* This is simple and direct, but the AI might also alter the overall brightness, contrast, or even the style of the rest of the image to match the new sky.
-
-[Placeholder image: Input image with a grey/overcast sky]
-[Placeholder image: Output 1: Sky is blue, rest of image is slightly brighter]
-[Placeholder image: Output 2: Sky is blue, but the image has a more painterly look]
-
-### Controlled Edits with Preservation
-
-When you need to maintain the original style and composition, you must add explicit preservation instructions.
-
-**Prompt Example:**
-"Change the sky to a bright blue while maintaining the original photographic style and composition of the image."
-
-*Analysis:* This prompt is much more specific. It tells the AI *what* to change (the sky) and *what* to keep (the style and composition).
+Prompt example:
+"Change to daytime while maintaining the same style of the painting"
 
 [Placeholder image: Input image for controlled edit]
-[Placeholder image: Controlled edit output: Sky is blue, but the rest of the image looks identical in style and layout]
+[Placeholder image: Controlled edit output]
 
-### Complex, Multi-Step Transformations
+### Complex Transformations
+For multiple simultaneous changes include clear, ordered instructions and prioritize the most important changes.
 
-For tasks that involve changing multiple elements simultaneously, you need to provide clear, ordered instructions and prioritize the most important changes.
-
-**Prompt Example:**
-"Transform this image in three ways: 1) Change the setting from an office to a cozy living room. 2) Add a cat sleeping on the windowsill. 3) Ensure the lighting remains warm and consistent with the original's mood. Keep the main subject in the exact same position and pose."
-
-*Analysis:* This prompt breaks down a complex request into manageable parts, sets priorities, and gives clear preservation instructions.
+Prompt example:
+"Change the setting to daytime, add several people walking on the sidewalk, keep the original painting style and composition"
 
 [Placeholder image: Input image for complex transform]
-[Placeholder image: Complex transform output: Person is in a living room, a cat is on the windowsill, lighting is consistent]
+[Placeholder image: Complex transform output]
 
-## Mastering Style Transfer
+## Style Transfer
+Use direct style names, artist references, and descriptive characteristics.
 
-Style transfer is one of the most creative applications of I2I. It allows you to apply the artistic style of one image to the content of another. This can be done using text descriptions or by providing a separate style reference image.
-
-### Text-Based Style Transfer
-
-You can instruct the AI to apply a specific style described purely in text.
-
-**Framework for Text-Based Style Transfer:**
-
-1.  **Identify the Target Style:** Name the specific style, art movement, or artist.
-2.  **Describe Key Characteristics:** Use adjectives to describe the visual hallmarks of that style (brushstrokes, color palette, texture, mood).
-3.  **Instruct Application:** Tell the AI to apply this style to the input image.
-4.  **Preserve Content (Optional but Recommended):** Explicitly state that the original content and composition should be preserved.
-
-**Example Prompts:**
--   "Apply a Van Gogh-inspired style to this photograph, with thick swirling brushstrokes and vibrant, expressive colors, while preserving the original subjects and composition."
--   "Transform this portrait into a classic Renaissance painting style, with soft lighting, idealized features, and a rich color palette."
--   "Give this cityscape a cyberpunk aesthetic, with neon lights, rain-slicked streets, and a moody, high-contrast atmosphere."
+### Using textual style prompts
+1. Name the specific style (e.g., "Bauhaus", "watercolor", "film noir")
+2. Reference artists or movements when appropriate
+3. Describe key characteristics: brushstrokes, color palette, texture
+4. Preserve composition if needed: "keep original composition and object placement"
 
 [Placeholder image: Architectural photo input]
+
 <Columns cols={2}>
-<Frame caption="Converted to Pencil Sketch">
-[Placeholder image: Output — Pencil sketch style applied to the architectural photo]
+<Frame caption="Converted to pencil sketch">
+[Placeholder image: Output — pencil sketch]
 </Frame>
 
-<Frame caption="Transformed to Oil Painting">
-[Placeholder image: Output — Oil painting style applied to the architectural photo]
+<Frame caption="Transformed to oil painting">
+[Placeholder image: Output — oil painting]
 </Frame>
 </Columns>
 
-### Image-to-Image Style Transfer (Using a Style Reference)
+### Using an input image as a style reference
+Provide the style image as a reference and then describe the content you want in that style.
 
-This is a more advanced technique where you provide a second image that serves as the visual style reference.
+Prompt example:
+"Using this style reference image, create a scene where a bunny, a dog, and a cat are having a tea party around a small white table."
 
-**How to Use a Style Reference:**
-1.  **Provide the Style Image:** Upload or select the image whose style you want to emulate.
-2.  **Describe the Content:** In your prompt, describe the content from your *input image* that you want to see rendered in the style of your *style reference image*.
+[Placeholder image: Style reference]
+[Placeholder image: Generated output using style reference]
 
-**Prompt Example:**
-"Using this [style reference image of a watercolor painting of a forest], apply its loose brushstrokes, soft color bleeds, and textured paper effect to the [input image of a modern city skyline]. Maintain the composition and buildings from the input image but render them in the watercolor style."
+## Iterative editing & character consistency
+Kontext preserves character identity well when prompts explicitly request preservation.
 
-[Placeholder image: Style reference - a watercolor painting]
-[Placeholder image: Input image - a city skyline]
-[Placeholder image: Generated output - city skyline rendered in the watercolor style]
+Framework to maintain character consistency:
+- Establish the reference: "The woman with short black hair and a mole on her left cheek..."
+- Specify the transformation: environment, activity, or style
+- Preserve identity markers: "maintain the same facial features, hairstyle and expression"
 
-## The Art of Iterative Editing and Character Consistency
+Example prompts in editing sequences:
+1) "Remove the sunglasses from the woman's face while keeping expression unchanged"
+2) "Place the same woman in a snowy street while preserving facial features and pose"
 
-One of the most powerful features of I2I is its ability to maintain character identity across different scenes, poses, and styles. This is invaluable for creating character sheets, storyboards, or consistent avatars.
+[Placeholder image: Reference character]
+[Placeholder image: Iteration step 1 output]
+[Placeholder image: Iteration step 2 output]
 
-### Framework for Maintaining Character Consistency
+## Text Editing in images
+Use quotation marks around exact text you want to change.
 
-To ensure your character remains recognizable across iterations, follow this framework:
+Prompt structure:
+Replace '[original text]' with '[new text]'
 
-1.  **Establish a Strong Reference:** Start with a high-quality, clear image of your character. The more detail the AI has to work with, the better it can preserve identity.
-2.  **Use Identity Markers in Your Prompt:** In each subsequent prompt, explicitly reference the key features that define your character.
-3.  **Specify the Transformation:** Clearly state what you want to change (environment, action, style).
-4.  **Reinforce Preservation:** Continually instruct the AI to preserve the core identity markers.
+Example:
+"Replace 'Choose joy' with 'Choose BFL' while maintaining original font, color and size"
 
-**Key Identity Markers to Preserve:**
--   **Facial Features:** Shape of eyes, nose, mouth; distance between features.
--   **Hairstyle and Color:** Length, texture, color, part.
--   **Skin Tone and Complexion:** Freckles, moles, skin texture.
--   **Distinguishing Features:** Glasses, scars, tattoos, jewelry.
--   **Body Type and Posture:** General build and how the character holds themselves.
+[Placeholder image: Sign with text 'Choose joy']
+[Placeholder image: Sign changed to 'Choose BFL']
 
-### Example Iteration Sequence
+Best practices for text edits:
+- Use exact punctuation and casing
+- Ask to preserve font, color, size, and layout when necessary
+- Keep replacement text similar in length to avoid layout issues
 
-**Reference Image:** A woman with short black hair, a distinctive mole on her left cheek, and wearing a red jacket.
+## Visual cues & masks
+Use visual markers, masks, or bounding descriptions to indicate where edits should occur.
 
-**Prompt 1 (Change of Expression):**
-"Keep the woman with short black hair and the mole on her left cheek exactly as she is. Change her expression from neutral to a warm, genuine smile. Do not alter her clothing, hair, or the background."
+Example:
+"Add hats inside the three boxes drawn on the upper right quadrant"
 
-[Placeholder image: Reference character - neutral expression]
-[Placeholder image: Iteration 1 output - same character, now smiling]
+[Placeholder image: Input with boxes]
+[Placeholder image: Output with hats added]
 
-**Prompt 2 (Change of Environment):**
-"Take the same woman with short black hair and the mole on her left cheek, who is now smiling. Place her in a bustling Parisian café street scene. Keep her facial features, hairstyle, expression, and red jacket identical. Ensure she is looking directly at the camera with the same warm smile."
+## Troubleshooting: When results don't match expectations
 
-[Placeholder image: Iteration 2 output - Character is now in a Paris street, but her face and clothing are identical]
+- If the model changes parts you wanted preserved, explicitly state what should remain unchanged: "Keep everything else in the image identical"
+- For character identity drift, enforce identity markers: "preserve exact facial features, hairstyle, eye color"
+- If composition shifts unintentionally, state: "Keep the subject in the exact same position, scale, and pose"
 
-**Prompt 3 (Style Transfer):**
-"Apply a film noir style to this image of the woman with short black hair and the mole on her left cheek. Keep her facial features, hairstyle, expression, and red jacket exactly as they are. Change the lighting to dramatic, high-contrast black and white with strong shadows."
+### Composition control
+Vague prompts like "put him on a beach" can change framing and camera angle.
+Prefer:
+"Change the background to a sunny beach while keeping the person in the exact same position, scale, pose, camera angle, framing and perspective. Only replace the environment around them."
 
-[Placeholder image: Iteration 3 output - Character is now in a film noir style, but her identity is preserved]
+[Placeholder image: Composition input]
+[Placeholder image: Composition-preserved output]
 
-## Precise Text Editing in Images
-
-Editing text within an image using I2I can be tricky, but with the right technique, you can achieve excellent results.
-
-### The Quotation Mark Technique
-
-The most reliable method for text editing is to put the exact text you want to change in quotation marks.
-
-**Prompt Structure:**
-"Replace '[exact original text]' with '[new text]'"
-
-**Example:**
-"Replace the text 'OPEN' on the neon sign with 'CLOSED'."
-
-[Placeholder image: Input image - a neon sign that says 'OPEN']
-[Placeholder image: Output image - the same sign now says 'CLOSED']
-
-### Best Practices for Text Editing
-
--   **Be Exact with Punctuation and Casing:** The AI needs to match the text precisely. If the original is "Open Now," don't just use "open."
--   **Preserve Stylistic Elements:** Explicitly ask the AI to maintain the font, color, size, and layout.
-    -   *Example:* "Replace 'OPEN' with 'CLOSED' while maintaining the original neon tube font, bright red color, and curved layout of the sign."
--   **Keep Replacement Text Similar in Length:** Drastic changes in text length can distort the image or require complex layout adjustments. If you need to change a short word to a long one, consider if a different approach might be better.
--   **Handle Complex Layouts:** For text that is part of a larger design (e.g., on a book cover or a complex graphic), you may need to be even more specific.
-    -   *Example:* "On the book cover, replace the title 'The Old Man' with 'The Last Guardian'. Keep the title in the same position, using the same gold foil embossing effect and serif font. Ensure the author's name below remains unchanged."
-
-## Advanced Control: Visual Cues, Masks, and Spatial Awareness
-
-For ultimate precision, you can use visual cues or even masks (if supported by the platform) to guide the AI to specific areas of the image.
-
-### Using Visual Cues and Bounding Descriptions
-
-If you can't use actual masks, you can describe the location of the area you want to edit.
-
-**Example:**
-"In the upper left quadrant of the image, where the bookshelf is, add a small, sleeping cat curled up on one of the lower shelves."
-
-[Placeholder image: Input image with a bookshelf in the upper left]
-[Placeholder image: Output image with a cat added to the bookshelf]
-
-### Describing Spatial Relationships
-
-You can also instruct the AI to place objects in relation to other objects in the scene.
-
-**Example:**
-"Add a steaming cup of coffee to the desk, directly to the right of the laptop and slightly in front of the keyboard."
-
-[Placeholder image: Input image of a desk with a laptop]
-[Placeholder image: Output image with a coffee cup added as described]
-
-## Troubleshooting Common I2I Issues
-
-Even with the best prompts, things can sometimes go wrong. Here's how to diagnose and fix common problems.
-
-### The Model Changes Something I Wanted to Preserve
-
-This is the most common issue in I2I. The solution is to be more explicit and forceful in your preservation instructions.
-
--   **Vague:** "Keep the rest the same."
--   **Specific:** "Keep everything else in the image identical. Do not change the colors, lighting, composition, or style of any other elements. Only modify the [specific element] as described."
-
-**Example Fix:**
-If the AI changes the background when you only wanted to change the subject's shirt, your prompt should be:
-"Change the subject's t-shirt from blue to green. Keep the background, lighting, shadows, and overall composition of the image completely and totally unchanged. Do not alter the colors or style of the background in any way."
-
-### Character Identity Drifts Across Iterations
-
-If your character starts to look different after a few iterations, you need to reinforce their identity markers.
-
--   **Problem:** "The woman's face looks different."
--   **Solution:** "Ensure the woman's facial features remain identical to the original reference. Specifically, preserve the shape of her eyes, the distance between her nose and mouth, and her unique smile. Do not alter her bone structure or facial proportions."
-
-### Composition or Framing Changes Unintentionally
-
-Vague prompts about changing the background can cause the AI to alter the subject's position or the camera angle.
-
--   **Vague:** "Put him on a beach."
--   **Specific:** "Change the background to a sunny beach. Keep the man in the exact same position, scale, pose, and camera angle. Only replace the environment around him. Do not move him or change how he is framed in the shot."
-
-[Placeholder image: Composition input - person in a studio]
-[Placeholder image: Composition-preserved output - person is now on a beach, but in the exact same position and pose]
-
-### The Style Isn't Applying Correctly
-
-If the style transfer isn't working as expected, your description might be too vague. Add more detail about the specific characteristics of the style.
-
--   **Weak:** "Make it look like a painting."
--   **Strong:** "Convert this photograph to an oil painting style, with visible brushstrokes, a rich impasto texture, and a warm, Rembrandt-like color palette. Emphasize the play of light and shadow characteristic of Baroque painting."
+### Style not applying correctly
+Use richer style descriptions:
+"Convert to pencil sketch with natural graphite lines, cross-hatching, and subtle paper texture"
 
 [Placeholder image: Input photo]
-[Placeholder image: Precise style transfer output - photo converted to a detailed oil painting]
+[Placeholder image: Precise sketch output]
 
-## Safety and Ethical Considerations
-
-When using I2I for editing or modifying images, it's crucial to be mindful of ethical guidelines and potential misuse.
-
--   **Respect Copyright and Artist Rights:** When doing style transfer, be cautious about directly copying the style of living artists without permission or context. Use descriptive language instead of just naming an artist.
--   **Avoid Misinformation:** Do not use I2I to create deceptive content, such as fake news images or misleading social media posts that could harm individuals or spread falsehoods.
--   **Privacy and Consent:** Be careful when editing images of people, especially to alter their appearance or actions in ways they did not consent to. Avoid creating deepfakes or other non-consensual imagery.
--   **Obfuscate Personal Information:** If you are editing an image that contains sensitive personal information (e.g., license plates, faces in the background of a public photo), consider blurring or obfuscating it.
+## Safety & Content Guidelines
+- Avoid requesting generation of disallowed content (follow your platform's content policy)
+- Obfuscate or avoid personal identifying edits if you do not have consent
 
 ## Best Practices Summary
-
--   **Be Explicit and Specific:** The more precise your instructions, the less room there is for error. Don't assume the AI will infer what you want to preserve.
--   **Iterate Incrementally:** Make one major change per prompt. This makes it easier to identify what works and what doesn't.
--   **Preserve Intentionally:** Always state what should remain unchanged, especially for critical elements like faces, composition, and style.
--   **Use Quotes for Text Edits:** "Replace 'X' with 'Y'" is your most reliable tool for text manipulation.
--   **Control Composition Rigorously:** Specify "keep the subject in the exact same position, scale, and pose" to prevent unwanted shifts.
--   **Choose Your Verbs Wisely:** "Transform" implies a more dramatic change than "change the color of." Use the most accurate verb for your intent.
--   **Start with a Good Input Image:** The quality of your I2I result is heavily dependent on the quality of your seed image.
+- Be specific: use exact descriptors for color, lighting, and materials
+- Start simple: make incremental changes and iterate
+- Preserve intentionally: call out what must not change
+- Use quotes for text edits: "Replace 'X' with 'Y'"
+- Control composition explicitly: specify camera angle, framing, and subject placement
+- Choose verbs carefully: "transform" often implies full replacement; "change the clothes" is more focused
 
 <Tip>
-  Think of Image-to-Image as a collaborative editing session with a very talented, but very literal, artist. The better your instructions (your prompt), the more accurately they will execute your vision while respecting the constraints you provide.
+Making instructions explicit helps accuracy; keep edits limited to a few clear directives per prompt.
 </Tip>
 
-## Related Resources
-
-<Columns cols={2}>
-  <div>
-    ### Related Prompting Guides
-    - [Prompting Tips](/docs/guides/prompting/prompting-tips) - Fundamental principles for all services
-    - [Text-to-Image Guide](/docs/guides/prompting/text-to-image) - Comprehensive image generation techniques
-    - [Prompting Guides Index](/docs/guides/prompting/index) - Complete prompting resources
-    
-    ### Platform Integration
-    - [Image Generation Platform Guide](/docs/guides/platform/image-generation) - Front-end workflows
-    - [Platform Services Overview](/docs/guides/platform/index) - All Vinci platform features
-  </div>
-  <div>
-    ### API Documentation
-    - [Image-to-Video API](/docs/api-reference/image-to-video) - Implementation details
-    - [Status Checking](/docs/api-reference/status-checking) - Monitor generation progress
-    - [Error Handling](/docs/guides/error-handling) - Troubleshoot common issues
-    
-    ### Getting Started
-    - [Quickstart Guide](/quickstart) - First API call in 5 minutes
-    - [Getting Started Tutorial](/docs/guides/getting-started) - Comprehensive walkthrough
-    - [Authentication & API Keys](/essentials/authentication) - Setup and security
-  </div>
-</Columns>
-
-<Warning>
-  Remember that Image-to-Image prompting techniques and available parameters may vary slightly between different Vinci services. Always refer to the specific service documentation for the most accurate and up-to-date information, and experiment with the platform's features to understand its unique capabilities.
-</Warning>
-
-[Placeholder section for a gallery of advanced I2I examples — this could showcase complex style transfers, multi-character consistency, and impressive before/after edits with detailed prompt breakdowns for each.]
+[Placeholder section for example prompts and executions — add example images and model responses here]
