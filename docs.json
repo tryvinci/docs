@@ -11,7 +11,9 @@
     "light": "https://app.tryvinci.com/images/logo-name-light.png",
     "dark": "https://app.tryvinci.com/images/logo-name-dark.png",
     "alt": "Vinci",
-    "href": "https://docs.tryvinci.com"
+    "href": "https://docs.tryvinci.com",
+    "width": "8em",
+    "height": "auto"
   },
   "navbar": {
     "logo": {
@@ -19,7 +21,9 @@
       "light": "https://app.tryvinci.com/images/logo-name-light.png",
       "dark": "https://app.tryvinci.com/images/logo-name-dark.png",
       "href": "https://docs.tryvinci.com",
-      "alt": "Vinci"
+      "alt": "Vinci",
+      "width": "8em",
+      "height": "auto"
     },
     "links": [
       { "label": "Get Support", "href": "https://tryvinci.com/blog/category/newsletter", "icon": "life-buoy" }
@@ -52,15 +56,16 @@
             "pages": [
               "essentials/authentication",
               "essentials/api-keys",
-              "essentials/pricing"
+              "essentials/pricing",
+              "docs/guides/getting-started",
+              "docs/guides/billing-usage",
+              "docs/guides/error-handling"
             ]
           },
           {
             "group": "Guides",
             "icon": "graduation-cap",
             "pages": [
-              "docs/guides/getting-started",
-              "docs/guides/billing-usage",
               {
                 "group": "Prompting Guides",
                 "icon": "sparkles",
@@ -71,15 +76,10 @@
                   "docs/guides/prompting/image-to-image"
                 ]
               },
-              "docs/guides/error-handling",
-              "docs/guides/webhooks",
-              "docs/guides/sdks",
               {
                 "group": "Platform Services",
                 "icon": "rocket",
                 "pages": [
-                  "docs/guides/platform/index",
-                  "docs/guides/platform/platform-overview",
                   "docs/guides/platform/ai-actors",
                   "docs/guides/platform/image-generation",
                   "docs/guides/platform/video-generation",
@@ -108,6 +108,8 @@
             "icon": "cube",
             "pages": [
               "docs/platform/overview",
+              "docs/guides/platform/index",
+              "docs/guides/platform/platform-overview",
               "docs/platform/explore",
               "docs/platform/assets",
               "docs/platform/services"
