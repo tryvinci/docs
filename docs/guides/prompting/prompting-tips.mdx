@@ -3,297 +3,179 @@ title: "Prompting Tips"
 description: "Master the art of writing effective prompts for superior AI-generated content with Vinci."
 ---
 
-import { Cards, Card, Tabs, Tab, Note, Tip, Warning, Info, Columns } from 'nextra/components'
-
 # Prompting Tips
 
-Master the art of writing effective prompts to unlock the full potential of Vinci's AI generation capabilities. This guide provides comprehensive best practices, detailed explanations, and practical examples to help you craft prompts that consistently yield high-quality, accurate, and creative results across all Vinci services.
+Master the art of writing effective prompts to unlock the full potential of Vinci's AI generation capabilities. This guide provides comprehensive best practices and practical examples to help you craft prompts that consistently yield high-quality results across all Vinci services.
 
-Info>
-  While these tips are broadly applicable, remember that specific services like [Text-to-Image](/docs/guides/prompting/text-to-image) and [Image-to-Image](/docs/guides/prompting/image-to-image) may have their own nuances and advanced techniques. Always refer to the specific guide for the service you're primarily using.
+<Info>
+While these tips are broadly applicable, remember that specific services like [Text-to-Image](/docs/guides/prompting/text-to-image) and [Image-to-Image](/docs/guides/prompting/image-to-image) may have their own nuances and advanced techniques.
 </Info>
 
 ## Core Principles of Effective Prompting
 
-Before diving into specific tips, it's essential to understand the foundational principles that govern all effective prompting. These principles are the bedrock upon which successful AI interactions are built.
-
-<Tabs>
-  <Tab title="Clarity and Specificity">
-    <Tip>
-      The most common reason for unsatisfactory AI outputs is ambiguity. The more precise and unambiguous your prompt, the more likely the AI will generate content that matches your vision.
-    </Tip>
-    
-    **Why Specificity Matters:**
-    AI models interpret language based on patterns and associations. Vague terms can lead to unpredictable results, while specific descriptions provide clear guidance.
-    
-    **From Vague to Specific:**
-    - **Vague:** "A dog"
-    - **Specific:** "A golden retriever puppy with soft, fluffy fur, sitting attentively in a sunlit garden, tongue slightly out"
-    
-    **Key Strategies:**
-    - Use concrete nouns and vivid adjectives
-    - Specify colors, textures, sizes, and quantities
-    - Define the exact subject rather than using general categories
-    - Avoid pronouns that could refer to multiple subjects
-  </Tab>
-  <Tab title="Contextual Detailing">
-    <Info>
-      Context helps the AI understand not just *what* you want, but also *how* and *where* you want it. This includes environmental details, lighting, mood, and composition.
-    </Info>
-    
-    **Essential Contextual Elements:**
-    - **Environment/Setting:** Where does the scene take place? (e.g., "on a bustling city street," "in a cozy library," "floating in zero gravity")
-    - **Lighting:** What are the lighting conditions? (e.g., "soft morning light," "dramatic studio lighting," "neon glow," "backlit silhouette")
-    - **Atmosphere/Mood:** What feeling should the image evoke? (e.g., "serene and peaceful," "tense and mysterious," "joyful and energetic")
-    - **Composition:** How are elements arranged? (e.g., "rule of thirds," "centered subject," "dynamic diagonal lines")
-    
-    **Example:**
-    - **Basic:** "A person reading a book"
-    - **With Context:** "A person reading a book in a cozy armchair by a crackling fireplace, warm golden light illuminating the room, soft shadows, peaceful and intimate atmosphere"
-  </Tab>
-  <Tab title="Artistic and Technical Direction">
-    <Warning>
-      Failing to specify style or technical aspects often results in generic outputs. Providing these directions is crucial for achieving a particular aesthetic or quality level.
-    </Warning>
-    
-    **Artistic Style:**
-    - Specify the desired art movement, genre, or artist's style (e.g., "in the style of Van Gogh," "cyberpunk aesthetic," "minimalist line art," "photorealistic")
-    - Mention the medium (e.g., "oil painting," "watercolor," "digital illustration," "3D render")
-    
-    **Technical Specifications:**
-    - **Camera Angles:** "wide shot," "close-up," "overhead view," "dutch angle," "low angle"
-    - **Focus/Depth of Field:** "shallow depth of field," "sharp focus," "bokeh background"
-    - **Quality Enhancers:** "highly detailed," "8k resolution," "ultra realistic," "masterpiece," "trending on artstation"
-    - **Render Engine:** "unreal engine," "octane render," "cinematic lighting"
-    
-    **Example:**
-    - **Basic:** "A car"
-    - **With Direction:** "A vintage 1960s red sports car, highly detailed, polished chrome finish, parked on a wet cobblestone street at night, reflections from neon signs, cinematic low-angle shot, shallow depth of field, photorealistic, unreal engine render"
-  </Tab>
-</Tabs>
-
-## Structuring Your Prompt for Maximum Impact
-
-How you organize the elements within your prompt can significantly influence how the AI interprets and prioritizes your instructions. A well-structured prompt acts as a clear roadmap for the AI.
-
-### Recommended Prompt Structure
-
-A robust prompt often follows a logical flow, starting with the core subject and progressively adding layers of detail.
-
-1.  **Core Subject:** Start with the main subject or action.
-    *   *Example: "A majestic lion"*
-
-2.  **Attributes & Details:** Describe the subject's appearance, characteristics, and actions.
-    *   *Example: "with a flowing golden mane, intense green eyes, roaring powerfully"*
-
-3.  **Environment & Setting:** Place the subject in a specific context or location.
-    *   *Example: "on a rocky outcrop overlooking the African savannah at sunset"*
-
-4.  **Lighting & Atmosphere:** Define the mood and visual tone through lighting and environmental effects.
-    *   *Example: "dramatic golden hour lighting, long shadows, warm and epic atmosphere"*
-
-5.  **Composition & Camera:** Specify the viewpoint, framing, and technical composition.
-    *   *Example: "wide-angle shot, rule of thirds, cinematic depth"*
-
-6.  **Art Style & Quality:** Conclude with the desired aesthetic and quality modifiers.
-    *   *Example: "hyperrealistic, highly detailed, National Geographic photography style"*
-
-**Putting it all together:**
-"A majestic lion with a flowing golden mane and intense green eyes, roaring powerfully, on a rocky outcrop overlooking the African savannah at sunset, dramatic golden hour lighting with long shadows, warm and epic atmosphere, wide-angle shot using rule of thirds, cinematic depth, hyperrealistic, highly detailed, National Geographic photography style."
-
-### Advanced Prompting Techniques
-
-Once you're comfortable with the basics, these advanced techniques can help you achieve even more refined and creative results.
-
-#### The Power of Negative Prompts
-
-Negative prompts are arguably one of the most powerful tools in a prompt engineer's arsenal. They explicitly tell the AI what to *avoid* in the generated output.
-
-**Why Use Negative Prompts:**
-- To eliminate common AI artifacts (e.g., extra limbs, distorted faces, blurry text)
-- To enforce stylistic consistency (e.g., `no cartoon style` for a photorealistic image)
-- To remove unwanted elements (e.g., `no text`, `no watermark`, `no people`)
-
-**Common Negative Prompt Terms:**
-- Quality/Artifacts: `blurry, distorted, deformed, ugly, low quality, bad anatomy, extra limbs, fused fingers, poorly drawn hands, mutated, disfigured`
-- Style: `cartoon, painting, sketch, 3D, illustration, watermark, text, signature`
-- Content: `people, person, animals, building, car` (use when you want a specific subject excluded)
+Before diving into specific tips, it's essential to understand the foundational principles that govern all effective prompting.
 
-**Example:**
-- **Positive Prompt:** "A serene landscape of a mountain lake at dawn"
-- **Negative Prompt:** "blurry, distorted, low quality, ugly, bad anatomy, people, buildings, cars, text, watermark"
+### Clarity and Specificity
 
-#### Iterative Refinement
+<Tip>
+The most common reason for unsatisfactory AI outputs is ambiguity. The more precise and unambiguous your prompt, the more likely the AI will generate content that matches your vision.
+</Tip>
 
-Rarely will you get the perfect result on the first try. Treat prompting as an iterative process of refinement.
+**Why Specificity Matters:**
+AI models interpret language based on patterns and associations. Vague terms can lead to unpredictable results, while specific descriptions provide clear guidance.
 
-**The Iterative Process:**
-1.  **Start Simple:** Begin with a clear, basic prompt to establish the core concept.
-2.  **Analyze the Output:** What did the AI get right? What went wrong? What's missing?
-3.  **Make Targeted Adjustments:** Add, remove, or modify specific elements in your prompt.
-    - If the subject is too small, try adding "close-up" or "dominant in frame."
-    - If the lighting is flat, specify "dramatic lighting" or "rim light."
-    - If the style isn't right, name a specific artist or style.
-4.  **Test and Repeat:** Generate again and repeat the process until you achieve the desired result.
+**From Vague to Specific:**
+- **Vague:** "A dog"
+- **Better:** "A golden retriever"
+- **Best:** "A golden retriever sitting in a sunny meadow, looking directly at the camera with its tongue out"
 
-**Example Iteration:**
-- **Attempt 1:** "A cat sitting on a windowsill"
-  - *Issue: Cat looks generic, background is plain.*
-- **Attempt 2:** "A fluffy ginger cat sitting on a windowsill, looking outside"
-  - *Issue: Still a bit plain, lighting could be better.*
-- **Attempt 3:** "A fluffy ginger Maine Coon cat sitting on a wooden windowsill, looking out at a rainy city street, soft natural light from the window, shallow depth of field, photorealistic"
-  - *Better, but could be more atmospheric.*
-- **Attempt 4:** "A fluffy ginger Maine Coon cat with bright green eyes, sitting on a vintage wooden windowsill, looking out at a rainy city street at night, reflections of neon lights on the wet glass, soft natural light from the window illuminating the cat's fur, shallow depth of field, photorealistic, highly detailed, cinematic mood"
+### Structure and Organization
 
-#### Using Analogies and References
+Well-organized prompts help the AI understand what elements are most important and how they relate to each other.
 
-Sometimes, the best way to convey a complex idea is by using analogies or referencing well-known concepts, artists, or styles.
+**Recommended Structure:**
+1. **Subject** - What is the main focus?
+2. **Action** - What is happening?
+3. **Environment** - Where is this taking place?
+4. **Style** - What visual style or aesthetic?
+5. **Technical details** - Any specific requirements?
 
-**Analogies:**
-- "A scene as dramatic as a movie trailer"
-- "Colors as vibrant as a tropical sunset"
-- "Texture as rough as tree bark"
+## Essential Prompting Techniques
 
-**Style References:**
-- "In the style of Salvador Dali's surrealism"
-- "Akin to the aesthetic of Blade Runner 2049"
-- "Studio Ghibli character design"
+### Use Descriptive Language
 
-**Conceptual References:**
-- "A sense of wonder similar to discovering a hidden world"
-- "The tension of a final standoff in a Western"
+Replace generic terms with specific, descriptive language:
 
-## Service-Specific Prompting Considerations
+- Instead of "beautiful," use "elegant," "stunning," or "breathtaking"
+- Instead of "big," use "massive," "towering," or "enormous"
+- Instead of "colorful," specify actual colors like "vibrant purple and gold"
 
-While the core principles remain the same, different Vinci services may benefit from slightly different emphases in your prompts.
+### Include Context and Setting
 
-### Text-to-Image Prompts
+Provide environmental context to create more immersive and realistic outputs:
 
-Focus on rich visual descriptions. The AI is generating everything from scratch, so you need to provide the complete visual narrative.
+```
+"A cozy coffee shop interior with warm lighting, exposed brick walls, 
+vintage furniture, and steam rising from a cup of coffee on a wooden table"
+```
 
-**Key Focus Areas:**
-- **Detailed Subject Description:** Don't just say "person"; describe their clothing, expression, pose, and features.
-- **Complex Environments:** Elaborate on the setting, time of day, weather, and background elements.
-- **Atmospheric Lighting:** Be specific about light sources, shadows, and color temperature.
-- **Artistic Medium:** Clearly state if you want a painting, photograph, illustration, etc.
+### Specify Technical Parameters
 
-**Example:**
-"A young woman with curly red hair wearing a vintage green dress, standing in a sun-dappled forest clearing, surrounded by wildflowers, dappled sunlight filtering through the canopy, magical and ethereal atmosphere, fantasy illustration style, soft focus background, highly detailed, digital painting."
+When relevant, include technical details:
 
-### Image-to-Video Prompts
+- **Lighting:** "soft natural lighting," "dramatic shadows," "golden hour"
+- **Camera angle:** "wide shot," "close-up," "bird's eye view"
+- **Style:** "photorealistic," "artistic," "minimalist"
 
-Here, you're describing motion and transformation. The prompt should focus on *how* the static image should come to life.
-
-**Key Focus Areas:**
-- **Type of Motion:** Define the primary action (e.g., "gentle pan," "subtle zoom," "object rotation," "character animation").
-- **Direction and Speed:** Specify the direction and pace of the movement (e.g., "slowly from left to right," "a quick zoom in").
-- **Character Actions (if applicable):** Describe specific character movements (e.g., "a subtle head turn and a friendly smile," "eyes blinking slowly").
-- **Environmental Effects:** Mention changes in the environment (e.g., "leaves gently rustling in the wind," "water rippling").
-- **Maintaining Key Elements:** Ensure the core subject and essential details from the original image are preserved.
-
-**Example:**
-"Starting from a static portrait of a woman, a gentle camera slowly pans from left to right across her face, her eyes blink softly, a warm smile gradually forms, soft natural lighting remains consistent, cinematic and intimate mood."
-
-### Video Generation Prompts
-
-These prompts need to encapsulate a scene that unfolds over time, including movement, changes, and narrative progression.
-
-**Key Focus Areas:**
-- **Narrative Arc:** Describe a sequence of events or a story beat.
-- **Dynamic Action:** Include verbs that imply movement and change (e.g., "running," "exploding," "transforming," "flying").
-- **Camera Movement:** Specify how the camera should move through the scene (e.g., "tracking shot," "dolly zoom," "steady cam").
-- **Temporal Changes:** Indicate how the scene should evolve (e.g., "from day to night," "seasons changing rapidly").
-- **Sound Cues (if applicable):** While not visual, suggesting audio can influence the mood (e.g., "eerie silence," "upbeat music," "thunderous roar").
-
-**Example:**
-"A lone astronaut floating in deep space, slowly tumbling gracefully, holding a glowing nebula in their hands, the nebula pulsates with colorful light, a wide shot slowly zooms in, epic and awe-inspiring atmosphere, cinematic score."
-
-## Practical Examples and Case Studies
-
-Let's apply these principles to some real-world scenarios.
-
-### Case Study 1: Product Photography
-
-**Goal:** Create a professional product shot for a new wireless headphone.
-
-**Initial Prompt:**
-"Wireless headphones on a white background"
-
-*Analysis: Too generic. Lacks detail and professional quality.*
-
-**Refined Prompt:**
-"Sleek black wireless headphones with silver accents, placed on a minimalist white marble surface, studio lighting with soft shadows, clean and modern aesthetic, product photography, sharp focus, 8k resolution, ultra detailed"
-
-*Result: A much more professional and marketable image suitable for an e-commerce site.*
-
-### Case Study 2: Concept Art for a Game
-
-**Goal:** Generate a character concept for a fantasy game.
-
-**Initial Prompt:**
-"A fantasy warrior"
-
-*Analysis: Vague. Could be anything from a knight to a barbarian. No specific style defined.*
-
-**Refined Prompt:**
-"A female elven ranger in her late 20s, wearing intricately designed leather armor with leaf motifs, holding a glowing bow and arrow, standing in an ancient enchanted forest at twilight, bioluminescent plants in the background, mystical and ethereal atmosphere, digital painting style, highly detailed, character design art by Artgerm and Greg Rutkowski"
-
-*Result: A highly specific, visually rich character concept that fits a clear fantasy aesthetic.*
-
-### Case Study 3: Social Media Content
-
-**Goal:** Create an engaging image for a coffee shop's Instagram post.
-
-**Initial Prompt:**
-"Coffee and a book"
-
-*Analysis: Boring. Doesn't evoke emotion or tell a story.*
-
-**Refined Prompt:**
-"A steaming cup of artisanal pour-over coffee on a rustic wooden table, next to an open hardcover book with a pair of glasses resting on it, soft morning light streaming through a nearby window, creating a warm and cozy atmosphere, shallow depth of field focusing on the coffee cup, lifestyle photography, warm color palette, inviting and relaxing"
-
-*Result: An image that tells a story and evokes the desired feeling, perfect for social media engagement.*
-
-## Troubleshooting Common Prompting Issues
-
-Even experienced prompters run into issues. Here's how to address some common problems.
-
-| Issue | Possible Cause | Solution |
-| :--- | :--- | :--- |
-| **Output is blurry or low quality** | Insufficient quality keywords, prompt too complex, model limitations. | Add quality boosters like "highly detailed," "8k," "sharp focus." Simplify the prompt if it's overly complex. Consider upscaling if available. |
-| **Wrong style or aesthetic** | Failure to specify style, conflicting style keywords. | Be explicit about the desired style. Use negative prompts to exclude unwanted styles. Avoid mixing contradictory styles (e.g., "photorealistic cartoon"). |
-| **Unwanted elements appear** | AI hallucination, not using negative prompts effectively. | Use negative prompts with specific terms like "no text," "no people," "no blurry." Refine your positive prompt to be more specific. |
-| **Subject is not the main focus** | Poor composition description, subject details buried in the prompt. | Start with the subject. Use composition keywords like "close-up," "dominant in frame," "centered." Use negative prompts to remove distracting elements. |
-| **Colors are not as expected** | Vague color descriptions, lighting overriding color intent. | Specify exact colors or color palettes (e.g., "vibrant jewel tones," "monochromatic blue scheme"). Describe lighting separately from color. |
-
-## Performance and Optimization Tips
-
-Beyond the creative aspects, how you use prompts in your applications can impact performance and user experience.
-
-### For API Users
-
-- **Batch Testing:** Test your prompts with smaller, faster generations before scaling to larger, more resource-intensive tasks.
-- **Prompt Versioning:** Keep track of different versions of your prompts to understand what changes lead to better results.
-- **Parameter Tuning:** Experiment with parameters like `guidance_scale`, `seed`, and `steps` (if available) alongside your prompt text for fine-tuning.
-- **Efficient Polling:** When checking generation status, use appropriate polling intervals (e.g., every 5-10 seconds) to balance responsiveness with API call costs.
-
-### For Platform Users
-
-- **Save Favorite Prompts:** Most platforms allow you to save prompts for reuse. Create a library of successful prompts for common use cases.
-- **Use Presets:** Leverage any style or quality presets offered by the platform as a starting point before customizing.
-- **Leverage Community Prompts:** Explore prompts shared by other users. Learn from successful examples and adapt them to your needs.
+## Common Prompting Mistakes
 
 <Warning>
-  Always be mindful of API rate limits and costs. Complex, long prompts and high-generation parameters can consume more resources. Monitor your usage and optimize your workflows accordingly.
+Avoid these common pitfalls that can negatively impact your results.
 </Warning>
 
-## Further Learning and Resources
+### Overcomplicating Prompts
 
-Prompting is both an art and a science that continues to evolve. Here are some ways to deepen your expertise:
+While detail is important, overly complex prompts can confuse the AI. Find the right balance between specificity and clarity.
 
-- **Experiment Relentlessly:** The best way to learn is by doing. Don't be afraid to try unconventional prompts and see what happens.
-- **Join Communities:** Engage with other AI artists and prompt engineers online. Share prompts, ask for feedback, and learn from collective experience.
-- **Follow AI Artists:** Many AI artists share their prompt techniques and thought processes on social media and blogs.
-- **Stay Updated:** AI models and prompting techniques are constantly improving. Stay informed about new features and best practices from Vinci and the broader AI community.
+**Too Complex:**
+```
+"An extremely photorealistic image of a majestic golden retriever with flowing fur 
+that catches the light beautifully while sitting gracefully in a perfectly manicured 
+meadow filled with exactly seventeen different types of wildflowers..."
+```
 
-By mastering these prompting tips and continuously refining your approach, you'll be able to consistently generate stunning, high-quality content that truly brings your creative vision to life.
+**Better:**
+```
+"A golden retriever sitting in a sunny wildflower meadow, 
+photorealistic style, soft natural lighting"
+```
+
+### Contradictory Instructions
+
+Avoid providing conflicting directions within the same prompt:
+
+- Don't ask for both "minimalist" and "highly detailed"
+- Don't request "vintage" and "futuristic" unless specifically for contrast
+
+### Negative Language
+
+Instead of describing what you don't want, focus on what you do want:
+
+- **Avoid:** "Not blurry, not dark, not cluttered"
+- **Better:** "Sharp focus, bright lighting, clean composition"
+
+## Advanced Techniques
+
+### Prompt Chaining
+
+For complex scenes, break your prompt into logical components:
+
+1. **Main subject:** "A professional chef"
+2. **Action:** "preparing fresh pasta"
+3. **Environment:** "in a modern restaurant kitchen"
+4. **Mood:** "focused and passionate expression"
+5. **Style:** "documentary photography style"
+
+### Using References
+
+When appropriate, reference well-known styles or artists (for non-copyrighted work):
+
+- "In the style of classical portrait photography"
+- "Minimalist architectural photography"
+- "Vintage travel poster aesthetic"
+
+### Iterative Refinement
+
+Don't expect perfect results on the first try. Use an iterative approach:
+
+1. Start with a basic prompt
+2. Identify what needs improvement
+3. Add specific details to address those areas
+4. Test and refine further
+
+## Platform-Specific Considerations
+
+### For Image Generation
+
+- Include aspect ratio preferences when relevant
+- Specify image quality expectations
+- Consider composition and framing
+
+### For Video Generation
+
+- Think about movement and transitions
+- Consider duration and pacing
+- Include audio considerations if applicable
+
+## Testing and Optimization
+
+### Keep a Prompt Journal
+
+Document what works and what doesn't:
+- Successful prompts and their results
+- Failed attempts and lessons learned
+- Variations that led to improvements
+
+### A/B Testing
+
+Try variations of the same concept:
+- Different adjectives for the same subject
+- Various lighting conditions
+- Alternative composition styles
+
+<Tip>
+The key to mastering prompting is practice and experimentation. Start with these fundamentals and gradually develop your own style and techniques.
+</Tip>
+
+## Next Steps
+
+Ready to apply these principles? Explore our specialized guides:
+
+<CardGroup cols={2}>
+  <Card title="Text-to-Image Prompting" icon="image" href="/docs/guides/prompting/text-to-image">
+    Detailed techniques for generating images from text descriptions
+  </Card>
+  <Card title="Image-to-Image Prompting" icon="arrows-rotate" href="/docs/guides/prompting/image-to-image">
+    Advanced methods for editing and transforming existing images
+  </Card>
+</CardGroup>

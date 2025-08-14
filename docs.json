@@ -29,10 +29,8 @@
       { "label": "Get Support", "href": "https://tryvinci.com/blog/category/newsletter", "icon": "life-buoy" }
     ],
     "cta": {
-      "label": "Go to App",
-      "href": "https://app.tryvinci.com",
-      "icon": "rocket",
-      "variant": "primary"
+      "text": "Go to App",
+      "url": "https://app.tryvinci.com"
     }
   },
   "search": { "enabled": true },
