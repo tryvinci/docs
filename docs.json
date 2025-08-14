@@ -1,6 +1,7 @@
 {
   "$schema": "https://mintlify.com/docs.schema.json",
   "name": "Vinci Docs",
+  "description": "Complete API documentation and guides for Vinci's AI-powered video generation, image creation, translation services, and digital content APIs",
   "theme": "mint",
   "favicon":"/favicon.svg",
   "colors": {
@@ -138,9 +139,16 @@
   "seo": {
     "indexing": "all",
     "metatags": {
-      "og:site_name": "Vinci - Docs",
+      "og:site_name": "Vinci - AI Video & Image Generation API Documentation",
       "og:type": "website",
-      "theme-color": "#21dad2"
+      "og:description": "Complete API documentation for Vinci's AI video generation, image creation, and digital content services",
+      "og:image": "/logo/logo-light.svg",
+      "twitter:card": "summary_large_image",
+      "twitter:title": "Vinci API Documentation",
+      "twitter:description": "AI-powered video and image generation API documentation with guides and examples",
+      "robots": "index, follow",
+      "theme-color": "#21dad2",
+      "description": "Comprehensive documentation for Vinci's AI video generation, image creation, translation, and digital content APIs with code examples and integration guides"
     }
   },
   "css": {
