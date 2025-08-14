@@ -22,7 +22,7 @@
       "alt": "Vinci"
     },
     "links": [
-      { "label": "Get Support", "href": "https://tryvinci.com/blog/category/newsletter", "icon": "life-buoy" },
+      { "label": "Get Support", "href": "mailto:team@tryvinci.com", "icon": "life-buoy" },
       { "label": "Go to App", "href": "https://app.tryvinci.com", "icon": "rocket" }
     ]
   },
