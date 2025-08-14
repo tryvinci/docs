@@ -76,7 +76,7 @@
               "docs/guides/sdks",
               {
                 "group": "Platform Services",
-                "icon": "layers-3",
+                "icon": "rocket",
                 "pages": [
                   "docs/guides/platform/index",
                   "docs/guides/platform/platform-overview",
@@ -105,7 +105,7 @@
           },
           {
             "group": "Platform",
-            "icon": "layers",
+            "icon": "cube",
             "pages": [
               "docs/platform/overview",
               "docs/platform/explore",
@@ -115,7 +115,7 @@
           },
           {
             "group": "Meta",
-            "icon": "list",
+            "icon": "clock",
             "pages": [
               "changelog"
             ]
