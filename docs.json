@@ -2,6 +2,7 @@
   "$schema": "https://mintlify.com/docs.schema.json",
   "name": "Vinci Docs",
   "theme": "mint",
+  "favicon":"https://app.tryvinci.com/images/favicon.ico",
   "colors": {
     "primary": "#111827",
     "light": "#ffffff",
