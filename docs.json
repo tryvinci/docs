@@ -68,7 +68,8 @@
                   "docs/guides/prompting/index",
                   "docs/guides/prompting/prompting-tips",
                   "docs/guides/prompting/text-to-image",
-                  "docs/guides/prompting/image-to-image"
+                  "docs/guides/prompting/image-to-image",
+                  "docs/guides/prompting/video-generation"
                 ]
               },
               {
