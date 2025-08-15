@@ -49,11 +49,11 @@ Sign up for a Vinci account and create your first API key:
 
 <Steps>
  ### Create account
- Visit [https://tryvinci.com](https://tryvinci.com) and sign up for an account.
+ Visit [https://app.tryvinci.com](https://app.tryvinci.com) and sign up for an account.
 
 
  ### Generate API key
- Navigate to your dashboard and create a new API key. Your API key will look like `sk-...`.
+ Navigate to your [API dashboard](https://app.tryvinci.com/dashboard/api) and create a new API key. Your API key will look like `sk-...`.
 
 
  ### Add balance

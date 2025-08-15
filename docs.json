@@ -76,7 +76,9 @@
           { "label": "Terms of Service", "href": "https://tryvinci.com/terms" },
           { "label": "Contact Support", "href": "mailto:team@tryvinci.com" },
           { "label": "Discord Community", "href": "https://tryvinci.com/discord" },
-          { "label": "WhatsApp", "href": "https://tryvinci.com/whatsapp" }
+          { "label": "WhatsApp", "href": "https://tryvinci.com/whatsapp" },
+          { "label": "LLMs.txt", "href": "/llms.txt" },
+          { "label": "LLMs Full", "href": "/llms-full.txt" }
         ]
       }
     ]
