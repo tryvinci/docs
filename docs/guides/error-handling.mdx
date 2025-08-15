@@ -16,9 +16,11 @@ Build resilient clients with explicit handling for auth, balance, rate limits, a
 | 429 | Rate limit exceeded | Backoff and retry |
 | 500 | Server error | Retry with exponential backoff |
 
-## Python patterns
+## Request with retries
 
-```python title="request_with_retries.py"
+<CodeGroup>
+
+```python request_with_retries.py
 import time
 import requests
 
@@ -59,36 +61,7 @@ resp = request_with_retries("POST", url, headers=headers, json=data)
 print(resp.json())
 ```
 
-```python title="handle_known_statuses.py"
-import requests
-
-def handle_known_statuses(r: requests.Response):
-    if r.status_code == 401:
-        raise PermissionError("Invalid API key. Check Authorization header.")
-    if r.status_code == 402:
-        detail = r.json().get("detail")
-        raise RuntimeError(f"Insufficient balance: {detail}")
-    if r.status_code == 413:
-        raise ValueError("File too large. Reduce the payload size.")
-    if r.status_code == 429:
-        raise RuntimeError("Rate limit exceeded. Retry with backoff.")
-
-# Example
-API_KEY = "sk-your-api-key-here"
-headers = {"Authorization": f"Bearer {API_KEY}", "Content-Type": "application/json"}
-url = "https://tryvinci.com/api/v1/generate/text-to-video"
-data = {"prompt": "Forest in fog", "duration_seconds": 5}
-
-r = requests.post(url, headers=headers, json=data)
-if not r.ok:
-    handle_known_statuses(r)
-r.raise_for_status()
-print(r.json())
-```
-
-## JavaScript patterns
-
-```javascript title="requestWithRetries.js"
+```javascript requestWithRetries.js
 async function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
 
 export async function requestWithRetries(fetchArgs, { retries = 4, baseDelay = 1000 } = {}) {
@@ -123,7 +96,40 @@ const res = await requestWithRetries([
 console.log(await res.json());
 ```
 
-```javascript title="handleKnownStatuses.js"
+</CodeGroup>
+
+## Handle known statuses
+
+<CodeGroup>
+
+```python handle_known_statuses.py
+import requests
+
+def handle_known_statuses(r: requests.Response):
+    if r.status_code == 401:
+        raise PermissionError("Invalid API key. Check Authorization header.")
+    if r.status_code == 402:
+        detail = r.json().get("detail")
+        raise RuntimeError(f"Insufficient balance: {detail}")
+    if r.status_code == 413:
+        raise ValueError("File too large. Reduce the payload size.")
+    if r.status_code == 429:
+        raise RuntimeError("Rate limit exceeded. Retry with backoff.")
+
+# Example
+API_KEY = "sk-your-api-key-here"
+headers = {"Authorization": f"Bearer {API_KEY}", "Content-Type": "application/json"}
+url = "https://tryvinci.com/api/v1/generate/text-to-video"
+data = {"prompt": "Forest in fog", "duration_seconds": 5}
+
+r = requests.post(url, headers=headers, json=data)
+if not r.ok:
+    handle_known_statuses(r)
+r.raise_for_status()
+print(r.json())
+```
+
+```javascript handleKnownStatuses.js
 export async function handleKnownStatuses(res) {
   if (res.status === 401) throw new Error("Invalid API key. Check Authorization header.");
   if (res.status === 402) {
@@ -134,6 +140,8 @@ export async function handleKnownStatuses(res) {
   if (res.status === 429) throw new Error("Rate limit exceeded. Retry with backoff.");
 }
 ```
+
+</CodeGroup>
 
 ## Recommendations
 - Always include Authorization header on every request.

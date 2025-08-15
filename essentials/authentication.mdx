@@ -14,7 +14,14 @@ Keep your API key secret. Never expose it in client-side code. Use environment v
 
 ## Example: Authenticated request
 
-```python title="authenticated_request.py"
+<CodeGroup>
+
+```curl cURL
+curl -X GET "https://tryvinci.com/api/v1/billing/balance" \
+  -H "Authorization: Bearer sk-your-api-key-here"
+```
+
+```python authenticated_request.py
 import requests
 
 headers = {
@@ -27,13 +34,15 @@ r.raise_for_status()
 print(r.json())
 ```
 
-```javascript title="authenticated_request.js"
+```javascript authenticated_request.js
 const r = await fetch("https://tryvinci.com/api/v1/billing/balance", {
   headers: { "Authorization": "Bearer sk-your-api-key-here" },
 });
 if (!r.ok) throw new Error(`HTTP ${r.status}`);
 console.log(await r.json());
 ```
+
+</CodeGroup>
 
 ## Best practices
 - Rotate keys periodically and keep separate keys for dev/staging/prod.
