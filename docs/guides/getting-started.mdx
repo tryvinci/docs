@@ -26,7 +26,20 @@ Never store API keys in client-side code. Use environment variables or a secret 
 
 ## 2) Make your first generation request (Text-to-Video)
 
-```python title="generate.py"
+<CodeGroup>
+
+```curl cURL
+curl -X POST "https://tryvinci.com/api/v1/generate/text-to-video" \
+  -H "Authorization: Bearer sk-your-api-key-here" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "prompt": "A serene sunset over a calm lake",
+    "duration_seconds": 5,
+    "aspect_ratio": "16:9"
+  }'
+```
+
+```python generate.py
 import requests
 
 API_KEY = "sk-your-api-key-here"
@@ -44,7 +57,7 @@ job = r.json()
 print(job)
 ```
 
-```javascript title="generate.js"
+```javascript generate.js
 const API_KEY = "sk-your-api-key-here";
 const r = await fetch("https://tryvinci.com/api/v1/generate/text-to-video", {
   method: "POST",
@@ -63,9 +76,18 @@ const job = await r.json();
 console.log(job);
 ```
 
+</CodeGroup>
+
 ## 3) Poll the status endpoint
 
-```python title="poll.py"
+<CodeGroup>
+
+```curl cURL
+curl -X GET "https://tryvinci.com/api/v1/status/your-request-id" \
+  -H "Authorization: Bearer sk-your-api-key-here"
+```
+
+```python poll.py
 import time, requests
 
 API_KEY = "sk-your-api-key-here"
@@ -89,7 +111,7 @@ while True:
   time.sleep(5)
 ```
 
-```javascript title="poll.js"
+```javascript poll.js
 const API_KEY = "sk-your-api-key-here";
 const requestId = "your-request-id";
 
@@ -113,6 +135,8 @@ async function poll() {
 }
 poll();
 ```
+
+</CodeGroup>
 
 ## 4) Common issues and tips
 

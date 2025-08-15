@@ -58,7 +58,14 @@ Authorization: Bearer sk-your-api-key-here
 
 ## Code examples
 
-```python title="poll_status.py"
+<CodeGroup>
+
+```curl cURL
+curl -X GET "https://tryvinci.com/api/v1/status/your-request-id" \
+  -H "Authorization: Bearer sk-your-api-key-here"
+```
+
+```python poll_status.py
 import requests, time
 
 API_KEY = "sk-your-api-key-here"
@@ -82,7 +89,7 @@ while True:
     time.sleep(5)
 ```
 
-```javascript title="poll_status.js"
+```javascript poll_status.js
 const API_KEY = "sk-your-api-key-here";
 const requestId = "your-request-id";
 
@@ -105,3 +112,6 @@ async function checkStatus() {
   setTimeout(checkStatus, 5000);
 }
 checkStatus();
+```
+
+</CodeGroup>

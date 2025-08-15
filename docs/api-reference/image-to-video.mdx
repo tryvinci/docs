@@ -32,7 +32,17 @@ Authorization: Bearer sk-your-api-key-here
 
 ## Code examples
 
-```python title="image_to_video.py"
+<CodeGroup>
+
+```curl cURL
+curl -X POST "https://tryvinci.com/api/v1/generate/image-to-video" \
+  -H "Authorization: Bearer sk-your-api-key-here" \
+  -F "image=@portrait.jpg" \
+  -F "prompt=The person starts smiling and waves at the camera" \
+  -F "duration_seconds=6"
+```
+
+```python image_to_video.py
 import requests
 
 url = "https://tryvinci.com/api/v1/generate/image-to-video"
@@ -50,7 +60,7 @@ print(f"Request ID: {result['request_id']}")
 print(f"Estimated: ${result['estimated_cost_usd']}")
 ```
 
-```javascript title="image_to_video.js"
+```javascript image_to_video.js
 const input = document.getElementById("imageInput");
 const file = input.files?.[0];
 if (!file) throw new Error("Choose an image file first");
@@ -70,6 +80,8 @@ const result = await r.json();
 console.log(`Request ID: ${result.request_id}`);
 console.log(`Estimated: $${result.estimated_cost_usd}`);
 ```
+
+</CodeGroup>
 
 ## Next
 After submitting the job, use [Status Checking](/docs/api-reference/status-checking) to poll progress and retrieve the final video.

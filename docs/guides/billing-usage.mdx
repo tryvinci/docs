@@ -25,7 +25,14 @@ Authorization: Bearer sk-your-api-key-here
 }
 ```
 
-```python title="check_balance.py"
+<CodeGroup>
+
+```curl cURL
+curl -X GET "https://tryvinci.com/api/v1/billing/balance" \
+  -H "Authorization: Bearer sk-your-api-key-here"
+```
+
+```python check_balance.py
 import requests
 
 url = "https://tryvinci.com/api/v1/billing/balance"
@@ -41,7 +48,7 @@ if balance["balance_usd"] < 5.0:
     print("⚠️  Low balance! Consider adding credits.")
 ```
 
-```javascript title="check_balance.js"
+```javascript check_balance.js
 const r = await fetch("https://tryvinci.com/api/v1/billing/balance", {
   headers: { "Authorization": "Bearer sk-your-api-key-here" },
 });
@@ -53,6 +60,8 @@ if (balance.balance_usd < 5.0) {
   console.log("⚠️  Low balance! Consider adding credits.");
 }
 ```
+
+</CodeGroup>
 
 ## Usage statistics
 
@@ -75,7 +84,14 @@ Authorization: Bearer sk-your-api-key-here
 }
 ```
 
-```python title="usage_stats.py"
+<CodeGroup>
+
+```curl cURL
+curl -X GET "https://tryvinci.com/api/v1/billing/usage?days=7" \
+  -H "Authorization: Bearer sk-your-api-key-here"
+```
+
+```python usage_stats.py
 import requests
 
 url = "https://tryvinci.com/api/v1/billing/usage?days=7"
@@ -92,7 +108,7 @@ print(f"- Total cost: ${usage['total_cost_usd']:.2f}")
 print(f"- Current balance: ${usage['current_balance_usd']:.2f}")
 ```
 
-```javascript title="usage_stats.js"
+```javascript usage_stats.js
 const r = await fetch("https://tryvinci.com/api/v1/billing/usage?days=7", {
   headers: { "Authorization": "Bearer sk-your-api-key-here" },
 });
@@ -106,9 +122,13 @@ console.log(`- Total cost: $${usage.total_cost_usd.toFixed(2)}`);
 console.log(`- Current balance: $${usage.current_balance_usd.toFixed(2)}`);
 ```
 
+</CodeGroup>
+
 ## Balance check helper
 
-```python title="balance_check.py"
+<CodeGroup>
+
+```python balance_check.py
 import requests
 
 def has_sufficient_balance(duration_seconds, api_key):
@@ -121,7 +141,7 @@ def has_sufficient_balance(duration_seconds, api_key):
     return balance["balance_usd"] >= estimated
 ```
 
-```javascript title="balance_check.js"
+```javascript balance_check.js
 async function hasSufficientBalance(durationSeconds, apiKey) {
   const r = await fetch("https://tryvinci.com/api/v1/billing/balance", {
     headers: { "Authorization": `Bearer ${apiKey}` },
@@ -132,6 +152,8 @@ async function hasSufficientBalance(durationSeconds, apiKey) {
   return balance.balance_usd >= estimated;
 }
 ```
+
+</CodeGroup>
 
 Related
 - [Status Checking](/docs/api-reference/status-checking)
