@@ -40,43 +40,43 @@
     },
     "links": [
       {
-        "title": "Product",
+        "header": "Product",
         "items": [
-          { "text": "Solutions", "url": "https://tryvinci.com#ai-actors" },
-          { "text": "Pricing", "url": "https://tryvinci.com#pricing" },
-          { "text": "Clips", "url": "https://tryvinci.com/clips" },
-          { "text": "Curated", "url": "https://tryvinci.com/curated" },
-          { "text": "Brand Custodian", "url": "https://tryvinci.com/brand-custodian" }
+          { "label": "Solutions", "href": "https://tryvinci.com#ai-actors" },
+          { "label": "Pricing", "href": "https://tryvinci.com#pricing" },
+          { "label": "Clips", "href": "https://tryvinci.com/clips" },
+          { "label": "Curated", "href": "https://tryvinci.com/curated" },
+          { "label": "Brand Custodian", "href": "https://tryvinci.com/brand-custodian" }
         ]
       },
       {
-        "title": "Resources",
+        "header": "Resources",
         "items": [
-          { "text": "Wall of Love", "url": "https://tryvinci.com/wall-of-love" },
-          { "text": "Blog", "url": "https://blog.tryvinci.com" },
-          { "text": "Cookbook", "url": "https://blog.tryvinci.com/category/cookbook" },
-          { "text": "Guides", "url": "https://blog.tryvinci.com/category/guides" },
-          { "text": "Developer", "url": "https://docs.tryvinci.com" }
+          { "label": "Wall of Love", "href": "https://tryvinci.com/wall-of-love" },
+          { "label": "Blog", "href": "https://blog.tryvinci.com" },
+          { "label": "Cookbook", "href": "https://blog.tryvinci.com/category/cookbook" },
+          { "label": "Guides", "href": "https://blog.tryvinci.com/category/guides" },
+          { "label": "Developer", "href": "https://docs.tryvinci.com" }
         ]
       },
       {
-        "title": "Compare",
+        "header": "Compare",
         "items": [
-          { "text": "All Platforms", "url": "https://tryvinci.com/compare" },
-          { "text": "vs HeyGen", "url": "https://tryvinci.com/compare/heygen" },
-          { "text": "vs Synthesia", "url": "https://tryvinci.com/compare/synthesia" },
-          { "text": "vs D-ID", "url": "https://tryvinci.com/compare/d-id" },
-          { "text": "vs Runway", "url": "https://tryvinci.com/compare/runway" }
+          { "label": "All Platforms", "href": "https://tryvinci.com/compare" },
+          { "label": "vs HeyGen", "href": "https://tryvinci.com/compare/heygen" },
+          { "label": "vs Synthesia", "href": "https://tryvinci.com/compare/synthesia" },
+          { "label": "vs D-ID", "href": "https://tryvinci.com/compare/d-id" },
+          { "label": "vs Runway", "href": "https://tryvinci.com/compare/runway" }
         ]
       },
       {
-        "title": "Legal & Support",
+        "header": "Legal & Support",
         "items": [
-          { "text": "Privacy Policy", "url": "https://tryvinci.com/privacy" },
-          { "text": "Terms of Service", "url": "https://tryvinci.com/terms" },
-          { "text": "Contact Support", "url": "mailto:team@tryvinci.com" },
-          { "text": "Discord Community", "url": "https://tryvinci.com/discord" },
-          { "text": "WhatsApp", "url": "https://tryvinci.com/whatsapp" }
+          { "label": "Privacy Policy", "href": "https://tryvinci.com/privacy" },
+          { "label": "Terms of Service", "href": "https://tryvinci.com/terms" },
+          { "label": "Contact Support", "href": "mailto:team@tryvinci.com" },
+          { "label": "Discord Community", "href": "https://tryvinci.com/discord" },
+          { "label": "WhatsApp", "href": "https://tryvinci.com/whatsapp" }
         ]
       }
     ]
