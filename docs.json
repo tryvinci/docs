@@ -31,6 +31,71 @@
     ]
   },
   "search": { "enabled": true },
+  "footer": {
+    "socials": {
+      "website": "https://tryvinci.com",
+      "discord": "https://tryvinci.com/discord",
+      "linkedin": "https://www.linkedin.com/company/tryvinci",
+      "instagram": "https://www.instagram.com/try.vinci",
+      "email": "mailto:team@tryvinci.com"
+    },
+    "links": [
+      {
+        "title": "Product",
+        "links": [
+          { "name": "Solutions", "url": "https://tryvinci.com#ai-actors" },
+          { "name": "Pricing", "url": "https://tryvinci.com#pricing" },
+          { "name": "Clips", "url": "https://tryvinci.com/clips" },
+          { "name": "Curated", "url": "https://tryvinci.com/curated" },
+          { "name": "Brand Custodian", "url": "https://tryvinci.com/brand-custodian" }
+        ]
+      },
+      {
+        "title": "Resources",
+        "links": [
+          { "name": "Wall of Love", "url": "https://tryvinci.com/wall-of-love" },
+          { "name": "Blog", "url": "https://blog.tryvinci.com" },
+          { "name": "Cookbook", "url": "https://blog.tryvinci.com/category/cookbook" },
+          { "name": "Guides", "url": "https://blog.tryvinci.com/category/guides" },
+          { "name": "Developer", "url": "https://docs.tryvinci.com" }
+        ]
+      },
+      {
+        "title": "Compare",
+        "links": [
+          { "name": "All Platforms", "url": "https://tryvinci.com/compare" },
+          { "name": "vs HeyGen", "url": "https://tryvinci.com/compare/heygen" },
+          { "name": "vs Synthesia", "url": "https://tryvinci.com/compare/synthesia" },
+          { "name": "vs D-ID", "url": "https://tryvinci.com/compare/d-id" },
+          { "name": "vs Runway", "url": "https://tryvinci.com/compare/runway" }
+        ]
+      },
+      {
+        "title": "Legal",
+        "links": [
+          { "name": "Privacy Policy", "url": "https://tryvinci.com/privacy" },
+          { "name": "Terms of Service", "url": "https://tryvinci.com/terms" },
+          { "name": "Refund Policy", "url": "https://tryvinci.com/refund" },
+          { "name": "Delivery Policy", "url": "https://tryvinci.com/delivery" }
+        ]
+      },
+      {
+        "title": "Community",
+        "links": [
+          { "name": "Discord", "url": "https://tryvinci.com/discord" },
+          { "name": "WhatsApp", "url": "https://tryvinci.com/whatsapp" }
+        ]
+      },
+      {
+        "title": "AI Resources",
+        "links": [
+          { "name": "Sitemap", "url": "/sitemap.xml" },
+          { "name": "llms.txt", "url": "/llms.txt" },
+          { "name": "llms-full.txt", "url": "/llms-full.txt" }
+        ]
+      }
+    ]
+  },
   "navigation": {
     "anchors": [
       {
