@@ -133,7 +133,8 @@
                   "docs/guides/platform/video-generation",
                   "docs/guides/platform/video-translation",
                   "docs/guides/platform/emote",
-                  "docs/guides/platform/qr-code-generation"
+                  "docs/guides/platform/qr-code-generation",
+                  "docs/guides/mcp-server-integration"
                 ]
               }
             ]
