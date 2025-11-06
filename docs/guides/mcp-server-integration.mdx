@@ -1,9 +1,9 @@
 ---
-title: "Using Vinci's MCP Tools with LangChain Agents"
-description: "A cookbook for integrating Vinci's MCP tools into your own LangChain agentic projects."
+title: "How to Use MCP Tools with LangChain Agents"
+description: "Learn how to integrate MCP tools into your own LangChain agentic projects."
 ---
 
-# Using Vinci's MCP Tools with LangChain Agents
+# How to Use MCP Tools with LangChain Agents
 
 This document provides a developer-focused guide on how to integrate Vinci's MCP server with your own LangChain agent. It's structured as a cookbook with recipes to guide you through the implementation.
 
@@ -47,16 +47,14 @@ GEMINI_API_KEY=your-google-api-key
   You can find your `USER_ID` on the [Vinci Dashboard API page](https://app.tryvinci.com/dashboard/api).
 </Note>
 
-<Note>
-  Your user_id can be located on this page: https://app.tryvinci.com/dashboard/api
-</Note>
+
 
 
 ---
 
 ## Recipes
 
-### Recipe 1: Fetching Tools from the MCP Server
+### How to Fetch Tools from the MCP Server
 
 This recipe shows how to connect to Vinci's MCP server, retrieve the available tools, and print their names and descriptions. This is the foundational step for integrating Vinci's tools into any LangChain agent.
 
@@ -112,7 +110,7 @@ if __name__ == "__main__":
 ```
 </CodeGroup>
 
-### Recipe 2: Integrating Tools with a LangChain Agent
+### How to Integrate Tools with a LangChain Agent
 
 Once you can fetch the tools, you can integrate them into a LangChain agent. This example demonstrates how to build an agent that can use the Vinci tools to perform tasks.
 
