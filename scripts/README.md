@@ -98,14 +98,14 @@ You can automate this process by:
            run: |
              git config --local user.email "action@github.com"
              git config --local user.name "GitHub Action"
-             git add changelog.md
+             git add changelog.mdx
              git commit -m "Update changelog" || exit 0
              git push
    ```
 
 ## Output
 
-The scripts generate a `changelog.md` file with:
+The scripts generate a `changelog.mdx` file with:
 - Mintlify Update components for each time period
 - Organized sections by repository
 - Commit links and timestamps
@@ -130,7 +130,7 @@ gh auth login
 Make sure you have access to all repositories in the tryvinci organization.
 
 ### Date Command Issues
-The script uses macOS-compatible date commands. On Linux, you may need to adjust the date format in the script.
+The scripts include Linux and macOS date handling, but contributors should still verify output formatting when running in a new environment.
 
 ### Missing Dependencies
 - Ensure `gh` CLI is installed and in PATH

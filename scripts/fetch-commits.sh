@@ -27,6 +27,15 @@ DOCS_DIR="$(dirname "$SCRIPT_DIR")"
 TEMP_DIR="$SCRIPT_DIR/temp"
 COMMITS_DIR="$TEMP_DIR/commits"
 
+iso_utc_days_ago() {
+    local days="$1"
+    if date -u -d "@0" +%Y >/dev/null 2>&1; then
+        date -u -d "$days days ago" +%Y-%m-%dT%H:%M:%SZ
+    else
+        date -u -v-"$days"d +%Y-%m-%dT%H:%M:%SZ
+    fi
+}
+
 echo -e "${BLUE}Fetching commits for manual changelog curation...${NC}"
 
 # Create temp directories
@@ -49,9 +58,10 @@ fetch_repo_commits() {
     fi
     
     # Get recent commits from the branch (last 30 days)
-    local since_date=$(date -v-30d +%Y-%m-%dT%H:%M:%SZ)
-    
-    gh api graphql -f query='
+    local since_date
+    since_date=$(iso_utc_days_ago 30)
+
+    if gh api graphql -f query='
         query($owner: String!, $name: String!, $branch: String!, $since: GitTimestamp!) {
             repository(owner: $owner, name: $name) {
                 ref(qualifiedName: $branch) {
@@ -79,9 +89,7 @@ fetch_repo_commits() {
         -f owner="tryvinci" \
         -f name="$repo_name" \
         -f branch="refs/heads/$branch" \
-        -f since="$since_date" > "$raw_output"
-    
-    if [ $? -eq 0 ]; then
+        -f since="$since_date" > "$raw_output"; then
         # Format the output for easier reading
         echo "# $repo_name ($branch branch)" > "$formatted_output"
         echo "## Recent Commits (Last 30 Days)" >> "$formatted_output"
@@ -142,7 +150,7 @@ create_summary() {
     echo "1. Review the formatted files above to understand what changed" >> "$summary_file"
     echo "2. Group related commits into logical releases" >> "$summary_file"
     echo "3. Determine version numbers (major.minor.patch) based on change impact" >> "$summary_file"
-    echo "4. Create Update components in changelog.md following this format:" >> "$summary_file"
+    echo "4. Create Update components in changelog.mdx following this format:" >> "$summary_file"
     echo "" >> "$summary_file"
     echo '```mdx' >> "$summary_file"
     echo '<Update label="August 2025" description="v1.2.3">' >> "$summary_file"
@@ -201,7 +209,7 @@ main() {
     echo ""
     echo -e "${YELLOW}Next steps:${NC}"
     echo "1. Review the formatted commit files"
-    echo "2. Use your copilot to help curate changelog.md with proper versioning"
+    echo "2. Use your copilot to help curate changelog.mdx with proper versioning"
     echo "3. Follow the major.minor.patch format with meaningful release notes"
 }
 

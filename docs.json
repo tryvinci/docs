@@ -145,11 +145,7 @@
             "pages": [
               "docs/api-reference/video-generation",
               "docs/api-reference/image-to-video",
-              "docs/api-reference/status-checking",
-              "docs/api-reference/ai-actors",
-              "docs/api-reference/translation",
-              "docs/api-reference/emote",
-              "docs/api-reference/qr-code"
+              "docs/api-reference/status-checking"
             ]
           },
           {
@@ -160,8 +156,7 @@
               "docs/guides/platform/index",
               "docs/guides/platform/platform-overview",
               "docs/platform/explore",
-              "docs/platform/assets",
-              "docs/platform/services"
+              "docs/platform/assets"
             ]
           },
           {

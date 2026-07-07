@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Vinci Changelog Update Script
-# Fetches changes from multiple repositories and generates changelog.md
+# Fetches changes from multiple repositories and generates changelog.mdx
 
 set -e
 
@@ -24,7 +24,16 @@ NC='\033[0m' # No Color
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 DOCS_DIR="$(dirname "$SCRIPT_DIR")"
 TEMP_DIR="$SCRIPT_DIR/temp"
-CHANGELOG_FILE="$DOCS_DIR/changelog.md"
+CHANGELOG_FILE="$DOCS_DIR/changelog.mdx"
+
+iso_utc_days_ago() {
+    local days="$1"
+    if date -u -d "@0" +%Y >/dev/null 2>&1; then
+        date -u -d "$days days ago" +%Y-%m-%dT%H:%M:%SZ
+    else
+        date -u -v-"$days"d +%Y-%m-%dT%H:%M:%SZ
+    fi
+}
 
 echo -e "${BLUE}Starting changelog update process...${NC}"
 
@@ -48,9 +57,10 @@ fetch_repo_changes() {
     
     # Get recent commits from the serving branch (last 30 days)
     # macOS compatible date command - use ISO format for GraphQL
-    local since_date=$(date -v-30d +%Y-%m-%dT%H:%M:%SZ)
-    
-    gh api graphql -f query='
+    local since_date
+    since_date=$(iso_utc_days_ago 30)
+
+    if gh api graphql -f query='
         query($owner: String!, $name: String!, $branch: String!, $since: GitTimestamp!) {
             repository(owner: $owner, name: $name) {
                 ref(qualifiedName: $branch) {
@@ -76,9 +86,7 @@ fetch_repo_changes() {
         -f owner="tryvinci" \
         -f name="$repo_name" \
         -f branch="refs/heads/$branch" \
-        -f since="$since_date" > "$output_file"
-    
-    if [ $? -eq 0 ]; then
+        -f since="$since_date" > "$output_file"; then
         echo -e "${GREEN}✓ Successfully fetched changes from ${repo_name}${NC}"
         return 0
     else
@@ -140,11 +148,11 @@ EOF
                         echo -e "${YELLOW}Found last synced commit for ${repo_name}: ${last_synced_commit}${NC}"
                         # Get commits until we hit the last synced one
                         jq -r --arg last_commit "$last_synced_commit" '
-                        .data.repository.ref.target.history.nodes[] | 
-                        select(.oid[0:7] != $last_commit) |
-                        "- **" + (.committedDate | strptime("%Y-%m-%dT%H:%M:%SZ") | strftime("%b %d")) + "**: " + 
-                        (.message | split("\n")[0]) + 
-                        " ([" + (.oid[0:7]) + "](" + .url + "))"' "$changes_file" > "$new_commits_file" 2>/dev/null
+                        .data.repository.ref.target.history.nodes
+                        | .[:(map(.oid[0:7]) | index($last_commit) // length)][]
+                        | "- **" + (.committedDate | strptime("%Y-%m-%dT%H:%M:%SZ") | strftime("%b %d")) + "**: "
+                        + (.message | split("\n")[0])
+                        + " ([" + (.oid[0:7]) + "](" + .url + "))"' "$changes_file" > "$new_commits_file" 2>/dev/null
                     else
                         echo -e "${YELLOW}No previous sync found for ${repo_name}, including all recent commits${NC}"
                         # Include all commits since no previous sync found

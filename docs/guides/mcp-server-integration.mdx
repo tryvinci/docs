@@ -16,11 +16,9 @@ This guide shows how you can connect your LangChain agent to Vinci's MCP (Multi-
 Before you begin, make sure you have the necessary packages installed.
 
 <CodeGroup>
-<CodeGroup>
 ```bash title="bash"
 pip install langchain langchain-google-genai fastmcp python-dotenv
 ```
-</CodeGroup>
 </CodeGroup>
 
 ## Configuration
@@ -32,10 +30,10 @@ To run the examples in this guide, you need to configure the following environme
 # .env
 
 # Vinci MCP server URL
-VINCI_MCP_URL=https://vinci-backend2-serving-382403086889.us-central1.run.app/agent/mcp
+VINCI_MCP_URL=https://tryvinci.com/api/agent/mcp
 
-# Your Vinci User ID (from Vinci Dashboard → API)
-VINCI_USER_ID=your-user-id
+# Your Vinci API key (from Vinci Dashboard → API)
+VINCI_API_KEY=your-vinci-api-key
 
 # Your Google Gemini API key
 GEMINI_API_KEY=your-google-api-key
@@ -44,7 +42,7 @@ GEMINI_API_KEY=your-google-api-key
 </CodeGroup>
 
 <Note>
-  You can find your `USER_ID` on the [Vinci Dashboard API page](https://app.tryvinci.com/dashboard/api).
+  Use the same Vinci API key for MCP that you use for the public REST API.
 </Note>
 
 
@@ -76,10 +74,10 @@ async def get_vinci_tools():
     and retrieves available tools as LangChain-compatible tools.
     """
     server_url = os.getenv("VINCI_MCP_URL")
-    user_id = os.getenv("VINCI_USER_ID")
+    api_key = os.getenv("VINCI_API_KEY")
 
-    if not server_url or not user_id:
-        raise EnvironmentError("Missing VINCI_MCP_URL or VINCI_USER_ID in environment.")
+    if not server_url or not api_key:
+        raise EnvironmentError("Missing VINCI_MCP_URL or VINCI_API_KEY in environment.")
 
     client = MultiServerMCPClient(
         {
@@ -87,7 +85,7 @@ async def get_vinci_tools():
             "vinci": {
                 "transport": "streamable_http",
                 "url": server_url,
-                "headers": {"X-User-ID": user_id},
+                "headers": {"Authorization": f"Bearer {api_key}"},
             },
         }
     )
