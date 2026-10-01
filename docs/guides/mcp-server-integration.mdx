@@ -148,6 +148,20 @@ print(response)
 
 ---
 
+## Local OSS daemon tools
+
+The open-source daemon (`vinci-daemon`, `POST /mcp`) exposes the same tool names an agent calls against a running Studio. These three map onto the Axis adapt pipeline:
+
+| Tool | Arguments | Daemon route |
+| --- | --- | --- |
+| `vinci.presets_list` | none | `GET /presets` |
+| `vinci.adapts_run` | `asset_id` or `source_url`, and `preset_ids` | `POST /adapts/batch` |
+| `vinci.batch_status` | `batch_id` | `GET /adapts/batch/{batch_id}` |
+
+`vinci.presets_list` returns generic, partner, and custom presets. Each row has `source` set to `generic`, `partner`, or `custom`. `vinci.adapts_run` enqueues one batch item and returns `batch_id`. `vinci.batch_status` reports per-item status (`queued`, `running`, `done`, `failed`), output asset ids, and per-preset checks for dimensions, byte cap, and safe-area margins.
+
+Point an MCP client at `http://127.0.0.1:4310/mcp` (see `vinci mcp print-config`). Completed exports stay downloadable at `GET /assets/{id}/file`, and a finished batch is also `GET /adapts/batch/{batch_id}/bundle.zip`.
+
 ## Conclusion
 
 By following these recipes, you can seamlessly integrate Vinci's powerful MCP tools into your own LangChain agents. This allows you to build sophisticated, tool-augmented applications with ease. We encourage you to experiment with the available tools and explore the creative possibilities they unlock.
