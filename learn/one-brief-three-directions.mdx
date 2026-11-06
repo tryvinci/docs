@@ -1,0 +1,149 @@
+---
+title: "See three directions before you book the shoot"
+sidebarTitle: "One brief, three directions"
+description: "Before you spend on a shoot, turn one brief into three finished directions. Compare them fairly and let the team pick with evidence instead of opinions."
+icon: "shapes"
+keywords: ["AI video", "Vinci", "image-generate", "cinema-still"]
+---
+
+Before you spend on a shoot, turn one brief into three finished directions. Compare them fairly and let the team pick with evidence instead of opinions.
+
+<Columns cols={2}>
+  <Card title="What you get" icon="flag-checkered">
+    Three finished creative directions from one brief.
+  </Card>
+  <Card title="Time to read" icon="clock">
+    About 4 minutes. Each step works with any toolset.
+  </Card>
+</Columns>
+
+## What you need
+
+- A one page brief: product, audience and one feeling
+- An image model, and image-to-video if you want motion
+- Your real product photo as a locked reference
+
+## Steps
+
+<Steps>
+  <Step title="Write a tight brief">
+    Name the product, the audience and one feeling. If the brief needs a paragraph to explain, it is not tight enough yet.
+  </Step>
+  <Step title="Make three directions">
+    Pick three distinct looks, for example minimal, lifestyle and bold. They should differ in setting, light and type, not in small details.
+  </Step>
+  <Step title="Keep the product identical">
+    Use the same product reference in all three, so you compare the direction and not the pack.
+  </Step>
+  <Step title="Finish them equally">
+    Take each direction to the same level of polish. A rough option next to a finished one never gets a fair hearing.
+  </Step>
+  <Step title="Pick with the team">
+    Show all three side by side, at the size they will be seen, and let the team choose.
+  </Step>
+</Steps>
+
+## Try it
+
+Write your brief, then see how it turns into three direction prompts that all keep the product the same.
+
+<DirectionBuilder />
+
+<Tip>
+  **Name each direction.** Give each direction a one word name. Feedback like "more loud, less home" is faster than "the second one but brighter".
+</Tip>
+
+<Warning>
+  **Avoid this: falling for the first one.** The first direction you make anchors your taste. Finish all three before anyone gives an opinion.
+</Warning>
+
+## Before you publish
+
+- [ ] Write a tight brief
+- [ ] Make three directions
+- [ ] Keep the product identical
+- [ ] Finish them equally
+- [ ] Pick with the team
+
+## Two ways to go further
+
+<Columns cols={2}>
+  <Card title="Let Vinci make it" icon="wand-magic-sparkles" href="https://tryvinci.com/meet?utm_source=guide&utm_medium=docs&utm_campaign=one-brief-three-directions">
+    Send us the brief and we deliver three finished directions to choose from. Book a demo to get started.
+  </Card>
+  <Card title="Free and open source Vinci" icon="github" href="https://github.com/tryvinci/vinci">
+    Run the Vinci studio on your own machine with your own model keys. It shows the price before every job.
+  </Card>
+</Columns>
+
+### Run this workflow in the open source studio
+
+These skills cover this guide: `@tryvinci/image-generate`, `@tryvinci/cinema-still`.
+
+<Tabs>
+  <Tab title="Studio">
+    <Steps>
+      <Step title="Install and start in demo mode">
+```bash
+git clone https://github.com/tryvinci/vinci && cd vinci
+python3 -m venv .venv && . .venv/bin/activate && make install
+./scripts/vinci init --demo
+./scripts/vinci studio
+```
+        Demo mode uses practice providers, so it costs nothing and needs no key.
+      </Step>
+      <Step title="Open a skill">
+        Open the studio at `http://127.0.0.1:4310/studio` and pick `image-generate`.
+      </Step>
+      <Step title="Connect your own keys when ready">
+        Add provider keys under **Connect**. Live spend stays off until you set `VINCI_ALLOW_LIVE_SPEND=1`, and every job shows its price first.
+      </Step>
+    </Steps>
+  </Tab>
+  <Tab title="HTTP">
+    With the studio running, every skill is also available over HTTP:
+```bash
+curl -sS -X POST http://127.0.0.1:4310/runs \
+-H 'content-type: application/json' \
+-d '{"skill":"@tryvinci/image-generate","inputs":{}}'
+```
+    The studio lists each skill's inputs.
+  </Tab>
+</Tabs>
+
+## More guides
+
+<Columns cols={2}>
+  <Card title="Keep your AI character the same in every shot" icon="user" href="/learn/same-character" />
+  <Card title="Make old footage work in today's feeds" icon="clock-rotate-left" href="/learn/old-footage-new-feeds" />
+  <Card title="Turn one podcast into a week of shorts" icon="scissors" href="/learn/podcast-to-shorts" />
+  <Card title="Stop paying for AI clips you throw away" icon="receipt" href="/learn/ai-video-cost" />
+</Columns>
+
+export const DirectionBuilder = () => {
+  const [b, setB] = useState({ product: "a daily face serum in an amber glass bottle", audience: "busy people aged 25 to 35", feeling: "calm" });
+  const dirs = [
+    ["MINIMAL", "soft pastel studio backdrop, one product on a plinth, lots of negative space, gentle top light"],
+    ["LIFESTYLE", "a real bathroom shelf in morning light, hands reaching for the bottle, lived-in details"],
+    ["BOLD", "deep dark background, hard rim light, oversized headline type, high contrast"],
+  ];
+  const inp = { width: "100%", padding: 8, borderRadius: 8, border: "1px solid rgba(127,127,127,.35)", background: "transparent", color: "inherit", font: "inherit" };
+  return (
+    <div className="not-prose" style={{ border: "1px solid rgba(127,127,127,.25)", borderRadius: 14, padding: 16, display: "grid", gap: 12 }}>
+      {Object.keys(b).map((k) => (
+        <label key={k} style={{ display: "grid", gap: 4, fontSize: 13, textTransform: "capitalize" }}>{k === "feeling" ? "One feeling" : k}
+          <input value={b[k]} onChange={(e) => setB({ ...b, [k]: e.target.value })} style={inp} />
+        </label>
+      ))}
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 10 }}>
+        {dirs.map(([n, look]) => (
+          <div key={n} style={{ padding: 12, borderRadius: 10, border: "1px solid rgba(127,127,127,.3)", display: "grid", gap: 8 }}>
+            <div style={{ fontFamily: "ui-monospace, monospace", fontSize: 12, color: "#21dad2", letterSpacing: 1 }}>{n}</div>
+            <div style={{ fontSize: 13, lineHeight: 1.45 }}>{`Ad for ${b.audience}. Product: ${b.product}, unchanged from the reference photo. Look: ${look}. Feeling: ${b.feeling}.`}</div>
+          </div>
+        ))}
+      </div>
+      <div style={{ fontSize: 13, opacity: 0.7 }}>The product line is identical in all three. Only the look changes.</div>
+    </div>
+  );
+};
