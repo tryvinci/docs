@@ -167,6 +167,25 @@
             ]
           }
         ]
+      },
+      {
+        "anchor": "Guides",
+        "icon": "compass",
+        "groups": [
+          {
+            "group": "Create with AI",
+            "icon": "wand-magic-sparkles",
+            "pages": [
+              "learn/index",
+              "learn/product-ad-from-one-photo",
+              "learn/podcast-to-shorts",
+              "learn/ai-video-cost",
+              "learn/one-ad-five-languages",
+              "learn/ten-ads-from-one-winner",
+              "learn/keep-the-label-intact"
+            ]
+          }
+        ]
       }
     ]
   },

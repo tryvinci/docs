@@ -1,0 +1,152 @@
+---
+title: "Five things that break an AI product ad"
+sidebarTitle: "Product ad checklist"
+description: "Consistency is a checklist, not luck. Check these five things on every generated shot before it goes into the edit."
+icon: "list-check"
+keywords: ["AI video", "Vinci", "image-generate", "first-last-frame", "image-upscale"]
+---
+
+Consistency is a checklist, not luck. Check these five things on every generated shot before it goes into the edit.
+
+<Columns cols={2}>
+  <Card title="What you get" icon="flag-checkered">
+    Every shot checked before it reaches the edit.
+  </Card>
+  <Card title="Time to read" icon="clock">
+    About 3 minutes. Each step works with any toolset.
+  </Card>
+</Columns>
+
+## What you need
+
+- Your real product photo as a locked reference
+- The generated shots you plan to use
+- A few minutes per shot to zoom in and compare
+
+## Steps
+
+<Steps>
+  <Step title="Label fidelity">
+    Text and logos on the pack should read exactly as they do on the real product. Zoom in on every shot.
+  </Step>
+  <Step title="Proportions">
+    The product should be the same shape and size relative to hands and props across every shot.
+  </Step>
+  <Step title="Colour accuracy">
+    Compare the pack colour against one locked reference image, not against the previous shot.
+  </Step>
+  <Step title="Material">
+    Glass should stay glass and matte should stay matte. Watch for surfaces that turn glossy or plastic.
+  </Step>
+  <Step title="Lighting continuity">
+    Light direction and warmth should match from shot to shot so the cut feels like one film.
+  </Step>
+</Steps>
+
+## Try it
+
+Use this checklist on each generated shot. Check all five before the shot goes into the edit.
+
+<ShotChecklist />
+
+<Tip>
+  **Keep the product out of the generated layer.** For hero shots, composite the real product photo onto the generated scene instead of asking the model to redraw it.
+</Tip>
+
+<Warning>
+  **Avoid this: fixing it in the edit.** A warped label rarely survives colour and sharpening fixes. Regenerate the shot instead.
+</Warning>
+
+## Before you publish
+
+- [ ] Label fidelity
+- [ ] Proportions
+- [ ] Colour accuracy
+- [ ] Material
+- [ ] Lighting continuity
+
+## Two ways to go further
+
+<Columns cols={2}>
+  <Card title="Let Vinci make it" icon="wand-magic-sparkles" href="https://tryvinci.com/meet?utm_source=guide&utm_medium=docs&utm_campaign=keep-the-label-intact">
+    Our team checks every shot against your real product before anything ships. Book a demo to get started.
+  </Card>
+  <Card title="Free and open source Vinci" icon="github" href="https://github.com/tryvinci/vinci">
+    Run the Vinci studio on your own machine with your own model keys. It shows the price before every job.
+  </Card>
+</Columns>
+
+### Run this workflow in the open source studio
+
+These skills cover this guide: `@tryvinci/image-generate`, `@tryvinci/first-last-frame`, `@tryvinci/image-upscale`.
+
+<Tabs>
+  <Tab title="Studio">
+    <Steps>
+      <Step title="Install and start in demo mode">
+```bash
+git clone https://github.com/tryvinci/vinci && cd vinci
+python3 -m venv .venv && . .venv/bin/activate && make install
+./scripts/vinci init --demo
+./scripts/vinci studio
+```
+        Demo mode uses practice providers, so it costs nothing and needs no key.
+      </Step>
+      <Step title="Open a skill">
+        Open the studio at `http://127.0.0.1:4310/studio` and pick `image-generate`.
+      </Step>
+      <Step title="Connect your own keys when ready">
+        Add provider keys under **Connect**. Live spend stays off until you set `VINCI_ALLOW_LIVE_SPEND=1`, and every job shows its price first.
+      </Step>
+    </Steps>
+  </Tab>
+  <Tab title="HTTP">
+    With the studio running, every skill is also available over HTTP:
+```bash
+curl -sS -X POST http://127.0.0.1:4310/runs \
+-H 'content-type: application/json' \
+-d '{"skill":"@tryvinci/image-generate","inputs":{}}'
+```
+    The studio lists each skill's inputs.
+  </Tab>
+</Tabs>
+
+## More guides
+
+<Columns cols={2}>
+  <Card title="Turn one podcast into a week of shorts" icon="scissors" href="/learn/podcast-to-shorts" />
+  <Card title="Stop paying for AI clips you throw away" icon="receipt" href="/learn/ai-video-cost" />
+  <Card title="Make a product ad from one photo" icon="image" href="/learn/product-ad-from-one-photo" />
+  <Card title="One ad, five languages" icon="language" href="/learn/one-ad-five-languages" />
+</Columns>
+
+export const ShotChecklist = () => {
+  const checks = [
+    ["Label fidelity", "Every word and logo reads like the real pack."],
+    ["Proportions", "Same size next to hands and props as in other shots."],
+    ["Colour accuracy", "Matches the locked reference, not the previous shot."],
+    ["Material", "Glass stays glass, matte stays matte."],
+    ["Lighting continuity", "Same light direction and warmth as the rest of the cut."],
+  ];
+  const [done, setDone] = useState(checks.map(() => false));
+  const [shot, setShot] = useState(1);
+  const all = done.every(Boolean);
+  return (
+    <div className="not-prose" style={{ border: "1px solid rgba(127,127,127,.25)", borderRadius: 14, padding: 16, display: "grid", gap: 10 }}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", fontSize: 14 }}>
+        <strong>Shot {shot}</strong>
+        <span>{done.filter(Boolean).length} of {checks.length} checked</span>
+      </div>
+      {checks.map(([t, d], i) => (
+        <label key={t} style={{ display: "flex", gap: 10, alignItems: "flex-start", padding: 10, borderRadius: 10, border: "1px solid rgba(127,127,127,.2)", background: done[i] ? "rgba(33,218,210,.12)" : "transparent", cursor: "pointer" }}>
+          <input type="checkbox" checked={done[i]} onChange={() => setDone(done.map((v, j) => (j === i ? !v : v)))} style={{ marginTop: 3 }} />
+          <span style={{ minWidth: 0 }}><strong>{t}</strong><br /><span style={{ fontSize: 13, opacity: 0.8 }}>{d}</span></span>
+        </label>
+      ))}
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 10, flexWrap: "wrap" }}>
+        <span style={{ fontWeight: 700, color: all ? "#1a9c96" : "#ef6b62" }}>{all ? "Ready for the edit" : "Regenerate before it reaches the edit"}</span>
+        <button type="button" onClick={() => { setShot(shot + 1); setDone(checks.map(() => false)); }} style={{ padding: "6px 14px", borderRadius: 8, border: "1px solid rgba(127,127,127,.35)", background: "transparent", color: "inherit", font: "inherit", cursor: "pointer" }}>Next shot</button>
+      </div>
+    </div>
+  );
+};

@@ -1,0 +1,159 @@
+---
+title: "Turn one podcast into a week of shorts"
+sidebarTitle: "Podcast to shorts"
+description: "A clip has about two seconds to earn the next ten. Here is how to cut podcast moments people actually finish, and how to get five of them out of one episode."
+icon: "scissors"
+keywords: ["AI video", "Vinci", "podcast-to-shorts", "clip-select", "reframe-9x16", "captions-burn"]
+---
+
+A clip has about two seconds to earn the next ten. Here is how to cut podcast moments people actually finish, and how to get five of them out of one episode.
+
+<Columns cols={2}>
+  <Card title="What you get" icon="flag-checkered">
+    Five captioned 9:16 clips from one episode.
+  </Card>
+  <Card title="Time to read" icon="clock">
+    About 4 minutes. Each step works with any toolset.
+  </Card>
+</Columns>
+
+## What you need
+
+- A recorded episode, video or audio-plus-video
+- A transcription tool that returns word timestamps
+- An editor that can crop to 9:16 and burn in captions
+
+## Steps
+
+<Steps>
+  <Step title="Transcribe with word timestamps">
+    Run the episode through a transcription model that returns a start and end time for every word. You will cut on words, not on a waveform, so this is the step that makes everything after it fast.
+  </Step>
+  <Step title="Pick moments that stand alone">
+    Read the transcript like an editor. Mark lines that make sense to someone who never heard the episode. A strong clip has a clear claim or a turn in the first sentence and finishes its own thought.
+  </Step>
+  <Step title="Reframe to vertical">
+    Crop the 16:9 recording to 9:16 and keep the frame on whoever is speaking. With two people on camera, switch the crop when the speaker changes instead of squeezing both into one frame.
+  </Step>
+  <Step title="Caption every word">
+    Burn in captions two or three words at a time, with the current word highlighted. A lot of people watch on mute, so the captions carry the clip.
+  </Step>
+  <Step title="Batch the week">
+    Cut five clips in one sitting and schedule one a day. Working in batches keeps the style consistent and turns one recording into a week of posts.
+  </Step>
+</Steps>
+
+## Try it
+
+Paste a line from your transcript to see how it reads as two- and three-word captions. Step through it the way a viewer on mute would.
+
+<CaptionChunker />
+
+<Tip>
+  **Lead with the payoff.** Start the clip on the punchline, not the setup. If the setup matters, it can come second.
+</Tip>
+
+<Warning>
+  **Avoid this: clips that need the episode.** A great line that only makes sense two minutes later will lose people. If a clip needs the full episode to land, skip it.
+</Warning>
+
+## Before you publish
+
+- [ ] Transcribe with word timestamps
+- [ ] Pick moments that stand alone
+- [ ] Reframe to vertical
+- [ ] Caption every word
+- [ ] Batch the week
+
+## Two ways to go further
+
+<Columns cols={2}>
+  <Card title="Let Vinci make it" icon="wand-magic-sparkles" href="https://tryvinci.com/meet?utm_source=guide&utm_medium=docs&utm_campaign=podcast-to-shorts">
+    Send us the episode and we return captioned vertical clips in your brand style, ready to schedule. Book a demo to get started.
+  </Card>
+  <Card title="Free and open source Vinci" icon="github" href="https://github.com/tryvinci/vinci">
+    Run the Vinci studio on your own machine with your own model keys. It shows the price before every job.
+  </Card>
+</Columns>
+
+### Run this workflow in the open source studio
+
+These skills cover this guide: `@tryvinci/podcast-to-shorts`, `@tryvinci/clip-select`, `@tryvinci/reframe-9x16`, `@tryvinci/captions-burn`.
+
+<Tabs>
+  <Tab title="Studio">
+    <Steps>
+      <Step title="Install and start in demo mode">
+```bash
+git clone https://github.com/tryvinci/vinci && cd vinci
+python3 -m venv .venv && . .venv/bin/activate && make install
+./scripts/vinci init --demo
+./scripts/vinci studio
+```
+        Demo mode uses practice providers, so it costs nothing and needs no key.
+      </Step>
+      <Step title="Open a skill">
+        Open the studio at `http://127.0.0.1:4310/studio` and pick `podcast-to-shorts`.
+      </Step>
+      <Step title="Connect your own keys when ready">
+        Add provider keys under **Connect**. Live spend stays off until you set `VINCI_ALLOW_LIVE_SPEND=1`, and every job shows its price first.
+      </Step>
+    </Steps>
+  </Tab>
+  <Tab title="HTTP">
+    With the studio running, every skill is also available over HTTP:
+```bash
+curl -sS -X POST http://127.0.0.1:4310/runs \
+-H 'content-type: application/json' \
+-d '{"skill":"@tryvinci/podcast-to-shorts","inputs":{}}'
+```
+    The studio lists each skill's inputs.
+  </Tab>
+</Tabs>
+
+## More guides
+
+<Columns cols={2}>
+  <Card title="Stop paying for AI clips you throw away" icon="receipt" href="/learn/ai-video-cost" />
+  <Card title="Make a product ad from one photo" icon="image" href="/learn/product-ad-from-one-photo" />
+  <Card title="One ad, five languages" icon="language" href="/learn/one-ad-five-languages" />
+  <Card title="Ten fresh ads from one winner" icon="layer-group" href="/learn/ten-ads-from-one-winner" />
+</Columns>
+
+export const CaptionChunker = () => {
+  const [text, setText] = useState("The real problem was never the product. It was getting anyone to see it.");
+  const [i, setI] = useState(0);
+  const words = text.trim().split(/\s+/).filter(Boolean);
+  const chunks = [];
+  for (let k = 0; k < words.length;) {
+    const c = [k++];
+    while (k < words.length && c.length < 3 && !/[.,?!]$/.test(words[c[c.length - 1]])) c.push(k++);
+    chunks.push(c);
+  }
+  const flat = chunks.flat();
+  const cur = Math.min(i, Math.max(0, flat.length - 1));
+  const chunk = chunks.find((c) => c.includes(flat[cur])) || [];
+  const btn = { padding: "6px 14px", borderRadius: 8, border: "1px solid rgba(127,127,127,.35)", background: "transparent", color: "inherit", font: "inherit", cursor: "pointer" };
+  return (
+    <div className="not-prose" style={{ border: "1px solid rgba(127,127,127,.25)", borderRadius: 14, padding: 16, display: "grid", gap: 14 }}>
+      <label style={{ display: "grid", gap: 6, fontSize: 14 }}>
+        Transcript line
+        <textarea value={text} onChange={(e) => { setText(e.target.value); setI(0); }} rows={2} style={{ width: "100%", padding: 10, borderRadius: 8, border: "1px solid rgba(127,127,127,.35)", background: "transparent", color: "inherit", font: "inherit", resize: "vertical" }} />
+      </label>
+      <div style={{ display: "flex", justifyContent: "center" }}>
+        <div style={{ width: 200, aspectRatio: "9 / 16", borderRadius: 22, background: "#13201f", position: "relative", overflow: "hidden", display: "flex", alignItems: "center", justifyContent: "center" }}>
+          <div style={{ position: "absolute", bottom: 0, width: 120, height: 150, borderRadius: "60px 60px 0 0", background: "#3f6068" }} />
+          <div style={{ position: "absolute", bottom: 130, width: 64, height: 64, borderRadius: 32, background: "#5a7c84" }} />
+          <div style={{ position: "relative", padding: "0 14px", textAlign: "center", fontWeight: 800, fontSize: 22, lineHeight: 1.15, color: "#fff", textShadow: "0 2px 8px rgba(0,0,0,.6)", marginTop: -40 }}>
+            {chunk.map((w) => <span key={w} style={{ color: w === flat[cur] ? "#21dad2" : "#fff" }}>{words[w].replace(/[.,!]$/, "")} </span>)}
+          </div>
+        </div>
+      </div>
+      <div style={{ display: "flex", gap: 8, justifyContent: "center", alignItems: "center", fontSize: 13 }}>
+        <button type="button" style={btn} onClick={() => setI(Math.max(0, cur - 1))} disabled={cur === 0}>Back</button>
+        <span style={{ minWidth: 120, textAlign: "center", opacity: 0.75 }}>Word {flat.length ? cur + 1 : 0} of {flat.length} · {chunks.length} captions</span>
+        <button type="button" style={btn} onClick={() => setI(Math.min(flat.length - 1, cur + 1))} disabled={cur >= flat.length - 1}>Next</button>
+      </div>
+    </div>
+  );
+};
