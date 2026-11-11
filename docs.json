@@ -178,6 +178,9 @@
             "pages": [
               "learn/index",
               "learn/product-ad-from-one-photo",
+              "learn/four-stills-from-one-prompt",
+              "learn/animate-a-still",
+              "learn/still-to-clip-on-the-canvas",
               "learn/anime-episode-from-a-script",
               "learn/podcast-to-shorts",
               "learn/ai-video-cost",

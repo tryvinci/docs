@@ -1,0 +1,97 @@
+---
+title: "Turn a still into a 6-second clip"
+sidebarTitle: "Video: animate a still"
+description: "Start from a still that you like, write one camera move, and check the price before you generate. A 6-second clip on Hailuo 2.3 Fast Pro costs $0.33."
+icon: "video"
+keywords: ["AI video", "Vinci", "image to video", "Hailuo 2.3", "camera move", "video-generate", "start frame"]
+---
+
+A clip that starts from a still keeps the product that you approved. A clip from words only can change the product in every frame. This guide starts from a still on the **Image** page and makes a 6-second clip with one slow camera move on the **Video** page.
+
+<Columns cols={2}>
+  <Card title="What you get" icon="flag-checkered">
+    A 6-second clip of your still with one camera move, for $0.33.
+  </Card>
+  <Card title="Time to read" icon="clock">
+    About 4 minutes. The steps take about 5 minutes, and the model takes 1 to 2 minutes to make the clip.
+  </Card>
+</Columns>
+
+## The example
+
+The start frame is the first take from [Make four product stills from one prompt](/learn/four-stills-from-one-prompt). The prompt asks for a slow push-in and the steam, and nothing else.
+
+<Frame caption="A slow push-in on the kettle, on Hailuo 2.3 Fast Pro (6-second setting): 1364×768, 5.9 seconds, no sound. Model spend: $0.33 at the prices of November 2026.">
+  <video controls playsInline loop className="w-full aspect-video rounded-xl" src="/videos/animate-a-still-example.mp4" poster="/images/learn/animate-a-still-example-poster.jpg"></video>
+</Frame>
+
+And this is the process in the studio, with Hailuo 2.3 Fast Pro. This run animated a new take from the Image guide.
+
+<Frame caption="The steps on the Video page with Hailuo 2.3 Fast Pro. Model spend: $0.33. The wait for the clip (about 70 seconds) is cut. 34 seconds, no sound.">
+  <video controls playsInline className="w-full aspect-video rounded-xl" src="/videos/animate-a-still-walkthrough.mp4" poster="/images/learn/animate-a-still-walkthrough-poster.jpg"></video>
+</Frame>
+
+## What you need
+
+- The free and open source Vinci studio, with live spend on (the install is in step 1 of the [Image guide](/learn/four-stills-from-one-prompt))
+- A model provider key (this example uses Wavespeed)
+- A still that you like: make one on the Image page, or use your own picture
+
+## Steps
+
+<Steps>
+  <Step title="Start from a still">
+    On the **Image** page, hover the still and click **Animate**. The **Video** page opens, with the still as the **Start** frame. You can also drop your own picture on the start frame.
+  </Step>
+  <Step title="Describe the move, not the picture">
+    The still already shows the product. Write only what moves: the camera, and one or two small things in the scene. The example prompt:
+```text
+Slow push-in on the kettle. The steam from the cup drifts up. Nothing else moves.
+```
+    "Nothing else moves" helps to keep the product as it is in the still.
+  </Step>
+  <Step title="Pick a model">
+    Click **Change** and pick a model. The form then shows only the lengths, shapes and sizes that the model takes. The example uses **Hailuo 2.3 Fast Pro**, which makes 6-second clips only.
+  </Step>
+  <Step title="Pick the length and the shape">
+    Pick the length under **Duration**. Under **Aspect**, pick the shape of the still: 16:9 in the example.
+  </Step>
+  <Step title="Check the price, then generate">
+    The price is on the **Generate** button: $0.330 for Hailuo 2.3 Fast Pro. Click **Generate** one time. The clip shows in **History** when the model is done, after 1 to 2 minutes.
+  </Step>
+  <Step title="Check the clip to the last frame">
+    Play the clip to the end, and look at the product in the last frame: the shape, the label and the color. If the product changes, ask for a smaller move, or try a different model.
+  </Step>
+</Steps>
+
+<Tip>
+  **One move in each clip.** Ask for one push-in, one pan or one tilt. A small, slow move keeps the product steady.
+</Tip>
+
+<Note>
+  The size of the clip can be different from the size on the **Quality** chip. In the example, the chip showed 1920×1080, and the clip came back at 1364×768. Check the size of the clip before you put it in an edit.
+</Note>
+
+## Before you use a clip
+
+- [ ] The product in the last frame matches the still
+- [ ] The clip has one move, and the move is slow
+- [ ] The clip has the shape of the still
+
+## Two ways to go further
+
+<Columns cols={2}>
+  <Card title="Let Vinci make it" icon="wand-magic-sparkles" href="https://tryvinci.com/meet?utm_source=guide&utm_medium=docs&utm_campaign=animate-a-still">
+    Send us your stills, and we return the clips in your brand style. Book a demo to get started.
+  </Card>
+  <Card title="Free and open source Vinci" icon="github" href="https://github.com/tryvinci/vinci">
+    Run the Vinci studio on your own machine with your own model keys. It shows the price before every run.
+  </Card>
+</Columns>
+
+## More guides
+
+<Columns cols={2}>
+  <Card title="Chain a still and a clip on the canvas" icon="diagram-project" href="/learn/still-to-clip-on-the-canvas" />
+  <Card title="Make a product ad from one photo" icon="image" href="/learn/product-ad-from-one-photo" />
+</Columns>
