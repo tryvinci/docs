@@ -1,0 +1,212 @@
+---
+title: "Make stills and clips on your own accounts"
+sidebarTitle: "Your own accounts"
+description: "Paste a Wavespeed key, or sign in to Higgsfield or Magnific, and make stills, clips and canvas chains on your own provider account. On app.tryvinci.com, a run on your account costs no Vinci credits."
+icon: "key"
+keywords: ["API key", "bring your own key", "BYOK", "sign in", "OAuth", "Wavespeed", "Magnific", "Higgsfield", "Vinci", "image generation", "video generation", "canvas"]
+---
+
+The **Image**, **Video** and **Canvas** pages can run models on your own provider account. For Wavespeed, you paste an API key. For Higgsfield and Magnific, you sign in with your account: no API key. The provider bills your account: Wavespeed in dollars, Higgsfield and Magnific in their own credits. This works in the free and open source Vinci studio on your computer, and in the studio on app.tryvinci.com, where a run on your account costs no Vinci credits.
+
+<Columns cols={2}>
+  <Card title="What you get" icon="flag-checkered">
+    Your Wavespeed key, or your Higgsfield or Magnific sign-in, in the studio, and a still, a clip and a canvas chain made on it.
+  </Card>
+  <Card title="Time to read" icon="clock">
+    About 7 minutes. A key or a sign-in takes about 2 minutes. A still takes about 10 seconds, and a clip 1 to 3 minutes.
+  </Card>
+</Columns>
+
+## The example
+
+One prompt for a still, one prompt for a move, on three providers. On Wavespeed, Seedream 4.5 made the still and Hailuo 2.3 Fast Pro made a 6-second clip from it.
+
+<Frame caption="The still on Seedream 4.5 at 16:9, on Wavespeed: 2560×1440. Wavespeed billed $0.04 to the key.">
+  <img src="/images/learn/own-keys-still.jpg" alt="A white ceramic table lamp with a linen shade on a light oak side table, two books beside it, in late afternoon sun through sheer curtains." />
+</Frame>
+
+<Frame caption="The clip on Hailuo 2.3 Fast Pro (6-second setting), on Wavespeed: 1364×768, 5.9 seconds, no sound. Wavespeed billed $0.33 to the key.">
+  <video controls playsInline loop className="w-full aspect-video rounded-xl" src="/videos/own-keys-example.mp4" poster="/images/learn/own-keys-example-poster.jpg"></video>
+</Frame>
+
+The same prompts on the Higgsfield and Magnific sign-ins: Seedream 4.5 for the still, and Hailuo 2.3 Fast for the clip.
+
+<Frame caption="Seedream 4.5 at 16:9 on Higgsfield (left, 2560×1440, 1 Higgsfield credit) and on Magnific (right, 2688×1536, 50 Magnific credits).">
+  <img src="/images/learn/sign-in-stills.jpg" alt="Two stills of the same table lamp and books in afternoon sun: the Higgsfield take on the left, the Magnific take on the right." />
+</Frame>
+
+<Frame caption="Hailuo 2.3 Fast (6-second setting) from each still: Higgsfield (left, 1364×768) and Magnific (right, 1344×768), 5.9 seconds each, no sound. Higgsfield took 4 credits, and Magnific 150.">
+  <video controls playsInline loop className="w-full rounded-xl" src="/videos/sign-in-clips.mp4" poster="/images/learn/sign-in-clips-poster.jpg"></video>
+</Frame>
+
+All runs of this guide, at the prices of November 2026. On Wavespeed, the balance went down by $0.78, the sum of the table:
+
+| Run | Model | Billed |
+| --- | --- | --- |
+| The still: Image page, on your computer | Seedream 4.5 | $0.04 |
+| The clip: Video page, on your computer | Hailuo 2.3 Fast Pro | $0.33 |
+| A still and a clip in one run: Canvas, on your computer | Seedream 4.5, Hailuo 2.3 Fast Pro | $0.37 |
+| A still: Image page, hosted studio, 0 Vinci credits | Seedream 4.5 | $0.04 |
+
+On the sign-ins, each balance went down by the price on the button, in the provider's credits:
+
+| Run | Higgsfield | Magnific |
+| --- | --- | --- |
+| A still on Seedream 4.5: Image page, on your computer | 1 | 50 |
+| A clip on Hailuo 2.3 Fast: Video page, hosted studio, 0 Vinci credits | 4 | 150 |
+
+## What you need
+
+- A Wavespeed account with money on it, or a Higgsfield or Magnific account with credits
+- The Vinci studio on your computer (the install is in step 1 of the [Image guide](/learn/four-stills-from-one-prompt)), or a sign-in on app.tryvinci.com
+- A prompt for a still and a prompt for a move. The [Image](/learn/four-stills-from-one-prompt) and [Video](/learn/animate-a-still) guides show how to write them.
+
+## Get access
+
+<Tabs>
+  <Tab title="Wavespeed: API key">
+    1. Sign in to Wavespeed and open the API keys page: [wavespeed.ai/accesskey](https://wavespeed.ai/accesskey).
+    2. Type a name for the key, and click **Generate**.
+    3. Copy the key at once. Wavespeed shows it one time only.
+
+    You can make a key with no credits on the account, but a paid run needs credits. The key runs the Wavespeed models of the studio, such as Seedream 4.5, Nano Banana Pro, Hailuo and Kling, at their dollar prices.
+
+    <Warning>
+      **A key spends your money.** Anyone with the key can run models on your account. Do not put the key in a chat, a ticket, a screenshot or a file that you share.
+    </Warning>
+  </Tab>
+  <Tab title="Higgsfield: sign in">
+    You need a Higgsfield account with credits on it. You do not need an API key: you sign in from the studio, in the next step.
+
+    The sign-in adds Higgsfield Seedream 4.5 and Soul 2.0 for stills (1 credit each) and Higgsfield Hailuo 2.3 Fast for 6-second clips (4 credits), at the prices of November 2026. A run spends your Higgsfield credits, not free-trial unlimited generations.
+  </Tab>
+  <Tab title="Magnific: sign in">
+    You need a Magnific account with credits on it. You do not need an API key: you sign in from the studio, in the next step.
+
+    The sign-in adds Magnific Seedream 4.5 and Mystic 2.5 for stills (50 credits each) and Magnific Hailuo 2.3 Fast for 6-second clips (150 credits), at the prices of November 2026. Magnific's unlimited mode does not apply to these runs: each run spends credits.
+  </Tab>
+</Tabs>
+
+## Connect your account
+
+<Tabs>
+  <Tab title="On your computer">
+    <Steps>
+      <Step title="Start the studio with live spend on">
+```bash
+VINCI_ALLOW_LIVE_SPEND=1 ./scripts/vinci studio
+```
+        Paid runs stay off until you start the studio with `VINCI_ALLOW_LIVE_SPEND=1`. If the studio already runs, stop it first with `./scripts/vinci stop`.
+      </Step>
+      <Step title="Open Connect">
+        Pick **Connect** on the left rail. Connected providers show under **Connected**. The others show under **Not connected**.
+      </Step>
+      <Step title="Wavespeed: paste the key">
+        Click **Wavespeed**, paste the key in **Paste key**, and click **Save Wavespeed**. The status changes to **Ready**.
+      </Step>
+      <Step title="Higgsfield or Magnific: sign in">
+        Under **Not connected**, click the **Higgsfield** or **Magnific** mark that opens a **Custom server** card, and click **Sign in**. A browser tab opens on the provider's sign-in page. Sign in there, and the tab shows "Connected. You can close this tab." Back in the studio, the provider moves to **Connected**.
+      </Step>
+      <Step title="Check the prices">
+        Open **Image**. The model list shows the models of the providers that you connected. The price on **Generate** is in dollars for Wavespeed, and in the provider's credits for a sign-in, such as "1 Higgsfield credit".
+      </Step>
+    </Steps>
+
+    <Frame caption="Connect with the Higgsfield and Magnific sign-ins, then a still on Higgsfield Seedream 4.5 for 1 Higgsfield credit. The sign-in itself happened before this recording. The wait for the still (35 seconds) is cut. 49 seconds, no sound.">
+      <video controls playsInline className="w-full aspect-video rounded-xl" src="/videos/sign-in-local-walkthrough.mp4" poster="/images/learn/sign-in-local-walkthrough-poster.jpg"></video>
+    </Frame>
+
+    <Note>
+      A pasted key and a sign-in stay on your computer. For Wavespeed, you can also type the name of an environment variable in **Or the name of an environment variable**, such as `WAVESPEED_API_KEY`: the studio keeps only the name, and reads the key from the shell that started it. **Disconnect** on a sign-in card signs you out. Higgsfield and Magnific also have a key mark (**Magnific / Freepik**, and **Higgsfield** with a key and a secret) for an API account; this guide uses the sign-in.
+    </Note>
+  </Tab>
+  <Tab title="On app.tryvinci.com">
+    <Steps>
+      <Step title="Open Connect in the studio">
+        Sign in to app.tryvinci.com and open the studio. Pick **Connect** on the left rail. The page **Your accounts** has a card for Wavespeed, Higgsfield and Magnific.
+      </Step>
+      <Step title="Wavespeed: paste the key">
+        Paste the key in the Wavespeed card, and click **Save Wavespeed key**. The studio checks the key with Wavespeed at once. If Wavespeed refuses the key, the page tells you, and the key is not saved.
+      </Step>
+      <Step title="Higgsfield or Magnific: sign in">
+        Click **Sign in to Higgsfield** or **Sign in to Magnific**. A new tab opens on the provider's sign-in page. Sign in there, and the tab shows "Signed in to Higgsfield. You can close this tab." Back in the studio, the card shows **Signed in**.
+      </Step>
+      <Step title="Check the prices">
+        Open **Image** or **Video**. The models on your account show their own price: dollars for Wavespeed, the provider's credits for a sign-in. A run on your account costs no Vinci credits, and you do not need a paid plan for it.
+      </Step>
+    </Steps>
+
+    <Frame caption="The steps in the hosted studio: Your accounts with both sign-ins, then a Hailuo 2.3 Fast clip on Higgsfield from the still, for 4 Higgsfield credits and 0 Vinci credits. The wait for the clip (about 3 minutes) is cut. 35 seconds, no sound.">
+      <video controls playsInline className="w-full aspect-video rounded-xl" src="/videos/sign-in-hosted-walkthrough.mp4" poster="/images/learn/sign-in-hosted-walkthrough-poster.jpg"></video>
+    </Frame>
+
+    <Note>
+      The studio stores your key and your sign-in encrypted, and shows only the last 4 characters of a key. Paste the key itself: the studio on app.tryvinci.com does not read environment variables. **Remove key** deletes the Wavespeed key, and its models go back to Vinci credits. **Sign out** ends a sign-in: the provider revokes the studio's access, and its models leave the lists. Shows still use Vinci credits.
+    </Note>
+  </Tab>
+</Tabs>
+
+## Make a still, a clip and a chain on your account
+
+The **Image**, **Video** and **Canvas** pages work the same on your computer and on app.tryvinci.com. A run goes to your account when you connected the provider of its model. A sign-in model has the provider's name first, such as **Higgsfield Seedream 4.5**.
+
+<Steps>
+  <Step title="Make a still on the Image page">
+    Write the still, pick the model and the shape, and check the price on **Generate**. The example prompt at 16:9 shows $0.040 on Wavespeed Seedream 4.5, 1 Higgsfield credit on Higgsfield Seedream 4.5, and 50 Magnific credits on Magnific Seedream 4.5:
+```text
+A white ceramic table lamp with a linen shade on a light oak side table, two hardcover books stacked beside it, late afternoon sun through sheer curtains, soft long shadows, interior product photography, 35mm lens.
+```
+    Click **Generate** one time. The still shows at the top of the page. The [Image guide](/learn/four-stills-from-one-prompt) has more about prompts and takes.
+  </Step>
+  <Step title="Animate the still on the Video page">
+    Hover the still and click **Animate**, or drop a still in **Start frame** on the **Video** page. Describe the move, not the picture:
+```text
+Slow push-in on the lamp. The sheer curtain sways a little in the breeze. Nothing else moves.
+```
+    Click **Change** and pick the model: **Hailuo 2.3 Fast Pro** ($0.330 on Wavespeed), **Higgsfield Hailuo 2.3 Fast** (4 Higgsfield credits) or **Magnific Hailuo 2.3 Fast** (150 Magnific credits). Pick **6s** and **16:9**, check the price on **Generate**, and click it one time. The clip shows in **History**.
+  </Step>
+  <Step title="Chain the two on the canvas">
+    Pick **Canvas**, and start with **Image Gen**. Write the still on the node, and pick its model on its pill. Click the out port on the right edge of the node, and pick **Animate image**. Write the move on the new node, and pick its model. Select the clip node: the bar above it shows the price of the run and **Up to here**. Click it one time. The still runs first, then the clip. The [Canvas guide](/learn/still-to-clip-on-the-canvas) has more.
+  </Step>
+</Steps>
+
+<Frame caption="The steps on the Video page with Hailuo 2.3 Fast Pro, on a Wavespeed key. Wavespeed billed $0.33. The wait for the clip (about 60 seconds) is cut. 34 seconds, no sound.">
+  <video controls playsInline className="w-full aspect-video rounded-xl" src="/videos/own-keys-video-walkthrough.mp4" poster="/images/learn/own-keys-video-walkthrough-poster.jpg"></video>
+</Frame>
+
+<Frame caption="The chain on the canvas with Seedream 4.5 and Hailuo 2.3 Fast Pro, on a Wavespeed key. The canvas did not use the still from the Image page: it made a new still and a new clip, and Wavespeed billed $0.37. The wait (about 60 seconds) is cut. 52 seconds, no sound.">
+  <video controls playsInline className="w-full aspect-video rounded-xl" src="/videos/own-keys-canvas-walkthrough.mp4" poster="/images/learn/own-keys-canvas-walkthrough-poster.jpg"></video>
+</Frame>
+
+<Tip>
+  **A run never costs more than its button.** Before each Higgsfield or Magnific run, the studio asks the provider for the live price. If it is higher than the price on the button, the run stops, and nothing is spent. On your computer, **Connect** also has **Max price per run (USD)** and **Monthly limit (USD)** under **Model choice** for dollar runs; a run over a limit waits for your approval.
+</Tip>
+
+<Note>
+  A clip from a still sends the still to the provider first: Higgsfield keeps it in your Higgsfield media, and Magnific keeps it out of your library. A cancelled sign-in, or a sign-in link that is more than 10 minutes old, does nothing: start it again from **Connect**.
+</Note>
+
+## Before you run
+
+- [ ] The provider shows **Ready** or **Connected** in **Connect** (on your computer), or **On your key** or **Signed in** on its card (on app.tryvinci.com)
+- [ ] The price on **Generate** is in dollars or in the provider's credits, not in Vinci credits
+- [ ] Your provider account has money or credits for the run
+- [ ] Your Wavespeed key is not in a chat, a ticket or a shared file
+
+## Two ways to go further
+
+<Columns cols={2}>
+  <Card title="Let Vinci make it" icon="wand-magic-sparkles" href="https://tryvinci.com/meet?utm_source=guide&utm_medium=docs&utm_campaign=your-own-accounts">
+    Send us your product and your idea, and we return the stills and clips in your brand style. Book a demo to get started.
+  </Card>
+  <Card title="Free and open source Vinci" icon="github" href="https://github.com/tryvinci/vinci">
+    Run the Vinci studio on your own machine with your own model keys. It shows the price before every run.
+  </Card>
+</Columns>
+
+## More guides
+
+<Columns cols={2}>
+  <Card title="Make four product stills from one prompt" icon="image" href="/learn/four-stills-from-one-prompt" />
+  <Card title="Chain a still and a clip on the canvas" icon="diagram-project" href="/learn/still-to-clip-on-the-canvas" />
+</Columns>
