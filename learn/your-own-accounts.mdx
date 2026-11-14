@@ -129,7 +129,7 @@ VINCI_ALLOW_LIVE_SPEND=1 ./scripts/vinci studio
         Paste the key in the Wavespeed card, and click **Save Wavespeed key**. The studio checks the key with Wavespeed at once. If Wavespeed refuses the key, the page tells you, and the key is not saved.
       </Step>
       <Step title="Higgsfield or Magnific: sign in">
-        Click **Sign in to Higgsfield** or **Sign in to Magnific**. A new tab opens on the provider's sign-in page. Sign in there, and the tab shows "Signed in to Higgsfield. You can close this tab." Back in the studio, the card shows **Signed in**.
+        Click **Sign in to Higgsfield** or **Sign in to Magnific**. A new tab opens on the provider's sign-in page. Sign in there, and the tab shows "Signed in to Higgsfield. You can close this tab." Back in the studio, the card shows **Signed in** and the credits on your account, such as **Balance: 37 Higgsfield credits**. A balance of 0, or a provider that refuses the check, shows in red.
       </Step>
       <Step title="Check the prices">
         Open **Image** or **Video**. The models on your account show their own price: dollars for Wavespeed, the provider's credits for a sign-in. A run on your account costs no Vinci credits, and you do not need a paid plan for it.
@@ -141,7 +141,7 @@ VINCI_ALLOW_LIVE_SPEND=1 ./scripts/vinci studio
     </Frame>
 
     <Note>
-      The studio stores your key and your sign-in encrypted, and shows only the last 4 characters of a key. Paste the key itself: the studio on app.tryvinci.com does not read environment variables. **Remove key** deletes the Wavespeed key, and its models go back to Vinci credits. **Sign out** ends a sign-in: the provider revokes the studio's access, and its models leave the lists. Shows still use Vinci credits.
+      The studio stores your key and your sign-in encrypted, and shows only the last 4 characters of a key. Paste the key itself: the studio on app.tryvinci.com does not read environment variables. **Remove key** deletes the Wavespeed key, and its models go back to Vinci credits. **Sign out** ends a sign-in: the provider revokes the studio's access, and its models leave the lists. In **Shows**, keyframes and video takes run on your key too. A Higgsfield or Magnific clip model runs there when you pick it in the shot's **Video model** menu, and the price shows what your account pays, such as "4 Higgsfield credits on your account". Writing a script with the text model still uses Vinci credits.
     </Note>
   </Tab>
 </Tabs>
