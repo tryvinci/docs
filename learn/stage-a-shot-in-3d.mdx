@@ -29,7 +29,7 @@ The clip keeps what the pin video says: Mira stays at frame left and steps to th
 
 And this is the process on app.tryvinci.com, with the sample show:
 
-<Frame caption="The steps on app.tryvinci.com, from a new project to the render box. No model runs, so it costs nothing. The 17-second wait while the sample opens is cut. 1 minute 45 seconds, no sound.">
+<Frame caption="The steps on app.tryvinci.com, from a new project to the render box. No model runs, so it costs nothing. The 17-second wait while the sample opens is cut. 1 minute 56 seconds, no sound.">
   <video controls playsInline className="w-full aspect-video rounded-xl" src="/videos/scene-lab-walkthrough.mp4" poster="/images/learn/scene-lab-walkthrough-poster.jpg"></video>
 </Frame>
 
@@ -47,10 +47,10 @@ And this is the process on app.tryvinci.com, with the sample show:
     Pick **Shows** on the left rail. In a project with no shows yet, click **Open the sample show**. *Lamp Oil* opens on its storyboard: one scene, three shots. Each project gets its own copy, so you can change it freely.
   </Step>
   <Step title="Open a shot that renders by reference">
-    Click shot **sh010**. In the camera fields, **Render** says `reference`: the video follows the shot's pin video, and the chosen keyframe gives the look. Under **Keyframe layout** you see the pin frame and the pin video, made in the scene lab. To use it on your own shot, set **Render** to `reference`.
+    Click shot **sh010**. The shot page has three steps at the top: **Stage**, **Keyframe** and **Video**. Each one shows its state, and the page opens on the step the shot needs next: here **Video**, because the shot already has an approved take. In the render box, **Render** says `reference`: the video follows the shot's pin video, and the chosen keyframe gives the look. Under **Keyframe layout** you see the pin frame and the pin video, made in the scene lab. To use it on your own shot, set **Render** to `reference` in the **Video** step.
   </Step>
   <Step title="Look at the staging in 3D">
-    Scroll down to the **Scene lab**. It shows the room in grey clay and each person as a pin in their character's stripes, seen through the shot's own lens (here 24mm). Click **Play** to see the move, and **Free view** to turn around the set. The **Pin** menu changes the pin shape.
+    Click **Stage**. The scene lab shows the room in grey clay and each person as a pin in their character's stripes, seen through the shot's own lens (here 24mm). Click **Play** to see the move, and **Free view** to turn around the set. The **Pin** menu changes the pin shape. Under **Shot camera** you set the lens and the move (or a move preset): the lab plays the move, and the pin video records it.
   </Step>
   <Step title="Make a new try">
     Describe what should change in **What should the scene be?**, for example "Tomas takes one step toward the lamp as he answers her." Then pick how to build it in **Run with**:
@@ -63,13 +63,13 @@ And this is the process on app.tryvinci.com, with the sample show:
     Every try is checked when it is saved. A warning shows under the tries, for example when a person is outside the frame, stands inside a set piece, floats, is hidden behind a piece, or makes a jump cut with the shot before. Fix it with another try, or with **Edit by hand · $0**. Click **Compare tries** to see two tries side by side.
   </Step>
   <Step title="Use the try">
-    Click **Use as keyframe layout and pin video**. The try's start frame becomes the shot's keyframe layout, and its places become the shot's pills. With **Render** on `reference`, Vinci also records the try's move as the pin video: the shot camera, 24 frames per second, as long as the shot. A keyframe drawn before becomes stale, because its layout changed.
+    Click **Use as keyframe layout and pin video**. The try's start frame becomes the shot's keyframe layout, and its places become the shot's pills. With **Render** on `reference`, Vinci also records the try's move as the pin video: the shot camera, 24 frames per second, as long as the shot. The try's camera also sets the shot's framing and angle: they show as "measured from try N" and you change them in the stage. A keyframe drawn before becomes stale, because its layout changed.
   </Step>
   <Step title="Approve a keyframe for the look">
-    The video takes its look from the chosen keyframe: the faces, the clothes, the place and the light. Draw a new keyframe from the new layout, or keep the old one if its staging still matches, and approve it.
+    Click **Keyframe**. The video takes its look from the chosen keyframe: the faces, the clothes, the place and the light. Draw a new keyframe from the new layout, or keep the old one if its staging still matches, and approve it.
   </Step>
   <Step title="Render the video from the pin video">
-    In the render box, pick a reference model in **Video model**, for example **Magnific Seedance 2.5 reference**. The menu shows each model's price for the shot's length. Click **Render video**, and confirm the price: nothing runs before you confirm. Approve the new take when you like it.
+    Click **Video**. In the render box, pick a reference model in **Video model**, for example **Magnific Seedance 2.5 reference**. The menu shows each model's price for the shot's length. Click **Render video**, and confirm the price: nothing runs before you confirm. Approve the new take when you like it.
   </Step>
 </Steps>
 
@@ -92,7 +92,7 @@ On a Higgsfield or Magnific sign-in, Vinci asks the provider for its own price b
 - **The pin video is the motion, the keyframe is the look.** Keep them in agreement: draw the keyframe from the same try that made the pin video. When they disagree, the model can follow the keyframe's framing, as in the example.
 - **Words win less than you think.** The model follows the pin video for places and the camera. Use the shot's description for what the pin video cannot show: the action of the hands, the expressions, the props.
 - **Use a try only when it has no warnings.** A person outside the frame in the pin video is outside the frame in the clip.
-- **Copy the prompt when a model answer fails.** If a model's try is refused or cut off, the same prompt in your own agent usually gives a good answer.
+- **Fix a refused answer, or copy the prompt.** If saving refuses a model's answer, it opens in **Paste an answer** with the reason: fix it and click **Save as a try**. If the answer is cut off, the same prompt in your own agent usually gives a good answer.
 
 ## Related
 
