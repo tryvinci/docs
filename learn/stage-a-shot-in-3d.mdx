@@ -25,7 +25,7 @@ This is shot sh010 of the sample show *Lamp Oil*: Mira pours oil into the great 
   <video controls playsInline loop className="w-full aspect-video rounded-xl" src="/videos/scene-lab-reference-example.mp4" poster="/images/learn/scene-lab-reference-example-poster.jpg"></video>
 </Frame>
 
-The clip keeps what the pin video says: Mira stays at frame left and steps to the burner, Tomas stays at frame right, and the camera does not move. The look comes from the shot's approved keyframe. Its framing is a little wider than the pin video, so the clip is framed like the keyframe.
+The clip keeps the places and the camera of the pin video: Mira at frame left, Tomas at frame right, and a camera that does not move. It does not show Mira's step toward the lamp: in this try the step is only 0.2 m, and the prompt of this render did not name it. Since November 2026 the prompt names every move of the try, and the scene lab warns about a move that small. The look comes from the shot's approved keyframe. Its framing is a little wider than the pin video, so the clip is framed like the keyframe.
 
 And this is the process on app.tryvinci.com, with the sample show:
 
@@ -60,7 +60,7 @@ And this is the process on app.tryvinci.com, with the sample show:
     Each answer is a new try. The first shot of a scene with no room also builds the room.
   </Step>
   <Step title="Check and compare the tries">
-    Every try is checked when it is saved. A warning shows under the tries, for example when a person is outside the frame, stands inside a set piece, floats, is hidden behind a piece, or makes a jump cut with the shot before. Fix it with another try, or with **Edit by hand · $0**. Click **Compare tries** to see two tries side by side.
+    Every try is checked when it is saved. A warning shows under the tries, for example when a person is outside the frame, stands inside a set piece, floats, is hidden behind a piece, makes a jump cut with the shot before, or moves less than 0.4 m (a video model may not show a move that small). Fix it with another try, or with **Edit by hand · $0**. Click **Compare tries** to see two tries side by side.
   </Step>
   <Step title="Use the try">
     Click **Use as keyframe layout and pin video**. The try's start frame becomes the shot's keyframe layout, and its places become the shot's pills. With **Render** on `reference`, Vinci also records the try's move as the pin video: the shot camera, 24 frames per second, as long as the shot. The try's camera also sets the shot's framing and angle: they show as "measured from try N" and you change them in the stage. A keyframe drawn before becomes stale, because its layout changed.
@@ -91,6 +91,7 @@ On a Higgsfield or Magnific sign-in, Vinci asks the provider for its own price b
 
 - **The pin video is the motion, the keyframe is the look.** Keep them in agreement: draw the keyframe from the same try that made the pin video. When they disagree, the model can follow the keyframe's framing, as in the example.
 - **Words win less than you think.** The model follows the pin video for places and the camera. Use the shot's description for what the pin video cannot show: the action of the hands, the expressions, the props.
+- **Make a move a full step or more.** A pin has no legs, so the prompt names each move of the try for the model. A move under about 0.4 m often does not show at all, and a shot where the camera is still and nobody moves can come back stiff.
 - **Use a try only when it has no warnings.** A person outside the frame in the pin video is outside the frame in the clip.
 - **Fix a refused answer, or copy the prompt.** If saving refuses a model's answer, it opens in **Paste an answer** with the reason: fix it and click **Save as a try**. If the answer is cut off, the same prompt in your own agent usually gives a good answer.
 
