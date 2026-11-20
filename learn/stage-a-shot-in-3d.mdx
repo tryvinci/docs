@@ -21,11 +21,11 @@ A video model guesses where people stand and how the camera moves. When you only
 
 This is shot sh010 of the sample show *Lamp Oil*: Mira pours oil into the great lamp while Tomas watches. The scene lab staged it, and Seedance 2.5 rendered it from the pin video (top right).
 
-<Frame caption="Take v3 of sh010: Seedance 2.5 reference at 480p, 6 seconds, no sound, on a Wavespeed key. Wavespeed billed $1.188 (list price $1.32, November 2026). Top right: the pin video that the model followed.">
+<Frame caption="Take v4 of sh010: Seedance 2.5 reference at 480p, 6 seconds, no sound, on a Wavespeed key, with a keyframe drawn from the pin frame. Wavespeed billed $1.188 for the clip (list price $1.32) and $0.04 for the keyframe (November 2026). Top right: the pin video that the model followed.">
   <video controls playsInline loop className="w-full aspect-video rounded-xl" src="/videos/scene-lab-reference-example.mp4" poster="/images/learn/scene-lab-reference-example-poster.jpg"></video>
 </Frame>
 
-The clip keeps the places and the camera of the pin video: Mira at frame left, Tomas at frame right, and a camera that does not move. It does not show Mira's step toward the lamp: in this try the step is only 0.2 m, and the prompt of this render did not name it. Since November 2026 the prompt names every move of the try, and the scene lab warns about a move that small. The look comes from the shot's approved keyframe. Its framing is a little wider than the pin video, so the clip is framed like the keyframe.
+The clip keeps the framing, the places and the camera of the pin video: Mira starts at frame left, steps to the lamp and pours, Tomas stays on the right, and the camera does not move. Her step is smaller than in the pin video, and her move toward the camera does not show: a video model can play a move down. The keyframe gives the look, and it was drawn from the pin frame, so it has the same framing. A keyframe drawn before the layout makes the clip copy its own framing: the render box says so.
 
 And this is the process on app.tryvinci.com, with the sample show:
 
@@ -66,7 +66,7 @@ And this is the process on app.tryvinci.com, with the sample show:
     Click **Use as keyframe layout and pin video**. The try's start frame becomes the shot's keyframe layout, and its places become the shot's pills. With **Render** on `reference`, Vinci also records the try's move as the pin video: the shot camera, 24 frames per second, as long as the shot. The try's camera also sets the shot's framing and angle: they show as "measured from try N" and you change them in the stage. A keyframe drawn before becomes stale, because its layout changed.
   </Step>
   <Step title="Approve a keyframe for the look">
-    Click **Keyframe**. The video takes its look from the chosen keyframe: the faces, the clothes, the place and the light. Draw a new keyframe from the new layout, or keep the old one if its staging still matches, and approve it.
+    Click **Keyframe**. The video takes its look from the chosen keyframe: the faces, the clothes, the place and the light. Draw a new keyframe after **Use**, so it starts from the pin frame, and approve it. A reference render copies the keyframe's framing: an older keyframe drawn without the layout gives a wider or different shot, even when its staging looks right.
   </Step>
   <Step title="Render the video from the pin video">
     Click **Video**. In the render box, pick a reference model in **Video model**, for example **Magnific Seedance 2.5 reference**. The menu shows each model's price for the shot's length. Click **Render video**, and confirm the price: nothing runs before you confirm. Approve the new take when you like it.
