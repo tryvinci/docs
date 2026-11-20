@@ -1,0 +1,100 @@
+---
+title: "Stage a shot in 3D, then render it from a pin video"
+sidebarTitle: "Stage a shot in 3D"
+description: "Block out a shot in the scene lab: the room and the people in 3D, under the shot's own lens. Try a few stagings for free, then render the video from the pin video, so the clip keeps the camera, the places and the timing you chose."
+icon: "cube"
+keywords: ["AI video", "Vinci", "OLF", "scene lab", "blockout", "previs", "reference video", "Seedance 2.5", "staging", "anime"]
+---
+
+A video model guesses where people stand and how the camera moves. When you only give it words and a keyframe, a character can drift to the wrong side or the camera can start to move. The scene lab lets you decide those things first. You build the room and the people in 3D under the shot's camera, compare a few tries, and then the video model follows a short **pin video** of the try you chose.
+
+<Columns cols={2}>
+  <Card title="What you get" icon="flag-checkered">
+    A shot staged in 3D, its pin frame and pin video, and a 6-second clip rendered from them.
+  </Card>
+  <Card title="Time to read" icon="clock">
+    About 6 minutes. Staging a shot takes a few minutes, and the render 5 to 7 minutes.
+  </Card>
+</Columns>
+
+## The example
+
+This is shot sh010 of the sample show *Lamp Oil*: Mira pours oil into the great lamp while Tomas watches. The scene lab staged it, and Seedance 2.5 rendered it from the pin video (top right).
+
+<Frame caption="Take v3 of sh010: Seedance 2.5 reference at 480p, 6 seconds, no sound, on a Wavespeed key. Wavespeed billed $1.188 (list price $1.32, November 2026). Top right: the pin video that the model followed.">
+  <video controls playsInline loop className="w-full aspect-video rounded-xl" src="/videos/scene-lab-reference-example.mp4" poster="/images/learn/scene-lab-reference-example-poster.jpg"></video>
+</Frame>
+
+The clip keeps what the pin video says: Mira stays at frame left and steps to the burner, Tomas stays at frame right, and the camera does not move. The look comes from the shot's approved keyframe. Its framing is a little wider than the pin video, so the clip is framed like the keyframe.
+
+And this is the process on app.tryvinci.com, with the sample show:
+
+<Frame caption="The steps on app.tryvinci.com, from a new project to the render box. No model runs, so it costs nothing. The 17-second wait while the sample opens is cut. 1 minute 45 seconds, no sound.">
+  <video controls playsInline className="w-full aspect-video rounded-xl" src="/videos/scene-lab-walkthrough.mp4" poster="/images/learn/scene-lab-walkthrough-poster.jpg"></video>
+</Frame>
+
+## What you need
+
+- A Vinci account on [app.tryvinci.com](https://app.tryvinci.com), or the free and open source Vinci studio on your computer
+- A show with a shot that has people in it. The sample show *Lamp Oil* has one: sh010.
+- To build tries with a model: nothing more. On app.tryvinci.com the scene lab's text model is free for now. To use your own agent (for example Claude Code) instead, you only copy and paste.
+- For the render only: on app.tryvinci.com, a Higgsfield or Magnific sign-in with credits ([Your own accounts](/learn/your-own-accounts)). In the studio on your computer, a Wavespeed key and live spend turned on also work.
+
+## Steps
+
+<Steps>
+  <Step title="Open the sample show">
+    Pick **Shows** on the left rail. In a project with no shows yet, click **Open the sample show**. *Lamp Oil* opens on its storyboard: one scene, three shots. Each project gets its own copy, so you can change it freely.
+  </Step>
+  <Step title="Open a shot that renders by reference">
+    Click shot **sh010**. In the camera fields, **Render** says `reference`: the video follows the shot's pin video, and the chosen keyframe gives the look. Under **Keyframe layout** you see the pin frame and the pin video, made in the scene lab. To use it on your own shot, set **Render** to `reference`.
+  </Step>
+  <Step title="Look at the staging in 3D">
+    Scroll down to the **Scene lab**. It shows the room in grey clay and each person as a pin in their character's stripes, seen through the shot's own lens (here 24mm). Click **Play** to see the move, and **Free view** to turn around the set. The **Pin** menu changes the pin shape.
+  </Step>
+  <Step title="Make a new try">
+    Describe what should change in **What should the scene be?**, for example "Tomas takes one step toward the lamp as he answers her." Then pick how to build it in **Run with**:
+    - A model: click **New try**. The model answers with a scene description, and Vinci builds it in 3D.
+    - **Your agent · copy prompt**: click **Copy prompt** and paste it in your own agent, for example Claude Code. Paste its answer (a JSON scene description) in the box that opens, and click **Save as a try**. This costs nothing on Vinci.
+
+    Each answer is a new try. The first shot of a scene with no room also builds the room.
+  </Step>
+  <Step title="Check and compare the tries">
+    Every try is checked when it is saved. A warning shows under the tries, for example when a person is outside the frame, stands inside a set piece, floats, is hidden behind a piece, or makes a jump cut with the shot before. Fix it with another try, or with **Edit by hand · $0**. Click **Compare tries** to see two tries side by side.
+  </Step>
+  <Step title="Use the try">
+    Click **Use as keyframe layout and pin video**. The try's start frame becomes the shot's keyframe layout, and its places become the shot's pills. With **Render** on `reference`, Vinci also records the try's move as the pin video: the shot camera, 24 frames per second, as long as the shot. A keyframe drawn before becomes stale, because its layout changed.
+  </Step>
+  <Step title="Approve a keyframe for the look">
+    The video takes its look from the chosen keyframe: the faces, the clothes, the place and the light. Draw a new keyframe from the new layout, or keep the old one if its staging still matches, and approve it.
+  </Step>
+  <Step title="Render the video from the pin video">
+    In the render box, pick a reference model in **Video model**, for example **Magnific Seedance 2.5 reference**. The menu shows each model's price for the shot's length. Click **Render video**, and confirm the price: nothing runs before you confirm. Approve the new take when you like it.
+  </Step>
+</Steps>
+
+## What it costs
+
+Building tries costs nothing with your own agent, and nothing on app.tryvinci.com while the scene lab's model is free. A new keyframe and the video render cost money, and each shows its price before it runs. If you keep the old keyframe, only the render costs money.
+
+A reference render is a 480p draft. Seedance 2.5 bills the clip's seconds plus the pin video's seconds, at a lower rate for the pin video. The pin video is as long as the shot, so a 6-second shot pays for about 12 seconds. The prices the menu shows for a 6-second shot in November 2026:
+
+| Where the model runs | Model | Price for 6 seconds |
+| --- | --- | --- |
+| Wavespeed key (studio on your computer) | Seedance 2.5 reference, 480p | $1.32 list ($1.188 billed for the example) |
+| Magnific sign-in | Seedance 2.5 reference, 480p | 1,440 Magnific credits |
+| Higgsfield sign-in | Seedance 2.5 reference, 480p | 22 Higgsfield credits |
+
+On a Higgsfield or Magnific sign-in, Vinci asks the provider for its own price before the run. If the provider gives no price, or a higher one, nothing runs.
+
+## Tips
+
+- **The pin video is the motion, the keyframe is the look.** Keep them in agreement: draw the keyframe from the same try that made the pin video. When they disagree, the model can follow the keyframe's framing, as in the example.
+- **Words win less than you think.** The model follows the pin video for places and the camera. Use the shot's description for what the pin video cannot show: the action of the hands, the expressions, the props.
+- **Use a try only when it has no warnings.** A person outside the frame in the pin video is outside the frame in the clip.
+- **Copy the prompt when a model answer fails.** If a model's try is refused or cut off, the same prompt in your own agent usually gives a good answer.
+
+## Related
+
+- [From a script to an anime episode](/learn/anime-episode-from-a-script): plan the whole episode with stand-ins before you render
+- [Make stills and clips on your own accounts](/learn/your-own-accounts): connect a Wavespeed key, or sign in to Higgsfield or Magnific
