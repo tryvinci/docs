@@ -1,0 +1,130 @@
+---
+title: "Adapt API"
+sidebarTitle: "API"
+description: "Run Adapt from your own tools: upload masters, estimate, start batches, read results and download the export over REST."
+icon: "code"
+---
+
+The Adapt API runs the same batches as the web app, with the same checks, stored layouts and spending limit. Use it to run Adapt from a DAM, a campaign tool or your own pipeline.
+
+## Prerequisites
+
+- An Adapt API key. A workspace admin creates one on the **Connections** page under **API keys**, or with `POST /api/adapt/keys`.
+- Base URL: `https://adapts.tryvinci.com`
+
+## Authentication
+
+Send your key as a bearer token on every request:
+
+```bash
+curl https://adapts.tryvinci.com/api/adapt/packs \
+  -H "Authorization: Bearer $ADAPT_API_KEY"
+```
+
+Keys start with `vak_` and carry one or more scopes:
+
+| Scope | Allows |
+| --- | --- |
+| `read` | Packs, masters, estimates, batch status, outputs and exports |
+| `run` | Uploading masters and starting batches |
+| `push` | Sending outputs to connected platforms |
+
+## Run a batch
+
+<Steps>
+  <Step title="Upload a master">
+    Send the image as base64. The response includes its `master_id` and the profile Adapt read from it.
+
+    ```bash
+    curl -X POST https://adapts.tryvinci.com/api/adapt/masters \
+      -H "Authorization: Bearer $ADAPT_API_KEY" \
+      -H "Content-Type: application/json" \
+      -d "{\"filename\": \"corn-cheese-post.png\", \"body_base64\": \"$(base64 -w0 corn-cheese-post.png)\"}"
+    ```
+
+    ```json
+    {
+      "master_id": "3f1c...",
+      "filename": "corn-cheese-post.png",
+      "kind": "campaign_post",
+      "type": "Campaign post",
+      "profile": { "text_blocks": [ { "role": "price", "text": "@ ₹49" } ] },
+      "reused": false
+    }
+    ```
+
+    Uploading the same file again returns the same master with `"reused": true`.
+  </Step>
+  <Step title="Estimate">
+    Pass a `pack_id` or a list of `placement_ids`, or both.
+
+    ```bash
+    curl -X POST https://adapts.tryvinci.com/api/adapt/estimate \
+      -H "Authorization: Bearer $ADAPT_API_KEY" \
+      -H "Content-Type: application/json" \
+      -d '{"master_ids": ["3f1c..."], "pack_id": "launch_pack"}'
+    ```
+
+    The response includes `est_usd`, `est_seconds`, the layouts it will make (`ratios`), the number of `outputs`, and how much of your monthly limit is left (`remaining_micro_usd`).
+  </Step>
+  <Step title="Start the batch">
+    ```bash
+    curl -X POST https://adapts.tryvinci.com/api/adapt/batches \
+      -H "Authorization: Bearer $ADAPT_API_KEY" \
+      -H "Content-Type: application/json" \
+      -d '{"master_ids": ["3f1c..."], "pack_id": "launch_pack", "campaign": "Corn & Cheese launch"}'
+    ```
+
+    The response returns `batch_id`. Optional fields: `placement_ids` and `rules`, for example `{"lock_price": false}`.
+  </Step>
+  <Step title="Poll for status">
+    ```bash
+    curl https://adapts.tryvinci.com/api/adapt/batches/$BATCH_ID \
+      -H "Authorization: Bearer $ADAPT_API_KEY"
+    ```
+
+    `per_master[].state` moves from `queued` to `leased` to `done` (or `failed`). Each item in `outputs` has its `placement_id`, size, `review_state` (`passed`, `needs_review` or `approved`) and its `checks`, each with `id`, `passed` and `reason`.
+  </Step>
+  <Step title="Download the export">
+    ```bash
+    curl -L -o launch.zip https://adapts.tryvinci.com/api/adapt/batches/$BATCH_ID/export.zip \
+      -H "Authorization: Bearer $ADAPT_API_KEY"
+    ```
+
+    Add `?placement_id=instagram_story` to download one placement only.
+  </Step>
+</Steps>
+
+## Endpoints
+
+| Method and path | What it does |
+| --- | --- |
+| `POST /api/adapt/masters` | Upload a master |
+| `GET /api/adapt/packs` | List packs and placements |
+| `POST /api/adapt/packs/{pack_id}/clone` | Copy a pack into your workspace to edit (admin) |
+| `POST /api/adapt/estimate` | Cost, time and layouts for a batch |
+| `POST /api/adapt/batches` | Start a batch |
+| `GET /api/adapt/batches/{batch_id}` | Status, outputs and checks |
+| `GET /api/adapt/batches/{batch_id}/export.zip` | Download passed and approved files with `manifest.json` |
+| `POST /api/adapt/batches/{batch_id}/push` | Send outputs to a connected platform; needs `"confirm": true` |
+| `POST /api/adapt/outputs/{output_id}/approve` | Approve a held file (reviewer or admin) |
+| `GET /api/adapt/outputs/{output_id}/file` | Download one output file |
+| `GET /api/adapt/config` | Read branding, brand kit, rules and spending limit |
+| `PATCH /api/adapt/config` | Update them (admin) |
+| `GET`, `POST /api/adapt/keys` | List or create API keys (admin) |
+| `DELETE /api/adapt/keys/{key_id}` | Revoke a key (admin) |
+| `GET`, `POST /api/adapt/connections` | List or add platform connections |
+
+## Errors
+
+Errors return a JSON body with an `error` code, for example `{"error": "body_base64_required"}`. A batch that would go past your monthly spending limit is refused before anything is spent.
+
+## Webhooks
+
+Instead of polling, you can register a webhook URL to receive `batch.completed`, `output.needs_review` and `output.approved` events, signed with your workspace secret (available on enterprise only).
+
+## Advanced
+
+- **Bring your own model keys:** run layouts on your own image-model account and billing (available on enterprise only).
+- **Private storage:** write outputs straight to your own bucket (available on enterprise only).
+- **Higher limits:** more concurrent layouts and larger batches for catalogue-scale runs (available on enterprise only).
