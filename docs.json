@@ -110,6 +110,27 @@
             ]
           },
           {
+            "group": "Products",
+            "icon": "boxes-stacked",
+            "pages": [
+              {
+                "group": "Adapt",
+                "icon": "layer-group",
+                "pages": [
+                  "products/adapt/overview",
+                  "products/adapt/quickstart",
+                  "products/adapt/how-it-works",
+                  "products/adapt/placements-and-packs",
+                  "products/adapt/brand-checks-and-review",
+                  "products/adapt/api",
+                  "products/adapt/mcp",
+                  "products/adapt/connections",
+                  "products/adapt/workspace-and-brand"
+                ]
+              }
+            ]
+          },
+          {
             "group": "Guides",
             "icon": "graduation-cap",
             "pages": [

@@ -1,0 +1,87 @@
+---
+title: "Placements and packs"
+sidebarTitle: "Placements and packs"
+description: "Every size Adapt makes, the ready-made packs, and how to add your own placements, print sizes, video and placement rules."
+icon: "table-cells"
+---
+
+A placement is one output size with its own format, file-size limit and safe area. A pack is a saved list of placements that you run together. Every batch runs one pack, or a list of placements you pick, for every master.
+
+## Ready-made packs
+
+| Pack | Placements | Layouts used |
+| --- | --- | --- |
+| Launch pack | 12: Stories, Reels cover, menu board, kiosks, Instagram and Facebook feed, YouTube, DOOH, Swiggy, Zomato, app banner | 9:16, 1:1, 16:9, 3:1 |
+| Meta essentials | 6: Story, Reels cover, Instagram feed, Facebook feed, Meta feed 4:5, Meta link ad | 9:16, 1:1, 16:9 |
+| Delivery apps | 3: Swiggy banner, Zomato banner, app home banner | 3:1 |
+
+## Built-in placements
+
+| Placement | Size (px) | Format and limit | Safe area (top / right / bottom / left) |
+| --- | --- | --- | --- |
+| Instagram Story | 1080 × 1920 | JPG, 4 MB | 14% / 6% / 20% / 6% |
+| Reels cover | 1080 × 1920 | JPG, 4 MB | 14% / 6% / 20% / 6% |
+| In-store menu board | 1080 × 1920 | PNG, 8 MB | 4% on all sides |
+| Kiosk, portrait | 1080 × 1920 | PNG, 8 MB | 5% / 5% / 8% / 5% |
+| Instagram feed | 1080 × 1080 | JPG, 4 MB | 6% on all sides |
+| Facebook feed | 1080 × 1080 | JPG, 4 MB | 6% on all sides |
+| Meta feed 4:5 | 1080 × 1350 | JPG, 4 MB | 6% on all sides |
+| YouTube | 1920 × 1080 | JPG, 2 MB | 6% / 5% / 10% / 5% |
+| DOOH screen | 1920 × 1080 | JPG, 10 MB | 5% on all sides |
+| Kiosk, landscape | 1920 × 1080 | PNG, 8 MB | 5% on all sides |
+| Meta link ad | 1200 × 628 | JPG, 4 MB | 5% on all sides |
+| Swiggy banner | 1200 × 400 | JPG, 500 KB | 8% / 5% / 8% / 5% |
+| Zomato banner | 1200 × 400 | JPG, 500 KB | 8% / 5% / 8% / 5% |
+| App home banner | 1500 × 500 | JPG, 500 KB | 8% / 5% / 8% / 5% |
+| Display 300 × 250 | 300 × 250 | JPG, 150 KB | 4% on all sides |
+
+The safe area is the margin where your logo, price and legal text must not sit, for example under the Instagram profile bar or the YouTube controls.
+
+## Custom placements and packs
+
+You can add your own placements and save them as packs for your workspace, for example a retailer's app banner or your DOOH network's screen sizes (available on enterprise only). For each placement you set:
+
+- Size in pixels, or in inches or millimetres with a DPI for print.
+- Output formats: PNG, JPG, WebP, PDF, or several at once.
+- File-size limit.
+- Safe area on each side.
+- Placement rules (below).
+
+You can also import a placement list from a spreadsheet: one row per placement with name, size, format, limit and notes (available on enterprise only).
+
+## Placement rules
+
+Some channels need more than a size. Rules let a placement differ from the master in a controlled way (available on enterprise only):
+
+| Rule | Example |
+| --- | --- |
+| Reserved band | Keep the top 20% clear for the app's own header, filled with a darker gradient of the background |
+| Extra clear zones | Keep 10% clear at the top and bottom for RCS cards, or the bottom 490 px clear on a self-order kiosk |
+| Hide elements | Remove the logo, or a badge such as "exclusively available", for app tiles that add their own |
+| Required overlay | Add a mandated footer or legal strip from your brand kit to every digital menu board |
+| No text | A clean, text-free version for channels that forbid text on the image |
+| No price | A version without the price for channels that show price separately |
+
+Each rule also changes the brand checks for that placement, so a placement that hides the logo is not failed for a missing logo.
+
+## Extreme shapes
+
+Very wide or very tall sizes, such as 728 × 90 and 320 × 50 leaderboards or a 4000 × 500 strip, can't hold a full campaign layout. For these, Adapt builds a compact layout from the master's parts: product, headline and price, with legal moved to the placement's own legal field where the channel provides one (available on enterprise only).
+
+## Print
+
+Print placements are set in inches or millimetres. Adapt makes the file at the print resolution you choose, 300 DPI by default, upscales the layout to that size and exports print-ready PDF alongside JPG and PNG (available on enterprise only). Bleed, crop marks and CMYK conversion can be added to match your printer's spec (available on enterprise only).
+
+Typical print placements: flyers and coupons (A5, 5.8 × 8.3 in), posters (12 × 18 in) and counter huggers (25 × 5 in).
+
+## Video and motion
+
+Adapt can adapt video masters and make motion versions of still masters (available on enterprise only):
+
+- Resize and re-frame a video master to 9:16, 1:1, 16:9 and 3:4, keeping on-screen text and end cards intact.
+- Export MP4 or WebM under a file-size limit, for example digital menu boards under 20 MB or kiosk loops under 10 seconds.
+- Animated GIF under a size limit, for splash screens and display ads.
+
+## Layout shapes
+
+Adapt makes one layout per shape and cuts every placement from the closest one. Shapes available today: 9:16, 1:1, 16:9 and 3:1, with 4:5 cut from 1:1. Additional shapes, such as 2:3, 2:1, 8:3, 1:2, 5:1 and 8:1, are added for workspaces that need them (available on enterprise only).

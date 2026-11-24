@@ -1,0 +1,63 @@
+---
+title: "Adapt in Claude, ChatGPT and MCP clients"
+sidebarTitle: "MCP"
+description: "Connect Adapt to Claude, ChatGPT or any MCP client so an assistant can upload masters, run packs, check results and push files."
+icon: "plug"
+---
+
+Adapt is an MCP server, so you can run it from Claude, ChatGPT or any client that speaks the Model Context Protocol. You can say "adapt these three masters to the launch pack and send the 9:16s to Meta", and the assistant uses the Adapt tools to do it.
+
+## Prerequisites
+
+- An Adapt API key with the scopes the assistant needs. See [API](/products/adapt/api#authentication).
+- An MCP client that supports remote servers with a bearer token.
+
+## Connect
+
+| Setting | Value |
+| --- | --- |
+| Server URL | `https://adapts.tryvinci.com/api/mcp` |
+| Transport | Streamable HTTP |
+| Authorization | `Bearer vak_...` |
+
+For a client that reads a JSON config:
+
+```json
+{
+  "mcpServers": {
+    "vinci-adapt": {
+      "url": "https://adapts.tryvinci.com/api/mcp",
+      "headers": { "Authorization": "Bearer vak_your_key" }
+    }
+  }
+}
+```
+
+The **Connections** page in Adapt shows your workspace's server URL. White-labelled workspaces get their own URL and server name. Sign-in with your workspace account instead of a key (OAuth) is available for Claude and ChatGPT connectors (available on enterprise only).
+
+## Tools
+
+| Tool | Scope | What it does |
+| --- | --- | --- |
+| `adapt.upload_master` | run | Upload a master by URL or base64; returns its id, kind and text profile |
+| `adapt.list_masters` | read | Find recent masters by file name |
+| `adapt.list_packs` | read | List packs and every placement |
+| `adapt.estimate` | read | Layouts, cost and time for masters and a pack or placements |
+| `adapt.run` | run | Start a batch with a `pack_id` or `placement_ids` |
+| `adapt.status` | read | Progress of a batch, per master |
+| `adapt.get_outputs` | read | Outputs with signed links (valid 15 minutes), checks and review state |
+| `adapt.export` | read | A signed link to the zip, optionally for one placement |
+| `adapt.list_connections` | read | Connected ad platforms and storage |
+| `adapt.push_to_platform` | push | Send approved outputs to a connected platform |
+
+## Safety
+
+- A run that costs more than $5 returns `requires_confirmation` with the estimate. The assistant must ask you and call again with `confirm: true`.
+- Every push returns `requires_confirmation` first, so nothing reaches an ad account without your yes.
+- A key only allows the scopes you gave it. A `read` key can look but not spend.
+
+## Example prompts
+
+- "Upload the attached post and show me what Adapt would cost for the Meta essentials pack."
+- "Run the launch pack on last week's Corn & Cheese masters, then list anything that needs review."
+- "Push the approved 9:16 files from that batch to our Meta ad account."
