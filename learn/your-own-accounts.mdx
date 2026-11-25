@@ -215,9 +215,17 @@ On app.tryvinci.com, **Shows** speaks the dialogue of a shot with ElevenLabs on 
 <Steps>
   <Step title="Connect ElevenLabs">
     Paste your ElevenLabs key on **Connect**, as in [Connect your account](#connect-your-account) (the **On app.tryvinci.com** tab).
+
+    <Frame caption="The ElevenLabs card on Connect: the key (its last 4 characters, blurred here) and the balance in ElevenLabs credits.">
+      <img src="/images/learn/elevenlabs-connect.jpg" alt="The Connect page with four cards: Wavespeed not connected, ElevenLabs with a blurred key hint and its balance in ElevenLabs credits, and Higgsfield and Magnific signed in." />
+    </Frame>
   </Step>
   <Step title="Pick a voice for each character">
     In **Shows**, open your show, and open a character on the **Bible** page. The **Linked** panel has a **Voice** menu with the voices of your ElevenLabs account. To read the list is free. Pick a voice. Dialogue takes that the character spoke in the old voice become stale.
+
+    <Frame caption="The sample show Lamp Oil: Lily for Mira, then George for Tomas, from the Voice menu. Each pick adds the character's voice entry under Props · Voices. 36 seconds, no sound.">
+      <video controls playsInline className="w-full aspect-video rounded-xl" src="/videos/shows-voices-walkthrough.mp4" poster="/images/learn/shows-voices-walkthrough-poster.jpg"></video>
+    </Frame>
   </Step>
   <Step title="Or clone a voice from a recording">
     Cloning needs an ElevenLabs Starter plan or higher, because the Free plan has no instant voice clones. On the Free plan, pick a voice from the list in the step before.
@@ -225,6 +233,10 @@ On app.tryvinci.com, **Shows** speaks the dialogue of a shot with ElevenLabs on 
     Under **Voice**, click **Clone from sample**. Pick a recording (MP3, WAV, OGG or FLAC), and type a name for the voice. ElevenLabs needs at least 10 seconds of clean speech; 1 to 2 minutes is best.
 
     Tick **I have the right to use this voice, and the speaker agreed to the clone.** Nothing goes to ElevenLabs before you tick it, and the tick is for one clone only. Then click **Clone voice**. ElevenLabs makes an instant clone on your key, and the character speaks in it. The clone takes one voice slot of your ElevenLabs account, and the recording stays in the show as the voice's sample. If ElevenLabs refuses the clone, the show does not change.
+
+    <Frame caption="The Clone from sample form before you pick a recording. Clone voice stays off until you pick a recording and tick the consent box.">
+      <img src="/images/learn/shows-clone-form.jpg" alt="The Linked panel of Tomas: the Voice menu, a Pick a recording button, the voice name, the unticked consent box, the ElevenLabs note on sample length and voice slots, and the Clone voice and Cancel buttons." />
+    </Frame>
   </Step>
   <Step title="Render the dialogue on the shot page">
     Open a shot that has dialogue lines, and click the **Video** step. Under **Dialogue**, pick the speech model, and check the price on your key:
@@ -235,9 +247,21 @@ On app.tryvinci.com, **Shows** speaks the dialogue of a shot with ElevenLabs on 
     | Eleven Multilingual v2 | $0.08 per 1,000 characters | More lifelike delivery, at two times the price. |
 
     Click **Render dialogue**, and confirm. Nothing runs before you confirm. Each line is spoken in its speaker's voice, and the lines join into one audio take. Listen to the take, and click **Approve** to choose it for the shot. If a speaker has no voice yet, the plan stops and tells you to pick one on the speaker's bible page.
+
+    <Frame caption="Shot e01/s03/sh010 of Lamp Oil has two lines (67 characters). On Auto, the plan line under Render dialogue names the model and its price on your key.">
+      <img src="/images/learn/shows-dialogue-model.jpg" alt="The Dialogue field of a shot: a line by Mira and a line by Tomas, the Dialogue model menu on Auto · Eleven Flash v2.5, the Render dialogue button, and the plan line Eleven Flash v2.5 · $0.003 on your key." />
+    </Frame>
+
+    <Frame caption="sh010 rendered one time on Eleven Flash v2.5 (Auto) and one time on Eleven Multilingual v2. The confirm shows the price on your key before each render. The receipts: $0.0027 for take a1 and $0.0054 for take a2, and 0 Vinci credits. The waits for the takes (about 30 seconds each) are cut. At the end, each take plays with its sound. The speech: Mira, “What if it goes out?”; Tomas, “Then you light it again. That is the whole job.” 55 seconds.">
+      <video controls playsInline className="w-full aspect-video rounded-xl" src="/videos/shows-dialogue-walkthrough.mp4" poster="/images/learn/shows-dialogue-walkthrough-poster.jpg"></video>
+    </Frame>
   </Step>
   <Step title="Play the dialogue in the cut">
     Open **Cut**, and select the clip of the shot. In **Audio**, pick **Separate dialogue take**. The clip then plays the chosen dialogue take, from the start of the clip, in place of the take's own sound. In the show files, this is `audio: separate` on the cut clip. The export mixes the dialogue into the MP4, and **Also export OTIO and stems** also writes a dialogue WAV.
+
+    <Frame caption="Cut with Audio set to Separate dialogue take (a2): the Dialogue row shows a2 under sh010, and the cut plays it from the start of the clip. A wait before the play is cut. The speech: Mira, “What if it goes out?”; Tomas, “Then you light it again. That is the whole job.” 19 seconds, with sound.">
+      <video controls playsInline className="w-full aspect-video rounded-xl" src="/videos/shows-cut-dialogue.mp4" poster="/images/learn/shows-cut-dialogue-poster.jpg"></video>
+    </Frame>
   </Step>
 </Steps>
 
