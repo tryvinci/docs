@@ -1,0 +1,118 @@
+---
+title: "Use Vinci from your agent"
+sidebarTitle: "Agents (MCP)"
+description: "Connect Claude Code, claude.ai, Cursor or any MCP client to your Vinci Studio. You sign in with your Vinci account. You do not need an API key."
+icon: "plug"
+keywords: ["MCP", "Model Context Protocol", "Claude Code", "claude.ai", "Cursor", "agent", "connector", "OAuth"]
+---
+
+The Vinci Studio is an MCP server, so an agent can use it for you. You can say "make a 16:9 still of a red cube, then animate it for 5 seconds", and the agent lists the models, shows the price, starts the runs and gives you the links.
+
+## Prerequisites
+
+- A Vinci account. Sign in once at [app.tryvinci.com/studio](https://app.tryvinci.com/studio).
+- Credits on the account, or your own provider account connected in the Studio. See [Credits](#credits).
+- An MCP client that supports remote servers with OAuth sign-in.
+
+## Connect
+
+| Setting | Value |
+| --- | --- |
+| Server URL | `https://app.tryvinci.com/mcp` |
+| Transport | Streamable HTTP |
+| Authorization | OAuth: the client opens a Vinci sign-in page. There is no API key. |
+
+<Tabs>
+  <Tab title="Claude Code">
+    1. Add the server:
+
+       ```bash
+       claude mcp add --transport http vinci https://app.tryvinci.com/mcp
+       ```
+
+    2. In Claude Code, type `/mcp`, select **vinci**, then select **Authenticate**.
+    3. Sign in to Vinci in the browser and allow access.
+  </Tab>
+  <Tab title="claude.ai">
+    1. Open **Settings** → **Connectors** → **Add custom connector**.
+    2. Paste `https://app.tryvinci.com/mcp` as the URL.
+    3. Select **Connect**, then sign in to Vinci and allow access.
+  </Tab>
+  <Tab title="Cursor">
+    1. Add the server to `~/.cursor/mcp.json`:
+
+       ```json
+       {
+         "mcpServers": {
+           "vinci": { "url": "https://app.tryvinci.com/mcp" }
+         }
+       }
+       ```
+
+    2. Open **Cursor Settings** → **MCP**. When Cursor asks, sign in to Vinci and allow access.
+  </Tab>
+</Tabs>
+
+## Tools
+
+| Tool | What it does | Credits |
+| --- | --- | --- |
+| `vinci.models_list` | Lists the models you can run, with their price and settings. Optional `capability`: `image` or `video`. | 0 |
+| `vinci.cost_estimate` | Gives the price of a run and your balance. It takes the same arguments as the run tools (`prompt`, `inputs`, optional `model_id`), or `model_id` and `inputs`. | 0 |
+| `vinci.image_generate` | Starts an image run (`prompt`, optional `model_id`, `inputs`, `max_credits`, `project_id`). | The model price |
+| `vinci.video_generate` | Starts a video run. A start image (`inputs.image`, an asset id from an earlier output) makes it image-to-video. | The clip price |
+| `vinci.jobs_get` | Reads a run (`run_id`). Optional `wait_seconds` (at most 25) waits for the run to end. When it is completed, each output has its `url`, and images come with a small preview that the agent can see. | 0 |
+| `vinci.runs_list` | Lists your recent runs, newest first. Optional `state`, `capability`, `project_id` and `limit`. | 0 |
+| `vinci.assets_list` | Lists your recent files, newest first, with their `url`. An asset id is a start image for a new run. | 0 |
+| `vinci.projects_list` | Lists your Studio projects. Send a project `id` as `project_id` to put a run in that project. | 0 |
+| `vinci.media_inspect` | Reads one of your assets (`vinci://assets/{id}`): type, size and url. | 0 |
+
+`inputs` holds the model settings, for example `aspect_ratio`, `resolution` and `duration` (seconds). `vinci.models_list` shows the settings of each model. Without a `model_id`, the run uses the default model.
+
+## How runs work
+
+- **Runs show in the Studio.** A run from your agent is a normal Studio run. You see it and its outputs in your Studio.
+- **Wait for the result.** The generate tools return a `run_id` at once. The agent calls `vinci.jobs_get` with `wait_seconds: 25`, or every 10–20 seconds, until the state is `completed` or `failed`. The run moves forward only while the agent reads it.
+- **Projects.** Without a `project_id`, a run goes to your default project, **My work**.
+- **Refused calls.** When a call cannot run (not enough credits, a price above `max_credits`, a model you cannot use), the tool result has `isError: true` and one sentence that tells the agent what to change. Nothing starts and nothing is charged.
+- **Not in this version:** uploads, canvas runs and Shows runs.
+
+## Credits
+
+- A run costs the same credits as the same run in the Studio.
+- A run on your own provider account (connected on **Connect** in the Studio) costs 0 Vinci credits. The provider bills your account. See [Make stills and clips on your own accounts](/learn/your-own-accounts).
+- To stop a run that costs too much, the agent sends `max_credits`. A run above that price does not start.
+- Your balance shows on the **Credits** page in the Studio.
+
+## Example prompts
+
+- "List the Vinci video models and their prices."
+- "What does a 5-second 16:9 clip on the default video model cost? Do not start it."
+- "Make a still of a ceramic mug on a wooden table, 1:1, at most 10 credits. Then animate it with a slow push-in."
+
+## Local open source Studio
+
+The [open source Vinci Studio](https://github.com/tryvinci/vinci) runs on your computer, and its daemon is an MCP server too. Your provider keys stay on your computer, and the providers bill your own accounts. There is no sign-in and there are no Vinci credits.
+
+1. Start the Studio. See the [repository README](https://github.com/tryvinci/vinci#get-started-in-5-minutes).
+2. Print the client config:
+
+   ```bash
+   ./scripts/vinci mcp print-config
+   ```
+
+   ```json
+   {
+     "mcpServers": {
+       "vinci": { "url": "http://127.0.0.1:4310/mcp" }
+     }
+   }
+   ```
+
+3. Add this config to your client. For Claude Code:
+
+   ```bash
+   claude mcp add --transport http vinci-local http://127.0.0.1:4310/mcp
+   ```
+
+The local server has the same tool names, so one agent setup works for both. It also has more tools, for example `vinci.jobs_cancel` and `vinci.workflow_run`. The local server limits spend with `max_cost` in US dollars. The hosted server refuses `max_cost` and asks for `max_credits`, so a dollar limit is never read as credits. The [MCP package README](https://github.com/tryvinci/vinci/tree/main/packages/mcp) lists all local tools.

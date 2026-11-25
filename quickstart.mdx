@@ -1,163 +1,50 @@
 ---
 title: "Quickstart"
-description: "Make your first Vinci API call and poll job status in 5 minutes (Python &amp; JavaScript)."
+description: "Make your first still or clip in the Vinci Studio, then connect your agent to the same Studio."
 ---
 
 ## Prerequisites
-- A Vinci account and API key from [Vinci Dashboard](https://app.tryvinci.com/dashboard/api)
-- Balance with sufficient credits
-- See full guide at [Getting Started](/docs/guides/getting-started)
 
-<Note>
-Keep your API key secret. Do not expose keys in client-side code.
-</Note>
+- A Vinci account. Sign in at [app.tryvinci.com/studio](https://app.tryvinci.com/studio).
+- Credits on the account, or your own provider account. Your balance shows on the **Credits** page in the Studio. See [Make stills and clips on your own accounts](/learn/your-own-accounts) to run on your own account for 0 Vinci credits.
 
-## 1) Install dependencies
-```bash title="Python"
-pip install requests
+## 1) Make a still in the Studio
+
+1. Open the **Image** page.
+2. Write a prompt, for example "A ceramic mug on a wooden table, soft window light".
+3. Pick a model and an aspect ratio. The price shows on the **Generate** button.
+4. Click **Generate**.
+
+See [Make four product stills from one prompt](/learn/four-stills-from-one-prompt) for more.
+
+## 2) Turn it into a clip
+
+1. On the **Image** page, hover the still and click **Animate**. The **Video** page opens with the still as the **Start** frame.
+2. Ask for one slow camera move, for example "slow push-in".
+3. Pick the **Duration** and click **Generate**. The clip shows in **History** when the model is done.
+
+See [Turn a still into a 6-second clip](/learn/animate-a-still) for more.
+
+## 3) Connect your agent
+
+Claude Code, claude.ai, Cursor and other MCP clients can use the same Studio. You sign in with your Vinci account. You do not need an API key.
+
+```bash
+claude mcp add --transport http vinci https://app.tryvinci.com/mcp
 ```
 
-```bash title="JavaScript (Node 18+)"
-# No extra deps needed for fetch in Node 18+. For older versions, use node-fetch.
-```
-
-## 2) Create your first video (Text-to-Video)
-
-<CodeGroup>
-
-```curl cURL
-curl -X POST "https://tryvinci.com/api/v1/generate/text-to-video" \
-  -H "Authorization: Bearer sk-your-api-key-here" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "prompt": "A serene sunset over a calm lake",
-    "duration_seconds": 5,
-    "aspect_ratio": "16:9"
-  }'
-```
-
-```python text_to_video.py
-import requests, time
-
-API_KEY = "sk-your-api-key-here"
-url = "https://tryvinci.com/api/v1/generate/text-to-video"
-headers = {
-    "Authorization": f"Bearer {API_KEY}",
-    "Content-Type": "application/json"
-}
-data = {
-    "prompt": "A serene sunset over a calm lake",
-    "duration_seconds": 5,
-    "aspect_ratio": "16:9"
-}
-
-resp = requests.post(url, headers=headers, json=data)
-resp.raise_for_status()
-result = resp.json()
-print(f"Request ID: {result['request_id']}")
-```
-
-```javascript text_to_video.js
-const API_KEY = "sk-your-api-key-here";
-
-const response = await fetch("https://tryvinci.com/api/v1/generate/text-to-video", {
-  method: "POST",
-  headers: {
-    "Authorization": `Bearer ${API_KEY}`,
-    "Content-Type": "application/json",
-  },
-  body: JSON.stringify({
-    prompt: "A serene sunset over a calm lake",
-    duration_seconds: 5,
-    aspect_ratio: "16:9",
-  }),
-});
-
-if (!response.ok) throw new Error(`HTTP ${response.status}`);
-const result = await response.json();
-console.log(`Request ID: ${result.request_id}`);
-```
-
-</CodeGroup>
-
-## 3) Poll job status
-
-<CodeGroup>
-
-```curl cURL
-curl -X GET "https://tryvinci.com/api/v1/status/your-request-id" \
-  -H "Authorization: Bearer sk-your-api-key-here"
-```
-
-```python poll_status.py
-import requests, time
-
-API_KEY = "sk-your-api-key-here"
-request_id = "your-request-id"
-status_url = f"https://tryvinci.com/api/v1/status/{request_id}"
-headers = {"Authorization": f"Bearer {API_KEY}"}
-
-while True:
-    r = requests.get(status_url, headers=headers)
-    r.raise_for_status()
-    status = r.json()
-
-    if status["status"] == "completed":
-        print(f"Video ready: {status['video_url']}")
-        break
-    if status["status"] == "failed":
-        print("Generation failed")
-        break
-
-    print(f"Status: {status['status']}")
-    time.sleep(5)
-```
-
-```javascript poll_status.js
-const API_KEY = "sk-your-api-key-here";
-const requestId = "your-request-id";
-
-async function checkStatus() {
-  const r = await fetch(`https://tryvinci.com/api/v1/status/${requestId}`, {
-    headers: { "Authorization": `Bearer ${API_KEY}` },
-  });
-  if (!r.ok) throw new Error(`HTTP ${r.status}`);
-  const status = await r.json();
-
-  if (status.status === "completed") {
-    console.log(`Video ready: ${status.video_url}`);
-    return;
-  }
-  if (status.status === "failed") {
-    console.log("Generation failed");
-    return;
-  }
-  console.log(`Status: ${status.status}`);
-  setTimeout(checkStatus, 5000);
-}
-checkStatus();
-```
-
-</CodeGroup>
+Then type `/mcp` in Claude Code, select **vinci**, then select **Authenticate**. See [Use Vinci from your agent](/agents) for the other clients and the tools.
 
 ## Next steps
 
 <CardGroup cols={2}>
 
-<Card title="Authentication" icon="key" href="/essentials/authentication">
-  Learn how to properly authenticate your API requests.
+<Card title="Use Vinci from your agent" icon="plug" href="/agents">
+  Connect an MCP client and let your agent start runs in your Studio.
 </Card>
 
-<Card title="Video Generation API" icon="video" href="/docs/api-reference/video-generation">
-  Explore the full video generation API reference.
-</Card>
-
-<Card title="Billing & Usage" icon="credit-card" href="/docs/guides/billing-usage">
-  Understand billing and monitor your usage.
-</Card>
-
-<Card title="Error Handling" icon="triangle-exclamation" href="/docs/guides/error-handling">
-  Learn how to handle errors gracefully.
+<Card title="Guides" icon="compass" href="/learn/index">
+  Short, practical guides to making video and ads with AI.
 </Card>
 
 </CardGroup>
