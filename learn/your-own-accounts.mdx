@@ -1,12 +1,12 @@
 ---
 title: "Make stills and clips on your own accounts"
 sidebarTitle: "Your own accounts"
-description: "Paste a Wavespeed key, or sign in to Higgsfield or Magnific, and make stills, clips and canvas chains on your own provider account. On app.tryvinci.com, a run on your account costs no Vinci credits."
+description: "Paste a Wavespeed or ElevenLabs key, or sign in to Higgsfield or Magnific, and make stills, clips, canvas chains and spoken Shows dialogue on your own provider account. On app.tryvinci.com, a run on your account costs no Vinci credits."
 icon: "key"
-keywords: ["API key", "bring your own key", "BYOK", "sign in", "OAuth", "Wavespeed", "Magnific", "Higgsfield", "Vinci", "image generation", "video generation", "canvas"]
+keywords: ["API key", "bring your own key", "BYOK", "sign in", "OAuth", "Wavespeed", "ElevenLabs", "Magnific", "Higgsfield", "Vinci", "voice clone", "dialogue", "image generation", "video generation", "canvas"]
 ---
 
-The **Image**, **Video** and **Canvas** pages can run models on your own provider account. For Wavespeed, you paste an API key. For Higgsfield and Magnific, you sign in with your account: no API key. The provider bills your account: Wavespeed in dollars, Higgsfield and Magnific in their own credits. This works in the free and open source Vinci studio on your computer, and in the studio on app.tryvinci.com, where a run on your account costs no Vinci credits.
+The **Image**, **Video** and **Canvas** pages can run models on your own provider account. For Wavespeed, you paste an API key. For Higgsfield and Magnific, you sign in with your account: no API key. The provider bills your account: Wavespeed in dollars, Higgsfield and Magnific in their own credits. This works in the free and open source Vinci studio on your computer, and in the studio on app.tryvinci.com, where a run on your account costs no Vinci credits. On app.tryvinci.com, an ElevenLabs key also gives **Shows** its character voices and spoken dialogue: see [Voices and dialogue in Shows](#voices-and-dialogue-in-shows).
 
 <Columns cols={2}>
   <Card title="What you get" icon="flag-checkered">
@@ -75,6 +75,25 @@ On the sign-ins, each balance went down by the price on the button, in the provi
       **A key spends your money.** Anyone with the key can run models on your account. Do not put the key in a chat, a ticket, a screenshot or a file that you share.
     </Warning>
   </Tab>
+  <Tab title="ElevenLabs: API key">
+    1. Sign in to ElevenLabs and open the API keys page: [elevenlabs.io/app/settings/api-keys](https://elevenlabs.io/app/settings/api-keys).
+    2. Create a key, and copy it at once.
+
+    On app.tryvinci.com, the key gives **Shows** its character voices, voice clones and spoken dialogue. ElevenLabs bills the key, not Vinci. A restricted key needs this access:
+
+    | Access | Used for |
+    | --- | --- |
+    | Voices: read | The check on save, and the **Voice** menu. A key without it is refused on save. |
+    | Text to Speech | **Render dialogue**. The key saves without it, but each dialogue run fails. |
+    | Voices: write | **Clone from sample**. |
+    | User: read | The balance on the Connect card. Without it, the key works, but the card shows in red that ElevenLabs did not give the balance. |
+
+    A key with no restrictions has all of this access.
+
+    <Warning>
+      **A key spends your credits.** Anyone with the key can speak text and clone voices on your account. Do not put the key in a chat, a ticket, a screenshot or a file that you share.
+    </Warning>
+  </Tab>
   <Tab title="Higgsfield: sign in">
     You need a Higgsfield account with credits on it. You do not need an API key: you sign in from the studio, in the next step.
 
@@ -123,10 +142,13 @@ VINCI_ALLOW_LIVE_SPEND=1 ./scripts/vinci studio
   <Tab title="On app.tryvinci.com">
     <Steps>
       <Step title="Open Connect in the studio">
-        Sign in to app.tryvinci.com and open the studio. Pick **Connect** on the left rail. The page **Your accounts** has a card for Wavespeed, Higgsfield and Magnific.
+        Sign in to app.tryvinci.com and open the studio. Pick **Connect** on the left rail. The page **Your accounts** has a card for Wavespeed, ElevenLabs, Higgsfield and Magnific.
       </Step>
       <Step title="Wavespeed: paste the key">
         Paste the key in the Wavespeed card, and click **Save Wavespeed key**. The studio checks the key with Wavespeed at once. If Wavespeed refuses the key, the page tells you, and the key is not saved.
+      </Step>
+      <Step title="ElevenLabs: paste the key">
+        Paste the key in the ElevenLabs card, and click **Save ElevenLabs key**. The studio checks the key with a free call: it reads the voice list of your account. If ElevenLabs refuses the key (HTTP 401 or 403), the page tells you, and the key is not saved. Then the card shows the balance: the ElevenLabs credits that are left this period.
       </Step>
       <Step title="Higgsfield or Magnific: sign in">
         Click **Sign in to Higgsfield** or **Sign in to Magnific**. A new tab opens on the provider's sign-in page. If no tab opens (your browser can block it), click **Open the sign-in page** on the card; the card says "Waiting for sign-in" until you finish. Sign in there, and the tab shows "Signed in to Higgsfield. You can close this tab." Back in the studio, the card shows **Signed in** and the credits on your account, such as **Balance: 37 Higgsfield credits**. A balance of 0, or a provider that refuses the check, shows in red.
@@ -141,7 +163,7 @@ VINCI_ALLOW_LIVE_SPEND=1 ./scripts/vinci studio
     </Frame>
 
     <Note>
-      The studio stores your key and your sign-in encrypted, and shows only the last 4 characters of a key. Paste the key itself: the studio on app.tryvinci.com does not read environment variables. **Remove key** deletes the Wavespeed key, and its models go back to Vinci credits. **Sign out** ends a sign-in: the provider revokes the studio's access, and its models leave the lists. In **Shows**, keyframes and video takes run on your key too. A Higgsfield or Magnific clip model runs there when you pick it in the shot's **Video model** menu, and the price shows what your account pays, such as "4 Higgsfield credits on your account". Writing a script with the text model still uses Vinci credits.
+      The studio stores your key and your sign-in encrypted, and shows only the last 4 characters of a key. Paste the key itself: the studio on app.tryvinci.com does not read environment variables. **Remove key** deletes the Wavespeed key, and its models go back to Vinci credits. For ElevenLabs, **Remove key** stops voices and spoken dialogue in Shows: the hosted studio has no speech on Vinci credits. **Sign out** ends a sign-in: the provider revokes the studio's access, and its models leave the lists. In **Shows**, keyframes and video takes run on your key too. A Higgsfield or Magnific clip model runs there when you pick it in the shot's **Video model** menu, and the price shows what your account pays, such as "4 Higgsfield credits on your account". Writing a script with the text model still uses Vinci credits.
     </Note>
   </Tab>
 </Tabs>
@@ -186,12 +208,54 @@ Slow push-in on the lamp. The sheer curtain sways a little in the breeze. Nothin
   A clip from a still sends the still to the provider first: Higgsfield keeps it in your Higgsfield media, and Magnific keeps it out of your library. A cancelled sign-in, or a sign-in link that is more than 10 minutes old, does nothing: start it again from **Connect**.
 </Note>
 
+## Voices and dialogue in Shows
+
+On app.tryvinci.com, **Shows** speaks the dialogue of a shot with ElevenLabs on your key. Each character speaks in its own voice. Vinci charges 0 credits for it: ElevenLabs bills your key.
+
+<Steps>
+  <Step title="Connect ElevenLabs">
+    Paste your ElevenLabs key on **Connect**, as in [Connect your account](#connect-your-account) (the **On app.tryvinci.com** tab).
+  </Step>
+  <Step title="Pick a voice for each character">
+    In **Shows**, open your show, and open a character on the **Bible** page. The **Linked** panel has a **Voice** menu with the voices of your ElevenLabs account. To read the list is free. Pick a voice. Dialogue takes that the character spoke in the old voice become stale.
+  </Step>
+  <Step title="Or clone a voice from a recording">
+    Cloning needs an ElevenLabs Starter plan or higher, because the Free plan has no instant voice clones. On the Free plan, pick a voice from the list in the step before.
+
+    Under **Voice**, click **Clone from sample**. Pick a recording (MP3, WAV, OGG or FLAC), and type a name for the voice. ElevenLabs needs at least 10 seconds of clean speech; 1 to 2 minutes is best.
+
+    Tick **I have the right to use this voice, and the speaker agreed to the clone.** Nothing goes to ElevenLabs before you tick it, and the tick is for one clone only. Then click **Clone voice**. ElevenLabs makes an instant clone on your key, and the character speaks in it. The clone takes one voice slot of your ElevenLabs account, and the recording stays in the show as the voice's sample. If ElevenLabs refuses the clone, the show does not change.
+  </Step>
+  <Step title="Render the dialogue on the shot page">
+    Open a shot that has dialogue lines, and click the **Video** step. Under **Dialogue**, pick the speech model, and check the price on your key:
+
+    | Model | Price on your key (November 2026) | Use it for |
+    | --- | --- | --- |
+    | Eleven Flash v2.5 (Auto) | $0.04 per 1,000 characters | Fast, low-cost speech. Auto picks it, because it has the lower price. |
+    | Eleven Multilingual v2 | $0.08 per 1,000 characters | More lifelike delivery, at two times the price. |
+
+    Click **Render dialogue**, and confirm. Nothing runs before you confirm. Each line is spoken in its speaker's voice, and the lines join into one audio take. Listen to the take, and click **Approve** to choose it for the shot. If a speaker has no voice yet, the plan stops and tells you to pick one on the speaker's bible page.
+  </Step>
+  <Step title="Play the dialogue in the cut">
+    Open **Cut**, and select the clip of the shot. In **Audio**, pick **Separate dialogue take**. The clip then plays the chosen dialogue take, from the start of the clip, in place of the take's own sound. In the show files, this is `audio: separate` on the cut clip. The export mixes the dialogue into the MP4, and **Also export OTIO and stems** also writes a dialogue WAV.
+  </Step>
+</Steps>
+
+<Note>
+  **Known limits.**
+  - A restricted key without voices-read access is refused on save. The Connect balance needs user-read access.
+  - The studio speaks one dialogue line per request. A long dialogue fills in over several checks of the run, and the take shows when the last line is spoken.
+  - A dialogue take needs every line. If one line fails, the lines before it were already spoken and billed on your ElevenLabs key, and no take is kept. The error says how many lines were billed, and for how much. Fix the cause (for example, the key has no credits left), and render the dialogue again.
+  - Music and sound effects are not on app.tryvinci.com yet: only dialogue.
+</Note>
+
 ## Before you run
 
 - [ ] The provider shows **Ready** or **Connected** in **Connect** (on your computer), or **On your key** or **Signed in** on its card (on app.tryvinci.com)
 - [ ] The price on **Generate** is in dollars or in the provider's credits, not in Vinci credits
 - [ ] Your provider account has money or credits for the run
-- [ ] Your Wavespeed key is not in a chat, a ticket or a shared file
+- [ ] For Shows dialogue: each speaker has a voice on its bible page
+- [ ] Your Wavespeed or ElevenLabs key is not in a chat, a ticket or a shared file
 
 ## Two ways to go further
 
