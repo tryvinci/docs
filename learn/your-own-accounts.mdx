@@ -212,6 +212,10 @@ Slow push-in on the lamp. The sheer curtain sways a little in the breeze. Nothin
 
 On app.tryvinci.com, **Shows** speaks the dialogue of a shot with ElevenLabs on your key. Each character speaks in its own voice. Vinci charges 0 credits for it: ElevenLabs bills your key.
 
+<Tip>
+  The sample show *Lamp Oil* already has voices: Mira speaks in Lily and Tomas in George, two ElevenLabs premade voices. Its first shot has an approved dialogue take, and **Cut** plays it. Click **Open the sample show** to hear it with no key. If you opened *Lamp Oil* in this project before, that copy stays as it was, with no voices: open the sample in a new project to get them.
+</Tip>
+
 <Steps>
   <Step title="Connect ElevenLabs">
     Paste your ElevenLabs key on **Connect**, as in [Connect your account](#connect-your-account) (the **On app.tryvinci.com** tab).
@@ -270,6 +274,7 @@ On app.tryvinci.com, **Shows** speaks the dialogue of a shot with ElevenLabs on 
   - A restricted key without voices-read access is refused on save. The Connect balance needs user-read access.
   - The studio speaks one dialogue line per request. A long dialogue fills in over several checks of the run, and the take shows when the last line is spoken.
   - A dialogue take needs every line. If one line fails, the lines before it were already spoken and billed on your ElevenLabs key, and no take is kept. The error says how many lines were billed, and for how much. Fix the cause (for example, the key has no credits left), and render the dialogue again.
+  - ElevenLabs retires its Default voices on December 31, 2026, Lily and George of the sample show among them. The sample's dialogue take keeps playing. A new render in a voice that ElevenLabs removed, or that your plan cannot use, stops before any take is kept, and the error names the character and the voice. Pick another voice on the character's bible page, for example an Infinity voice (∞) from the ElevenLabs Voice Library, then render the dialogue again. Voice Library voices need a paid ElevenLabs plan for API use.
   - Music and sound effects are not on app.tryvinci.com yet: only dialogue.
 </Note>
 

@@ -1,17 +1,17 @@
-# Vinci API Documentation
+# Vinci Docs
 
-Official documentation for the [Vinci's API Services](https://tryvinci.com) - AI-powered video generation, image creation, and digital content APIs.
+Source of [docs.tryvinci.com](https://docs.tryvinci.com): the Vinci Studio, the Studio MCP for agents, and Adapt.
 
 ## 🚀 Quick Start
 
 - Studio: sign in at [app.tryvinci.com/studio](https://app.tryvinci.com/studio). See `quickstart.mdx`.
 - Agents: connect any MCP client to `https://app.tryvinci.com/mcp` (OAuth sign-in, no API key). See `agents.mdx`.
 
-The Developer API (`/api/v1/*`, API keys, `/dashboard/api`) and the old MCP at `tryvinci.com/api/agent/mcp` were deleted (COREPRODUC-763, COREPRODUC-764).
+The Developer API (`/api/v1/*`, API keys, `/dashboard/api`) and the old MCP at `tryvinci.com/api/agent/mcp` were deleted (COREPRODUC-763, COREPRODUC-764). Their docs pages were deleted and redirect to `/agents`, `/quickstart` or `/learn` (COREPRODUC-783).
 
 ## 🛠 Documentation Development
 
-This repository contains the source for Vinci's API documentation built with [Mintlify](https://mintlify.com).
+This folder holds the source of the Vinci docs, built with [Mintlify](https://mintlify.com).
 
 ### Local Development
 
@@ -34,12 +34,11 @@ docs/
 ├── docs.json              # Main configuration
 ├── quickstart.mdx         # Quick start guide
 ├── agents.mdx             # Use Vinci from your agent (Studio MCP)
-├── essentials/            # Authentication, pricing
+├── learn/                 # Studio guides
+├── products/adapt/        # Adapt product docs
+├── essentials/            # Mintlify writing reference (not in navigation)
 ├── docs/
-│   ├── api-reference/     # Complete API documentation
-│   ├── guides/            # Developer guides and tutorials
-│   └── platform/          # Platform-specific features
-└── ai-tools/              # Development tools configuration
+│   └── guides/prompting/  # Prompting guides
 ```
 
 ### Contributing
