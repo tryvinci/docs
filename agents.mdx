@@ -58,10 +58,11 @@ The Vinci Studio is an MCP server, so an agent can use it for you. You can say "
 | Tool | What it does | Credits |
 | --- | --- | --- |
 | `vinci.models_list` | Lists the models you can run, with their price and settings. Optional `capability`: `image` or `video`. | 0 |
-| `vinci.cost_estimate` | Gives the price of a run and your balance. It takes the same arguments as the run tools (`prompt`, `inputs`, optional `model_id`), or `model_id` and `inputs`. | 0 |
+| `vinci.cost_estimate` | Gives the price of a run and your balance. It takes the same arguments as the run tools (`prompt`, `inputs`, optional `model_id`), or `model_id` and `inputs`, or a canvas `workflow`. | 0 |
 | `vinci.image_generate` | Starts an image run (`prompt`, optional `model_id`, `inputs`, `max_credits`, `project_id`). | The model price |
 | `vinci.video_generate` | Starts a video run. A start image (`inputs.image`, an asset id from an earlier output) makes it image-to-video. | The clip price |
-| `vinci.jobs_get` | Reads a run (`run_id`). Optional `wait_seconds` (at most 25) waits for the run to end. When it is completed, each output has its `url`, and images come with a small preview that the agent can see. | 0 |
+| `vinci.workflow_run` | Starts a canvas run: a `workflow` with `nodes` (each with an `id`, a `model_id` and `params`) and `edges` (`src` to `dst`). A node can use an earlier output: `"image": "{{nodes.a.output}}"`. Optional `prompt`, `inputs`, `max_credits`, `project_id`. | The price of each node |
+| `vinci.jobs_get` | Reads a run (`run_id`). Optional `wait_seconds` (at most 25) waits for the run to end. When it is completed, each output has its `url`, and images and videos come with a small preview that the agent can see (a video shows its first frame). | 0 |
 | `vinci.runs_list` | Lists your recent runs, newest first. Optional `state`, `capability`, `project_id` and `limit`. | 0 |
 | `vinci.assets_list` | Lists your recent files, newest first, with their `url`. An asset id is a start image for a new run. | 0 |
 | `vinci.projects_list` | Lists your Studio projects. Send a project `id` as `project_id` to put a run in that project. | 0 |
@@ -75,7 +76,7 @@ The Vinci Studio is an MCP server, so an agent can use it for you. You can say "
 - **Wait for the result.** The generate tools return a `run_id` at once. The agent calls `vinci.jobs_get` with `wait_seconds: 25`, or every 10–20 seconds, until the state is `completed` or `failed`. The run moves forward only while the agent reads it.
 - **Projects.** Without a `project_id`, a run goes to your default project, **My work**.
 - **Refused calls.** When a call cannot run (not enough credits, a price above `max_credits`, a model you cannot use), the tool result has `isError: true` and one sentence that tells the agent what to change. Nothing starts and nothing is charged.
-- **Not in this version:** uploads, canvas runs and Shows runs.
+- **Not in this version:** uploads and Shows runs.
 
 ## Credits
 
@@ -115,4 +116,4 @@ The [open source Vinci Studio](https://github.com/tryvinci/vinci) runs on your c
    claude mcp add --transport http vinci-local http://127.0.0.1:4310/mcp
    ```
 
-The local server has the same tool names, so one agent setup works for both. It also has more tools, for example `vinci.jobs_cancel` and `vinci.workflow_run`. The local server limits spend with `max_cost` in US dollars. The hosted server refuses `max_cost` and asks for `max_credits`, so a dollar limit is never read as credits. The [MCP package README](https://github.com/tryvinci/vinci/tree/main/packages/mcp) lists all local tools.
+The local server has the same tool names, so one agent setup works for both. It also has more tools, for example `vinci.jobs_cancel`. The local server limits spend with `max_cost` in US dollars. The hosted server refuses `max_cost` and asks for `max_credits`, so a dollar limit is never read as credits. The [MCP package README](https://github.com/tryvinci/vinci/tree/main/packages/mcp) lists all local tools.

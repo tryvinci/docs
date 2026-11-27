@@ -86,7 +86,16 @@
   "redirects": [
     { "source": "/docs/guides/mcp-server-integration", "destination": "/agents" },
     { "source": "/essentials/api-keys", "destination": "/agents" },
-    { "source": "/docs/guides/getting-started", "destination": "/quickstart" }
+    { "source": "/docs/guides/getting-started", "destination": "/quickstart" },
+    { "source": "/essentials/authentication", "destination": "/agents" },
+    { "source": "/essentials/pricing", "destination": "/learn/ai-video-cost" },
+    { "source": "/docs/guides/billing-usage", "destination": "/learn/ai-video-cost" },
+    { "source": "/docs/guides/error-handling", "destination": "/agents" },
+    { "source": "/docs/api-reference/:slug*", "destination": "/agents" },
+    { "source": "/api-reference/:slug*", "destination": "/agents" },
+    { "source": "/docs/guides/platform/:slug*", "destination": "/learn/index" },
+    { "source": "/docs/platform/:slug*", "destination": "/quickstart" },
+    { "source": "/platform", "destination": "/quickstart" }
   ],
   "navigation": {
     "anchors": [
@@ -101,16 +110,6 @@
               "index",
               "quickstart",
               "agents"
-            ]
-          },
-          {
-            "group": "Essentials",
-            "icon": "key",
-            "pages": [
-              "essentials/authentication",
-              "essentials/pricing",
-              "docs/guides/billing-usage",
-              "docs/guides/error-handling"
             ]
           },
           {
@@ -148,39 +147,7 @@
                   "docs/guides/prompting/image-to-image",
                   "docs/guides/prompting/video-generation"
                 ]
-              },
-              {
-                "group": "Platform Services",
-                "icon": "rocket",
-                "pages": [
-                  "docs/guides/platform/ai-actors",
-                  "docs/guides/platform/image-generation",
-                  "docs/guides/platform/video-generation",
-                  "docs/guides/platform/video-translation",
-                  "docs/guides/platform/emote",
-                  "docs/guides/platform/qr-code-generation"
-                ]
               }
-            ]
-          },
-          {
-            "group": "API Reference",
-            "icon": "square-terminal",
-            "pages": [
-              "docs/api-reference/video-generation",
-              "docs/api-reference/image-to-video",
-              "docs/api-reference/status-checking"
-            ]
-          },
-          {
-            "group": "Platform",
-            "icon": "cube",
-            "pages": [
-              "docs/platform/overview",
-              "docs/guides/platform/index",
-              "docs/guides/platform/platform-overview",
-              "docs/platform/explore",
-              "docs/platform/assets"
             ]
           },
           {
